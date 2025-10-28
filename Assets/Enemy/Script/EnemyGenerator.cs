@@ -50,25 +50,5 @@ public class EnemyGenerator : MonoBehaviour
     //    }
     }
 
-    //public void GenarateBullet(BulletBehaviour behavior)
-    //{
-    //    GameObject bullet = GameObject.Instantiate(m_baseBullet, transform);
 
-    //    bullet.transform.position = behavior.SpawnPos;
 
-    //    switch (behavior.Type)
-    //    {
-    //        case BulletBehaviourType.Straight:
-    //            StraightMove bulletMove = bullet.AddComponent<StraightMove>();
-    //            bulletMove.Initialize(behavior.Direction,behavior.Speed);
-
-    //            break;
-
-    //        case BulletBehaviourType.Following:
-    //            FollowingMove followingMove = bullet.AddComponent<FollowingMove>();
-    //            followingMove.Initialize(behavior.Direction, behavior.Speed);
-
-    //            break;
-    //    }
-    //}
-}
