@@ -4,92 +4,94 @@ using UnityEngine.InputSystem;
 
 public class GamepadInput : MonoBehaviour
 {
-    //private List<PlayerEvents> m_playerEvents = new List<PlayerEvents>();
+    private List<PlayerEvents> m_playerEvents = new List<PlayerEvents>();
 
-    //private void Start()
-    //{
-    //    Initialize();
-    //}
+    private float m_stickDeadzone = 0.1f;
 
-    //void Update()
-    //{
-    //    // 各プレイヤーの入力処理
-    //    for (int i = 0; i < m_playerEvents.Count; i++)
-    //    {
-    //        // GamepadManagerから該当プレイヤーのGamepadを取得
-    //        Gamepad gamepad = GamepadManager.Instance.GetGamepad(i);
+    private void Start()
+    {
+        Initialize();
+    }
 
-    //        if (gamepad != null)
-    //        {
-    //            ProcessPlayerInput(i, gamepad);
-    //        }
-    //    }
-    //}
+    void Update()
+    {
+        // 各プレイヤーの入力処理
+        for (int i = 0; i < m_playerEvents.Count; i++)
+        {
+            // GamepadManagerから該当プレイヤーのGamepadを取得
+            Gamepad gamepad = GamepadManager.Instance.GetGamepad(i);
 
-    //private void ProcessPlayerInput(int playerIndex, Gamepad gamepad)
-    //{
-    //    if (playerIndex >= m_playerEvents.Count)
-    //        return;
+            if (gamepad != null)
+            {
+                ProcessPlayerInput(i, gamepad);
+            }
+        }
+    }
 
-    //    PlayerEvents playerEvent = m_playerEvents[playerIndex];
+    private void ProcessPlayerInput(int playerIndex, Gamepad gamepad)
+    {
+        if (playerIndex >= m_playerEvents.Count)
+            return;
 
-    //    // 左スティック（移動）
-    //    Vector2 leftStick = gamepad.leftStick.ReadValue();
+        PlayerEvents playerEvent = m_playerEvents[playerIndex];
 
-    //    // 前後移動
-    //    if (leftStick.y > m_stickDeadzone)
-    //    {
-    //        playerEvent.OnMoveForward?.Invoke();
-    //    }
-    //    else if (leftStick.y < -m_stickDeadzone)
-    //    {
-    //        playerEvent.OnMoveBackward?.Invoke();
-    //    }
+        // 左スティック（移動）
+        Vector2 leftStick = gamepad.leftStick.ReadValue();
 
-    //    // 左右移動
-    //    if (leftStick.x > m_stickDeadzone)
-    //    {
-    //        playerEvent.OnMoveRight?.Invoke();
-    //    }
-    //    else if (leftStick.x < -m_stickDeadzone)
-    //    {
-    //        playerEvent.OnMoveLeft?.Invoke();
-    //    }
+        // 前後移動
+        if (leftStick.y > m_stickDeadzone)
+        {
+            playerEvent.OnMoveForward?.Invoke();
+        }
+        else if (leftStick.y < -m_stickDeadzone)
+        {
+            playerEvent.OnMoveBackward?.Invoke();
+        }
 
-    //    // 右スティック（回転）
-    //    Vector2 rightStick = gamepad.rightStick.ReadValue();
+        // 左右移動
+        if (leftStick.x > m_stickDeadzone)
+        {
+            playerEvent.OnMoveRight?.Invoke();
+        }
+        else if (leftStick.x < -m_stickDeadzone)
+        {
+            playerEvent.OnMoveLeft?.Invoke();
+        }
 
-    //    if (rightStick.x > m_stickDeadzone)
-    //    {
-    //        playerEvent.OnTurnRight?.Invoke();
-    //    }
-    //    else if (rightStick.x < -m_stickDeadzone)
-    //    {
-    //        playerEvent.OnTurnLeft?.Invoke();
-    //    }
+        // 右スティック（回転）
+        Vector2 rightStick = gamepad.rightStick.ReadValue();
 
-    //}
+        if (rightStick.x > m_stickDeadzone)
+        {
+            playerEvent.OnTurnRight?.Invoke();
+        }
+        else if (rightStick.x < -m_stickDeadzone)
+        {
+            playerEvent.OnTurnLeft?.Invoke();
+        }
 
-    //private void Initialize()
-    //{
-    //    m_playerEvents.Clear();
+    }
 
-    //    foreach (GameObject playerObj in PlayerManager.Instance.Players)
-    //    {
-    //        PlayerEvents playerEvent = playerObj.GetComponent<PlayerEvents>();
-    //        if (playerEvent != null)
-    //        {
-    //            m_playerEvents.Add(playerEvent);
-    //        }
-    //    }
+    private void Initialize()
+    {
+        m_playerEvents.Clear();
 
-    //    // ゲームパッド割り当て
-    //    GamepadManager.Instance.RegisterPlayers();
-    //}
+        foreach (GameObject playerObj in PlayerManager.Instance.Players)
+        {
+            PlayerEvents playerEvent = playerObj.GetComponent<PlayerEvents>();
+            if (playerEvent != null)
+            {
+                m_playerEvents.Add(playerEvent);
+            }
+        }
 
-    //// ゲーム中に再初期化したい場合に呼び出す
-    //public void Reinitialize()
-    //{
-    //    Initialize();
-    //}
+        // ゲームパッド割り当て
+        GamepadManager.Instance.RegisterPlayers();
+    }
+
+    // ゲーム中に再初期化したい場合に呼び出す
+    public void Reinitialize()
+    {
+        Initialize();
+    }
 }
