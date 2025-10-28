@@ -165,7 +165,7 @@ public class GamepadManager : MonoBehaviour
             {
                 case InputDeviceChange.Added:
                     Debug.Log($"ゲームパッド接続: {gamepad.name}");
-                    // 自動再割り当て（必要に応じてコメントアウト）
+                    // 自動再割り当て
                     RegisterPlayers();
                     break;
 

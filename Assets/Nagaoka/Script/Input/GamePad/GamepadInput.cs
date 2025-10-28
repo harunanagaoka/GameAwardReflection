@@ -89,7 +89,7 @@ public class GamepadInput : MonoBehaviour
         GamepadManager.Instance.RegisterPlayers();
     }
 
-    // ƒQ[ƒ€’†‚ÉÄ‰Šú‰»‚µ‚½‚¢ê‡‚ÉŒÄ‚Ño‚·
+    // Ä‰Šú‰»
     public void Reinitialize()
     {
         Initialize();
