@@ -10,7 +10,6 @@ public abstract class EnemyMovePattern : MonoBehaviour
     
     protected bool m_isReflected = false;
 
-  
     void Awake() 
     {
         m_rigidbody = GetComponent<Rigidbody>();

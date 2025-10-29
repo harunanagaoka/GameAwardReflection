@@ -61,11 +61,11 @@ public class GamepadInput : MonoBehaviour
         // 右スティック（回転）
         Vector2 rightStick = gamepad.rightStick.ReadValue();
 
-        if (gamepad.rightShoulder.isPressed)
+        if (rightStick.x > m_stickDeadzone)
         {
             playerEvent.OnTurnRight?.Invoke();
         }
-        else if (gamepad.leftShoulder.isPressed)
+        else if (rightStick.x < -m_stickDeadzone)
         {
             playerEvent.OnTurnLeft?.Invoke();
         }

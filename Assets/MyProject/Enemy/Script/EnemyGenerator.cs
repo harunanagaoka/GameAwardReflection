@@ -1,11 +1,10 @@
 using UnityEngine;
 
-//using static BulletBehaviourData;
 
 public class EnemyGenerator : MonoBehaviour
 {
-    //[SerializeField]
-    //private GameObject m_baseBullet;
+    [SerializeField]
+    private GameObject m_baseEnemy;
 
     //private ConfigData.BulletConfig m_bulletConfig;
 
@@ -14,10 +13,12 @@ public class EnemyGenerator : MonoBehaviour
 
     private void Start()
     {
-        GameObject config = GameObject.Find("Config");
-        //ConfigManager configManager = config.GetComponent<ConfigManager>();
-
        // m_bulletConfig = configManager.BulletConfig;
+    }
+
+    public void GenerateEnemy(Vector3 spawnPos)
+    {
+        GameObject Enemy = GameObject.Instantiate(m_baseEnemy, transform);
     }
 
     //behavior.Typeに応じてコンポーネントを付けた弾を生成、自身のtransformの子にする
