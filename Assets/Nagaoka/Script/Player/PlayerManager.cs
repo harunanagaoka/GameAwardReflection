@@ -109,7 +109,7 @@ public class PlayerManager : MonoBehaviour
         }
 
         players.Clear();
-        Debug.Log("PlayerManagerをリセットしました");
+        Debug.Log("PlayerManagerリセット");
     }
 
     /// <summary>

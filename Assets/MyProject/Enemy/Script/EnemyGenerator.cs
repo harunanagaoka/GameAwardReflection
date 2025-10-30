@@ -18,7 +18,7 @@ public class EnemyGenerator : MonoBehaviour
 
     public void GenerateEnemy(Vector3 spawnPos)
     {
-        GameObject Enemy = GameObject.Instantiate(m_baseEnemy, transform);
+        GameObject Enemy = GameObject.Instantiate(m_baseEnemy,m_generateOffset,Quaternion.identity);
     }
 
     //behavior.Typeに応じてコンポーネントを付けた弾を生成、自身のtransformの子にする

@@ -70,6 +70,21 @@ public class GamepadInput : MonoBehaviour
             playerEvent.OnTurnLeft?.Invoke();
         }
 
+        //ñhå‰
+        if (gamepad.rightShoulder.wasPressedThisFrame)
+        {
+            playerEvent.OnDefence?.Invoke();
+        }
+        if (gamepad.rightShoulder.wasReleasedThisFrame)
+        {
+            playerEvent.OnDefenceEnd?.Invoke();
+        }
+
+        //çUåÇ
+        if (gamepad.bButton.wasPressedThisFrame)
+        {
+            playerEvent.OnAttack?.Invoke();
+        }
     }
 
     private void Initialize()
