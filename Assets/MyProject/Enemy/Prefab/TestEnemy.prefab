@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 4343652954029361809}
   - component: {fileID: 1286546576272187877}
   - component: {fileID: 8358025065068367087}
-  - component: {fileID: 6301377147645301731}
   - component: {fileID: 3393048862257362831}
   - component: {fileID: 5530359696155012136}
+  - component: {fileID: -3663358887377242696}
   m_Layer: 0
   m_Name: TestEnemy
   m_TagString: Untagged
@@ -139,20 +139,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
---- !u!114 &6301377147645301731
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 212651722170079556}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14356f0c33ed70e40bee15c6193755ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_attack: {fileID: 8876830103931732692, guid: b1cacef1e9a5e8144bac24653a1f175b, type: 3}
-  m_attackInterval: 0.5
 --- !u!114 &3393048862257362831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,3 +175,19 @@ MonoBehaviour:
   m_hitPoint: 100
   m_maxHitInterval: 0.5
   m_enemyData: {fileID: 11400000, guid: dea6b876589f3144287eab27bf815945, type: 2}
+--- !u!114 &-3663358887377242696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 212651722170079556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55834ffc78bf41242a088e67fcf4bc5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_attack: {fileID: 8876830103931732692, guid: b1cacef1e9a5e8144bac24653a1f175b, type: 3}
+  m_attackRange: {fileID: 6819951490074240406, guid: 668776561893fa24da3bf33561ad0165, type: 3}
+  m_attackInterval: 2
+  m_warningDuration: 1

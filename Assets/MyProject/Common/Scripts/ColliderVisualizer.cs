@@ -1,9 +1,11 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ColliderVisualizer : MonoBehaviour
 {
+    [SerializeField]
+    private Color color = new Color(0.3f, 0.8f, 0.3f, 0.3f);
+
     Dictionary<Collider, GameObject> dict = new Dictionary<Collider, GameObject>();
 
     private GameObject CreatePrimitive(PrimitiveType type)
@@ -72,7 +74,7 @@ public class ColliderVisualizer : MonoBehaviour
 
             var material = primitive.GetComponent<Renderer>().material;
             material.shader = Shader.Find("Sprites/Default");
-            primitive.GetComponent<MeshRenderer>().material.color = new Color(0.3f, 0.8f, 0.3f, 0.3f);
+            primitive.GetComponent<MeshRenderer>().material.color = color;
 
             this.dict.Add(collider, primitive);
         }
