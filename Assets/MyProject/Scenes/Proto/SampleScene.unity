@@ -205,13 +205,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.35934538, y: 0, z: 0, w: 0.93320465}
-  m_LocalPosition: {x: 0, y: 15, z: -9.8}
+  m_LocalRotation: {x: 0.6427876, y: 0, z: 0, w: 0.7660445}
+  m_LocalPosition: {x: 2, y: 20, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 42.12, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 80, y: 0, z: 0}
 --- !u!114 &330585547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -468,7 +468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c08ed625258362f43a8df0151a895d98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_baseEnemy: {fileID: 3668876356632394172, guid: 4cc4d5d7189288240a5b2db9cd8a91fe, type: 3}
+  m_baseEnemy: {fileID: 212651722170079556, guid: d6471034ac35ad94494b3192b3213a0b, type: 3}
   m_generateOffset: {x: 0, y: 0, z: 20}
 --- !u!114 &791705730
 MonoBehaviour:
@@ -560,7 +560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3a9417eb49f59f4da99f46116677f65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_playerCount: 2
+  m_playerCount: 1
   m_playerPrefab: {fileID: 2704472200850051280, guid: 6f3a346b54d192b4eaeec19c979aec6e, type: 3}
 --- !u!4 &1163920696
 Transform:

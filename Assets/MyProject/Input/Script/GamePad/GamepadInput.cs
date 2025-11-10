@@ -58,17 +58,17 @@ public class GamepadInput : MonoBehaviour
             playerEvent.OnMoveLeft?.Invoke();
         }
 
-        // 右スティック（回転）
-        Vector2 rightStick = gamepad.rightStick.ReadValue();
+        //// 右スティック（回転） 
+        //Vector2 rightStick = gamepad.rightStick.ReadValue();
 
-        if (rightStick.x > m_stickDeadzone)
-        {
-            playerEvent.OnTurnRight?.Invoke();
-        }
-        else if (rightStick.x < -m_stickDeadzone)
-        {
-            playerEvent.OnTurnLeft?.Invoke();
-        }
+        //if (rightStick.x > m_stickDeadzone)
+        //{
+        //    playerEvent.OnTurnRight?.Invoke();
+        //}
+        //else if (rightStick.x < -m_stickDeadzone)
+        //{
+        //    playerEvent.OnTurnLeft?.Invoke();
+        //}
 
         //防御
         if (gamepad.rightShoulder.wasPressedThisFrame)
