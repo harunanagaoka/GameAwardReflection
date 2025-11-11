@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: testEnemy
   m_EditorClassIdentifier: 
   m_hitPoint: 100
+  m_onDamageColor: {r: 0, g: 0.30274653, b: 1, a: 1}
+  m_damageEffectTime: 0.5
