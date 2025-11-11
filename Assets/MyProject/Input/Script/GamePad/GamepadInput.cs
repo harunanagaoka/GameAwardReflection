@@ -71,13 +71,15 @@ public class GamepadInput : MonoBehaviour
         //}
 
         //ñhå‰
-        if (gamepad.rightShoulder.wasPressedThisFrame)
+        if (gamepad.rightTrigger.wasPressedThisFrame)
         {
             playerEvent.OnDefence?.Invoke();
+            Debug.Log("ñhå‰ÇµÇ‹ÇµÇΩÅB");
         }
-        if (gamepad.rightShoulder.wasReleasedThisFrame)
+        if (gamepad.rightTrigger.wasReleasedThisFrame)
         {
             playerEvent.OnDefenceEnd?.Invoke();
+            Debug.Log("ñhå‰ÇâèúÇµÇ‹ÇµÇΩ");
         }
 
         //çUåÇ
