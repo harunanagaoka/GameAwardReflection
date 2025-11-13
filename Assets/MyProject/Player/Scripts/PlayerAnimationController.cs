@@ -15,17 +15,32 @@ public class PlayerAnimationController : MonoBehaviour
     {
         m_animator = GetComponent<Animator>();
         m_playerEvents = GetComponentInParent<PlayerEvents>();
-    }
 
-    void Update()
-    {
-  
+        m_playerEvents.OnStartMove.AddListener(PlayRunning);
+
+        m_playerEvents.OnAttack.AddListener(PlayAttack);
+        m_playerEvents.OnDamage.AddListener(PlayDamage);
+        m_playerEvents.OnStop.AddListener(PlayStanding);
+
     }
 
     private void PlayRunning()
     {
+        m_animator.Play(m_runningHash);
+    }
+
+    private void PlayStanding()
+    {
+        m_animator.Play(m_standingHash);
+    }
+
+    private void PlayAttack()
+    {
         m_animator.Play(m_attackHash);
     }
 
-
+    private void PlayDamage()
+    {
+        m_animator.Play(m_damageHash);
+    }
 }

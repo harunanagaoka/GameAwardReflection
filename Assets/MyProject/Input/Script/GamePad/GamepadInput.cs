@@ -6,6 +6,8 @@ public class GamepadInput : MonoBehaviour
 {
     private List<PlayerEvents> m_playerEvents = new List<PlayerEvents>();
 
+    private List<bool> m_wasMoving = new List<bool>();//OnStop呼び出し用
+
     private float m_stickDeadzone = 0.1f;
 
     private void Start()
@@ -38,39 +40,64 @@ public class GamepadInput : MonoBehaviour
         // 左スティック（移動）
         Vector2 leftStick = gamepad.leftStick.ReadValue();
 
-        // 前後移動
-        if (leftStick.y > m_stickDeadzone)
-        {
-            playerEvent.OnMoveForward?.Invoke();
-        }
-        else if (leftStick.y < -m_stickDeadzone)
-        {
-            playerEvent.OnMoveBackward?.Invoke();
-        }
+        bool isMoving = Mathf.Abs(leftStick.x) > m_stickDeadzone || Mathf.Abs(leftStick.y) > m_stickDeadzone;
 
-        // 左右移動
-        if (leftStick.x > m_stickDeadzone)
+        while (m_wasMoving.Count <= playerIndex)
         {
-            playerEvent.OnMoveRight?.Invoke();
+            m_wasMoving.Add(false);
         }
-        else if (leftStick.x < -m_stickDeadzone)
+            
+        bool wasMoving = m_wasMoving[playerIndex];
+
+        if (!wasMoving && isMoving)
         {
-            playerEvent.OnMoveLeft?.Invoke();
+            playerEvent.OnStartMove?.Invoke();
         }
 
-        //// 右スティック（回転） 
-        //Vector2 rightStick = gamepad.rightStick.ReadValue();
 
-        //if (rightStick.x > m_stickDeadzone)
-        //{
-        //    playerEvent.OnTurnRight?.Invoke();
-        //}
-        //else if (rightStick.x < -m_stickDeadzone)
-        //{
-        //    playerEvent.OnTurnLeft?.Invoke();
-        //}
+        if (isMoving)
+        {
+            // 前後移動
+            if (leftStick.y > m_stickDeadzone)
+            {
+                playerEvent.OnMoveForward?.Invoke();
+            }
+            else if (leftStick.y < -m_stickDeadzone)
+            {
+                playerEvent.OnMoveBackward?.Invoke();
+            }
 
-        //防御
+            // 左右移動
+            if (leftStick.x > m_stickDeadzone)
+            {
+                playerEvent.OnMoveRight?.Invoke();
+            }
+            else if (leftStick.x < -m_stickDeadzone)
+            {
+                playerEvent.OnMoveLeft?.Invoke();
+            }
+        }
+        else
+        {
+            // 以前は移動していて、今は移動が終わった場合
+            if (wasMoving)
+            {
+                playerEvent.OnStop?.Invoke();
+            }
+        }
+            //// 右スティック（回転） 
+            //Vector2 rightStick = gamepad.rightStick.ReadValue();
+
+            //if (rightStick.x > m_stickDeadzone)
+            //{
+            //    playerEvent.OnTurnRight?.Invoke();
+            //}
+            //else if (rightStick.x < -m_stickDeadzone)
+            //{
+            //    playerEvent.OnTurnLeft?.Invoke();
+            //}
+
+            //防御
         if (gamepad.rightTrigger.wasPressedThisFrame)
         {
             playerEvent.OnDefence?.Invoke();
@@ -87,6 +114,8 @@ public class GamepadInput : MonoBehaviour
         {
             playerEvent.OnAttack?.Invoke();
         }
+
+        m_wasMoving[playerIndex] = isMoving;
     }
 
     private void Initialize()
