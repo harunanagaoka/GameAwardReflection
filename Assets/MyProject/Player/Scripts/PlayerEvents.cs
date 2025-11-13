@@ -4,12 +4,14 @@ using UnityEngine.Events;
 public class PlayerEvents : MonoBehaviour
 {
     //ˆÚ“®Œn
+    public UnityEvent OnStartMove;
     public UnityEvent OnMoveRight;
     public UnityEvent OnMoveLeft;
     public UnityEvent OnMoveForward;
     public UnityEvent OnMoveBackward;
     public UnityEvent OnTurnLeft;
     public UnityEvent OnTurnRight;
+    public UnityEvent OnStop;
 
     //ƒAƒNƒVƒ‡ƒ“
     public UnityEvent OnAttack;
