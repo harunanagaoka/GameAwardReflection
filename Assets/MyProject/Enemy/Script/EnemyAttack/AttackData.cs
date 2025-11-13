@@ -3,8 +3,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewAttackData", menuName = "Scriptable Objects/AttackData")]
 public class AttackData : ScriptableObject
 {
-    [SerializeField, Tooltip("ノックバック方向")]
-    private Vector3 m_blownAwayDirection;
+    //[SerializeField, Tooltip("ノックバック方向")]
+    //private Vector3 m_blownAwayDirection;
 
     [SerializeField, Tooltip("ノックバック力")]
     private float m_blownAwayPower;
@@ -15,7 +15,7 @@ public class AttackData : ScriptableObject
     [SerializeField, Tooltip("ダメージ")]
     private int m_damage;
 
-    public Vector3 BlownAwayDirection => m_blownAwayDirection;
+    //public Vector3 BlownAwayDirection => m_blownAwayDirection;
 
     public float BlownAwayPower => m_blownAwayPower;
 
@@ -23,3 +23,5 @@ public class AttackData : ScriptableObject
 
     public int Damage => m_damage;
 }
+
+//ベータ版の途中でノックバック方向の仕様を変更したため、コメントアウトしています。
