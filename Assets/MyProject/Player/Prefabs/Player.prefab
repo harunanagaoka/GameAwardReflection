@@ -229,8 +229,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c88cde2ae832925419858f1a9bdf561b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_humanModel: {fileID: 0}
-  m_ballModel: {fileID: 0}
+  m_humanModel: {fileID: 8923132373542127776}
+  m_ballModel: {fileID: 8391965537249737200}
 --- !u!114 &463365025143328539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,8 +243,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbe6b8bbbd90c144f8369a818c3a6862, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 10
-  inputThreshold: 0.1
 --- !u!1 &8391965537249737200
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,5 +476,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbe6b8bbbd90c144f8369a818c3a6862, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 10
-  inputThreshold: 0.1

@@ -1,13 +1,17 @@
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerEvents))]
 public class PlayerOrientationController : MonoBehaviour
 {
     private PlayerEvents m_playerEvents;
 
     void Awake()
     {
-        m_playerEvents = GetComponent<PlayerEvents>();
+        m_playerEvents = GetComponentInParent<PlayerEvents>();
+
+        if(m_playerEvents == null)
+        {
+            Debug.LogError("PlayerEvents component not found in parent hierarchy.", this);
+        }
     }
 
     void OnEnable()
