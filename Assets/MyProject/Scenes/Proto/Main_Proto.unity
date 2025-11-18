@@ -586,18 +586,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1123574775656592200, guid: 200a881fa8ef3c043ac208cc88d66e4e, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1123574775656592200, guid: 200a881fa8ef3c043ac208cc88d66e4e, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1123574775656592200, guid: 200a881fa8ef3c043ac208cc88d66e4e, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1123574775656592200, guid: 200a881fa8ef3c043ac208cc88d66e4e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.39
       objectReference: {fileID: 0}
@@ -637,22 +625,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1123574775656592200, guid: 200a881fa8ef3c043ac208cc88d66e4e, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4350399241479767073, guid: 200a881fa8ef3c043ac208cc88d66e4e, type: 3}
       propertyPath: m_Name
       value: Boss
       objectReference: {fileID: 0}
-    - target: {fileID: 5228326600721533266, guid: 200a881fa8ef3c043ac208cc88d66e4e, type: 3}
-      propertyPath: m_attack
-      value: 
-      objectReference: {fileID: 8876830103931732692, guid: 652605fdefe1b3f47bd3aa6bbceecaf4, type: 3}
-    - target: {fileID: 5228326600721533266, guid: 200a881fa8ef3c043ac208cc88d66e4e, type: 3}
-      propertyPath: m_attackRange
-      value: 
-      objectReference: {fileID: 6819951490074240406, guid: 4069b5734b8bf0f4389c248c1ec005d4, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -834,18 +810,6 @@ PrefabInstance:
     - target: {fileID: 212651722170079556, guid: d6471034ac35ad94494b3192b3213a0b, type: 3}
       propertyPath: m_Name
       value: TestEnemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 7560696913752248464, guid: d6471034ac35ad94494b3192b3213a0b, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7560696913752248464, guid: d6471034ac35ad94494b3192b3213a0b, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7560696913752248464, guid: d6471034ac35ad94494b3192b3213a0b, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7560696913752248464, guid: d6471034ac35ad94494b3192b3213a0b, type: 3}
       propertyPath: m_LocalPosition.x

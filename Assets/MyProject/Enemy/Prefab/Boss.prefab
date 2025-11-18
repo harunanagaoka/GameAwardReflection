@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3219664136437442411}
   - component: {fileID: 8253810924140563321}
   - component: {fileID: 5228326600721533266}
+  - component: {fileID: 7849975555101132755}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -33,8 +34,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -15.9, y: 0.703569, z: 13.427839}
-  m_LocalScale: {x: 3, y: 3, z: 3}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 4, y: 1.5, z: 4}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -187,7 +188,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55834ffc78bf41242a088e67fcf4bc5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_attack: {fileID: 8876830103931732692, guid: b1cacef1e9a5e8144bac24653a1f175b, type: 3}
-  m_attackRange: {fileID: 6819951490074240406, guid: 668776561893fa24da3bf33561ad0165, type: 3}
+  m_attack: {fileID: 8876830103931732692, guid: 652605fdefe1b3f47bd3aa6bbceecaf4, type: 3}
+  m_attackRange: {fileID: 6819951490074240406, guid: 4069b5734b8bf0f4389c248c1ec005d4, type: 3}
   m_attackInterval: 2
   m_warningDuration: 1
+--- !u!114 &7849975555101132755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4350399241479767073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6589c0cb6e6c3ee41ad7df06c22b7fde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
