@@ -8,7 +8,7 @@ public class EnemyAttackController : MonoBehaviour
     private GameObject m_attack;
 
     [SerializeField]
-    private GameObject m_attackRange; // UŒ‚”ÍˆÍ
+    private GameObject m_attackRange; // UŒ‚”ÍˆÍ‚Ì•\¦—pƒIƒuƒWƒFƒNƒg
 
     [SerializeField]
     private float m_attackInterval = 5f; 
@@ -22,7 +22,7 @@ public class EnemyAttackController : MonoBehaviour
     {
         m_enemyEvents = GetComponent<EnemyEvents>();
 
-        // ’èŠú“I‚ÈUŒ‚ŠJn
+        // UŒ‚ŠJn
         StartCoroutine(AttackLoop());
     }
 
@@ -42,7 +42,7 @@ public class EnemyAttackController : MonoBehaviour
 
         yield return new WaitForSeconds(m_warningDuration);
 
-        // 3. UŒ‚—\Á‹AUŒ‚”­¶
+        // UŒ‚—\Á‹AUŒ‚”­¶
         Destroy(rangeObj);
         Instantiate(m_attack, transform.position, transform.rotation, transform);
         m_enemyEvents.OnAttack?.Invoke();

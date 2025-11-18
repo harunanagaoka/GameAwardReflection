@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2bf7b53af7bd5e4996fcdb07f08f742, type: 3}
   m_Name: TestAttack
   m_EditorClassIdentifier: 
-  m_blownAwayDirection: {x: 1, y: 0, z: -1}
   m_blownAwayPower: 100
   m_blownAwayTime: 2
   m_damage: 10
