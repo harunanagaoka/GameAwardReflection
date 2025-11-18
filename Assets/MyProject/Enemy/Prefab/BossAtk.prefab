@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5032988804277491111}
   - component: {fileID: -3600708174830212304}
   m_Layer: 0
-  m_Name: Atk
+  m_Name: BossAtk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
