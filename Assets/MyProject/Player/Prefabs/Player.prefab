@@ -174,9 +174,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4190e186f432e9348913cf38ba4dbe54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_bounceMultiplier: 1.5
+  m_bounceMultiplier: 1
   m_targetForceRatio: 0.01
   m_damage: 30
+  m_reflectionLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_skinWidth: 0.05
+  m_playerDefenceCollider: {fileID: 4002756542546610964}
 --- !u!114 &2578013956275005853
 MonoBehaviour:
   m_ObjectHideFlags: 0
