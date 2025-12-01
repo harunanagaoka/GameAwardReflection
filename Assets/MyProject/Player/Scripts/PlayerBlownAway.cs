@@ -31,7 +31,10 @@ public class PlayerBlownAway : MonoBehaviour
     private int m_damage = 0;
 
     [SerializeField, Tooltip("ReflectionWall 判定に使うレイヤー")]
-    private LayerMask m_reflectionLayerMask = ~0;
+    private LayerMask m_reflectionLayerMask;
+
+    [SerializeField,Tooltip("すり抜け防止用判定の細かさ")]
+    private int m_maxStepCount = 15;
 
     [SerializeField, Tooltip("接触位置からのオフセット（プレイヤーが壁にめり込まないマージン）")]
     private float m_skinWidth = 0.05f;
@@ -116,29 +119,48 @@ public class PlayerBlownAway : MonoBehaviour
 
     private void BlowAwayMove()
     {
-        float moveDistance = m_blowAwayForce * Time.fixedDeltaTime;
+        float totalDist = m_blowAwayForce * Time.fixedDeltaTime;
 
-        if (moveDistance > Mathf.Epsilon)
+        int steps = Mathf.Clamp(Mathf.CeilToInt(totalDist / 0.1f), 1, m_maxStepCount);//1~10ステップ
+        float stepDist = totalDist / steps;
+
+        for (int i = 0; i < steps; i++)
         {
-            if (HandlePreventPenetration(moveDistance))
-            {
-                // 衝突処理を行った場合はそれ以上移動しない（位置はヒット点にセット済み）
-                // 必要ならここでダメージやイベントを発火させる
-                m_blowAwayForce *= m_decayRate;
-                m_blowAwayTime -= Time.fixedDeltaTime;
-                if (m_blowAwayTime < 0)
-                {
-                    m_isBlownAway = false;
-                    m_playerEvents.OnBlownAwayEnd?.Invoke();
-                }
-                return;
-            }
+            if (DoSubstep(m_blowAwayDirection, stepDist))
+                break; 
         }
 
-        m_rigidbody.MovePosition(transform.position + m_blowAwayForce * m_blowAwayDirection * Time.fixedDeltaTime);
+        ApplyDecay();
+    }
+
+    private bool DoSubstep(Vector3 dir, float dist)
+    {
+        RaycastHit hit;
+        Vector3 origin = transform.position;
+
+        if (Physics.SphereCast(origin, m_sphereRadius, dir,
+            out hit, dist + m_skinWidth, m_reflectionLayerMask, QueryTriggerInteraction.Ignore))
+        {
+            // 壁の直前に移動
+            Vector3 pos = hit.point - dir * m_skinWidth;
+            m_rigidbody.MovePosition(pos);
+
+            // ★ここで必ず反射させる（方向もセットする）
+            Reflect(hit.normal);
+
+            return true;
+        }
+
+        // 壁に当たらないなら進む
+        m_rigidbody.MovePosition(origin + dir * dist);
+        return false;
+    }
+
+    private void ApplyDecay()
+    {
         m_blowAwayForce *= m_decayRate;
         m_blowAwayTime -= Time.fixedDeltaTime;
-        if (m_blowAwayTime < 0)
+        if (m_blowAwayTime <= 0f)
         {
             m_isBlownAway = false;
             m_playerEvents.OnBlownAwayEnd?.Invoke();
@@ -166,43 +188,6 @@ public class PlayerBlownAway : MonoBehaviour
         decayRate = Mathf.Clamp(decayRate, 0f, 1f);
 
         return decayRate;
-    }
-
-    /// <summary>
-    /// このフレームの移動距離 moveDistance に対して先行判定を行い、
-    /// ReflectionWall を持つオブジェクトに当たったらヒット位置まで移動して向きを反射する。
-    /// ヒット処理を行ったら true を返す（そのフレームの通常移動は行わない）。
-    /// </summary>
-    private bool HandlePreventPenetration(float moveDistance)
-    {
-        RaycastHit hit;
-        Vector3 origin = transform.position;
-        Vector3 dir = m_blowAwayDirection.normalized;
-
-        // SphereCast でプレイヤーのサイズ分を考慮して判定（必要なら CapsuleCast に変更）
-        if (Physics.SphereCast(origin, m_sphereRadius, dir, out hit, moveDistance + m_skinWidth, m_reflectionLayerMask, QueryTriggerInteraction.Ignore))
-        {
-            if (hit.collider != null && hit.collider.gameObject.TryGetComponent<ReflectionWall>(out ReflectionWall reflectionWall))
-            {
-                // 接触点の手前に移動（皮膚幅分オフセット）
-                Vector3 targetPos = hit.point - dir * m_skinWidth;
-                m_rigidbody.MovePosition(targetPos);
-
-                //StartCoroutine(ReflectNextFixedUpdate(hit.normal));
-                //m_blowAwayDirection = Vector3.Reflect(dir, hit.normal).normalized;
-
-                m_blowAwayForce *= m_bounceMultiplier;
-
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private IEnumerator ReflectNextFixedUpdate(Vector3 normal)
-    {
-        yield return new WaitForFixedUpdate();
-        Reflect(normal);
     }
 
 }//吹き飛ばしは敵の攻撃側から呼び出す。ぬるぽが怖いので。
