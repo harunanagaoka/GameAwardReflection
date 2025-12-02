@@ -11,8 +11,6 @@ public abstract class Damageable : MonoBehaviour
     protected abstract void OnDamageEvent();
     protected abstract void OnDeathEvent();
 
-    public int HitPoint => m_hitPoint;
-
     protected virtual void Start()
     {
         //‹¤’Ê‚Ì‰Šú‰»‚ ‚ê‚Î‘‚¢‚Ä‚Ë
