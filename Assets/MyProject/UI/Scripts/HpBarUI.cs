@@ -22,13 +22,13 @@ public class HpBarUI : MonoBehaviour
         }
 
         //OnDamageイベントを使うべきだが、今回は簡易的にUpdateで対応する。
-       //m_currentHp = m_damageable.HitPoint;
+       m_currentHp = m_damageable.HitPoint;
         m_hpSlider.value = m_currentHp / m_maxHp;
     }
 
     private void Initialize()
     {
-        //m_maxHp = m_damageable.HitPoint;
+        m_maxHp = m_damageable.HitPoint;
         m_currentHp = m_maxHp;
 
         m_hpSlider.value = m_currentHp / m_maxHp;//最大値は1
