@@ -5,11 +5,24 @@ public class MainGameTimer : MonoBehaviour
     [SerializeField]
     private float m_maxTime = 0;
 
+    [SerializeField]
+    private bool m_startOnAwake = false;
+
     private float m_currentTime = 0;
 
     private bool m_isTimerRunning = false;
 
     public float CurrentTime => m_currentTime;
+
+    private void Awake()
+    {
+        m_currentTime = m_maxTime;
+        if (m_startOnAwake)
+        {
+            ResetTimer();
+            StartTimer();
+        }
+    }
 
     void Update()
     {
@@ -35,3 +48,7 @@ public class MainGameTimer : MonoBehaviour
         m_isTimerRunning = true;
     }
 }
+
+
+
+
