@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 5228326600721533266}
   - component: {fileID: 7849975555101132755}
   - component: {fileID: 870871991942829145}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,10 +115,10 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 4
-  m_CollisionDetection: 0
+  m_Constraints: 14
+  m_CollisionDetection: 3
 --- !u!114 &3219664136437442411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd08d9f6bddfc504cb845f20c7f6b361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_hitPoint: 100
+  m_hitPoint: 1000
   m_maxHitInterval: 0.5
   m_enemyData: {fileID: 11400000, guid: dea6b876589f3144287eab27bf815945, type: 2}
 --- !u!114 &5228326600721533266

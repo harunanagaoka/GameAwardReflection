@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -3663358887377242696}
   - component: {fileID: 7941737398900851254}
   - component: {fileID: 5192014268692246538}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TestEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,8 +117,8 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 14
-  m_CollisionDetection: 0
+  m_Constraints: 62
+  m_CollisionDetection: 3
 --- !u!114 &3393048862257362831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd08d9f6bddfc504cb845f20c7f6b361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_hitPoint: 100
+  m_hitPoint: 1000
   m_maxHitInterval: 0.5
   m_enemyData: {fileID: 11400000, guid: dea6b876589f3144287eab27bf815945, type: 2}
 --- !u!114 &-3663358887377242696
