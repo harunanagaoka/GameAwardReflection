@@ -1,50 +1,59 @@
 using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(EnemyEvents))]
+[RequireComponent(typeof(EnemyEvents),typeof(AttackPhaseFactory))]
 public class EnemyAttackController : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject m_attack;
+    [SerializeField, Tooltip("デバッグ用、手動でフェーズを変えられる")]
+    private GamePhase m_phase = GamePhase.Phase1;//将来的にはphase管理クラスから取得する
 
-    [SerializeField]
-    private GameObject m_attackRange; // 攻撃範囲の表示用オブジェクト
+    [SerializeField, Tooltip("デバッグ用、手動で攻撃を変えられる")]
+    private int m_atkNum = 0;
+
+    private AttackPhaseFactory m_attackPhaseFactory;
+
+    private EnemyAttackFactory m_attackFactory;
+
+    private AttackPhaseData m_attackPhaseData; 
 
     [SerializeField]
     private float m_attackInterval = 5f; 
-
-    [SerializeField]
-    private float m_warningDuration = 1f;
 
     private EnemyEvents m_enemyEvents;
 
     private void Start()
     {
         m_enemyEvents = GetComponent<EnemyEvents>();
+        m_attackPhaseFactory = GetComponent<AttackPhaseFactory>();
+        m_attackFactory = new EnemyAttackFactory();
+
+        GetCurrentPhaseData();
+        m_attackFactory.SetAttackPhaseData(m_attackPhaseData);
 
         // 攻撃開始
         StartCoroutine(AttackLoop());
     }
 
+    private void GetCurrentPhaseData()
+    {
+        //フェーズを全体で指定するのか敵ごとに指定するのかわからないため現在はこのスクリプトでフェーズを指定
+        m_attackPhaseData = m_attackPhaseFactory.GetAtkPhaseData(m_phase);
+    }
+
     private IEnumerator AttackLoop()
     {
+        //デバッグ用
         while (true)
         {
             yield return new WaitForSeconds(m_attackInterval);
-            yield return StartCoroutine(AttackSequence());
+
+            if(m_atkNum >= m_attackPhaseData.AttackDatas.Length || m_atkNum < 0)
+            {
+                m_atkNum = 0;
+            }
+
+            m_attackFactory.CreateAttack(m_atkNum, transform.position, transform.rotation, transform);//仮
+            m_enemyEvents.OnAttack?.Invoke();
         }
-    }
-
-    private IEnumerator AttackSequence()
-    {
-        // 攻撃予告
-        GameObject rangeObj = Instantiate(m_attackRange, transform.position, transform.rotation, transform);
-
-        yield return new WaitForSeconds(m_warningDuration);
-
-        // 攻撃予告消去、攻撃発生
-        Destroy(rangeObj);
-        Instantiate(m_attack, transform.position, transform.rotation, transform);
-        m_enemyEvents.OnAttack?.Invoke();
     }
 }

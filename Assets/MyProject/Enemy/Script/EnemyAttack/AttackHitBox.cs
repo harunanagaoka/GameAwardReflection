@@ -2,42 +2,32 @@ using UnityEngine;
 
 public class AttackHitBox : MonoBehaviour
 {
-    [SerializeField]
-    private AttackData m_attackData;
+    private Vector3 m_basePosition;
 
-    public AttackData Data { get { return m_attackData; } }
+    private float m_blownAwayPower = 1;
 
-    private void OnValidate()
+    private float m_blownAwayTime = 1;
+
+    private int m_damage = 1;
+
+    public void Initialize(Vector3 basePosition,float blownAwayPower, float blownAwayTime,int damage)
     {
-        // AttackData アタッチし忘れ防止　エディター上で警告される
-        if (m_attackData == null)
-        {
-            Debug.LogWarning($"AttackData が設定されていません: {gameObject.name}", this);
-        }
+        m_basePosition = basePosition;
+        m_blownAwayPower = blownAwayPower;
+        m_blownAwayTime = blownAwayTime;
+        m_damage = damage;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (m_attackData == null)
-        {
-            Debug.LogWarning($"AttackData が設定されていません: {gameObject.name}", this);
-            return;
-        }
-
         if (other.TryGetComponent<PlayerBlownAway>(out PlayerBlownAway playerBlowAway))
         {
-            if(transform.parent.position == null)
-            {
-                Debug.Log("EnemyAttackのparentが設定されていません");
-                return;
-            }
-
-            playerBlowAway.BlowAway(transform.parent.position, m_attackData.BlownAwayPower, m_attackData.BlownAwayTime);
+            playerBlowAway.BlowAway(m_basePosition, m_blownAwayPower, m_blownAwayTime);
         }
 
         if (other.TryGetComponent<PlayerDamageable>(out PlayerDamageable playerDamageable))
         {
-            playerDamageable.TakeDamage(m_attackData.Damage);
+            playerDamageable.TakeDamage(m_damage);
         }
     }
 }

@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2bf7b53af7bd5e4996fcdb07f08f742, type: 3}
   m_Name: TestAttack
   m_EditorClassIdentifier: 
+  m_attackPrefab: {fileID: 8876830103931732692, guid: 07a46ef3446736342ba83cb3b21aaddc, type: 3}
+  m_attackRange: {fileID: 6819951490074240406, guid: 8f6374f6a7fcf88489f504ce12590cc2, type: 3}
+  m_warningDuration: 1
   m_blownAwayPower: 500
   m_blownAwayTime: 2
   m_damage: 10
+  m_lifeTime: 1

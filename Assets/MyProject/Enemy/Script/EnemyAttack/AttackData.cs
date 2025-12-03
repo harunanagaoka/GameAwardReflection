@@ -6,6 +6,15 @@ public class AttackData : ScriptableObject
     //[SerializeField, Tooltip("ノックバック方向")]
     //private Vector3 m_blownAwayDirection;
 
+    [SerializeField, Tooltip("攻撃のプレハブ")]
+    private GameObject m_attackPrefab;
+
+    [SerializeField, Tooltip("攻撃予告のプレハブ")]
+    private GameObject m_attackRange;
+
+    [SerializeField,Tooltip("攻撃予告の時間")]
+    private float m_warningDuration = 1f;
+
     [SerializeField, Tooltip("ノックバック力")]
     private float m_blownAwayPower;
 
@@ -15,13 +24,22 @@ public class AttackData : ScriptableObject
     [SerializeField, Tooltip("ダメージ")]
     private int m_damage;
 
-    //public Vector3 BlownAwayDirection => m_blownAwayDirection;
+    [SerializeField, Tooltip("攻撃の持続時間")]
+    private float m_lifeTime = 1.0f;
+
+    public GameObject AttackPrefab => m_attackPrefab;
+
+    public GameObject AttackRange => m_attackRange;
+
+    public float WarningDuration => m_warningDuration;
 
     public float BlownAwayPower => m_blownAwayPower;
 
     public float BlownAwayTime => m_blownAwayTime;
 
     public int Damage => m_damage;
+
+    public float LifeTime => m_lifeTime;
 }
 
 //ベータ版の途中でノックバック方向の仕様を変更したため、コメントアウトしています。
