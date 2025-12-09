@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3c8128f410c93048b10149ec5d26f90, type: 3}
   m_Name: NewAttackPhaseData
   m_EditorClassIdentifier: 
-  m_attackDatas: []
+  m_attackDatas:
+  - {fileID: 11400000, guid: 8828171c018cc154b99f553b6d047b22, type: 2}

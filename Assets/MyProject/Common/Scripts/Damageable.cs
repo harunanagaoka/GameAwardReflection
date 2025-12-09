@@ -6,12 +6,16 @@ public abstract class Damageable : MonoBehaviour
     [SerializeField] protected float m_maxHitInterval = 0;
 
     private float m_hitInterval = 0;
-    private bool m_isDamageable = true;
+    private bool m_isDamageInterval = false;
 
     protected abstract void OnDamageEvent();
     protected abstract void OnDeathEvent();
 
     public int HitPoint => m_hitPoint;
+
+    protected virtual bool CanTakeDamageCore =>
+    !m_isDamageInterval &&
+    m_hitPoint > 0;
 
     protected virtual void Start()
     {
@@ -25,11 +29,11 @@ public abstract class Damageable : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (m_hitPoint <= 0 || !m_isDamageable) return;
+        if (!CanTakeDamageCore) return;
 
         m_hitPoint -= damage;
         OnDamageEvent();
-        ResetInterval();
+        SetInterval();
 
         if (m_hitPoint <= 0)
         {
@@ -37,10 +41,10 @@ public abstract class Damageable : MonoBehaviour
         }
     }
 
-    private void ResetInterval()
+    private void SetInterval()
     {
         m_hitInterval = m_maxHitInterval;
-        m_isDamageable = false;
+        m_isDamageInterval = true;
     }
 
     private void ProcessInterval()
@@ -54,7 +58,7 @@ public abstract class Damageable : MonoBehaviour
 
         if (m_hitInterval <= 0)
         {
-            m_isDamageable = true;
+            m_isDamageInterval = false;
         }
     }
 }

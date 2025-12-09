@@ -101,12 +101,10 @@ public class GamepadInput : MonoBehaviour
         if (gamepad.rightTrigger.wasPressedThisFrame)
         {
             playerEvent.OnDefence?.Invoke();
-            Debug.Log("–hŒä‚µ‚Ü‚µ‚½B");
         }
         if (gamepad.rightTrigger.wasReleasedThisFrame)
         {
             playerEvent.OnDefenceEnd?.Invoke();
-            Debug.Log("–hŒä‚ğ‰ğœ‚µ‚Ü‚µ‚½");
         }
 
         //UŒ‚

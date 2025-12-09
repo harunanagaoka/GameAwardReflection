@@ -4,10 +4,15 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     [SerializeField]
-    float m_moveVelocity = 0;
+    float m_baseVelocity = 0;
+
+    [SerializeField]
+    float m_defendingVelocity = 0;
 
     [SerializeField]
     private float rotationSpeed = 90f;
+
+    float m_currentVelocity = 0;
 
     PlayerEvents m_playerEvents;
 
@@ -21,6 +26,8 @@ public class PlayerMove : MonoBehaviour
 
     private void Start()
     {
+        m_currentVelocity = m_baseVelocity;
+
         m_playerEvents = GetComponent<PlayerEvents>();
         m_playerEvents.OnMoveRight.AddListener(() => m_inputDirection += Vector3.right);
         m_playerEvents.OnMoveLeft.AddListener(() => m_inputDirection += Vector3.left);
@@ -28,9 +35,10 @@ public class PlayerMove : MonoBehaviour
         m_playerEvents.OnMoveBackward.AddListener(() => m_inputDirection += Vector3.back);
         m_playerEvents.OnTurnLeft.AddListener(() => m_inputRotation -= rotationSpeed);
         m_playerEvents.OnTurnRight.AddListener(() => m_inputRotation += rotationSpeed);
-
         m_playerEvents.OnBlownAway.AddListener(() => isCanMove = false);
         m_playerEvents.OnBlownAwayEnd.AddListener(() => isCanMove = true);
+        m_playerEvents.OnDefence.AddListener(SetDefendingVelocity);
+        m_playerEvents.OnDefenceEnd.AddListener(SetBaseVelocity);
 
         m_rigidbody = GetComponent<Rigidbody>();
 
@@ -44,7 +52,7 @@ public class PlayerMove : MonoBehaviour
             // ˆÚ“®
             if (m_inputDirection != Vector3.zero)
             {
-                Vector3 movement = m_inputDirection.normalized * m_moveVelocity * Time.fixedDeltaTime;
+                Vector3 movement = m_inputDirection.normalized * m_currentVelocity * Time.fixedDeltaTime;
                 m_rigidbody.MovePosition(transform.position + movement);
             }
 
@@ -60,6 +68,16 @@ public class PlayerMove : MonoBehaviour
         // ƒŠƒZƒbƒg
         m_inputDirection = Vector3.zero;
         m_inputRotation = 0;
+    }
+
+    private void SetDefendingVelocity()
+    {
+        m_currentVelocity = m_defendingVelocity;
+    }
+    
+    private void SetBaseVelocity()
+    {
+        m_currentVelocity = m_baseVelocity;
     }
 }
 
