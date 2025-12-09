@@ -413,9 +413,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_attackPhaseDatas:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: fa4741a5077bd1343ba12a80171acef0, type: 2}
+  - {fileID: 11400000, guid: fa4741a5077bd1343ba12a80171acef0, type: 2}
+  - {fileID: 11400000, guid: fa4741a5077bd1343ba12a80171acef0, type: 2}
 --- !u!114 &535690585
 MonoBehaviour:
   m_ObjectHideFlags: 0
