@@ -1,23 +1,17 @@
 using UnityEngine;
 
-public class RocketPunchMove : MonoBehaviour
+public class RocketPunchArrart : MonoBehaviour
 {
     [SerializeField]
     private GameObject Player;
-
-    //[SerializeField]
-    //private float m_delayTime;
 
     [SerializeField]
     Quaternion rotation;
 
     public float m_speed;
     private Vector3 m_direction;
-
     private Rigidbody rigid;
 
-
-    
     private void Start()
     {
         Player = PlayerManager.Instance.Players[0];
@@ -26,14 +20,7 @@ public class RocketPunchMove : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        //if(m_delayTime > 0)
-        //{
-        //    m_delayTime -= Time.fixedDeltaTime;
-        //    UpdateDirection();
-        //    return;
-        //}
-
-        Move();
+       UpdateDirection();
     }
 
     private void UpdateDirection()
@@ -43,12 +30,6 @@ public class RocketPunchMove : MonoBehaviour
 
         rotation = Quaternion.LookRotation(Player.transform.position - this.transform.position);    // Œü‚«‚ð‰ñ“]‚·‚éQuaternion
         transform.rotation = rotation;
-
-    }
-
-    public void Move()
-    {
-       transform.position += transform.forward * m_speed * Time.fixedDeltaTime;
 
     }
 }

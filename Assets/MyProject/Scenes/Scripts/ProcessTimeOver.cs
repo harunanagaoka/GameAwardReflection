@@ -18,7 +18,7 @@ public class ProcessTimeOver : MonoBehaviour
             isGameOver = true;
         }
 
-        if (isGameOver&& Input.GetButtonDown("Fire4"))
+        if (isGameOver&& Input.GetButtonDown("Fire4") || isGameOver && Input.GetKeyDown(KeyCode.R))
         {
             // Œ»İ‚ÌƒV[ƒ“–¼‚ğæ“¾
             string currentSceneName = SceneManager.GetActiveScene().name;

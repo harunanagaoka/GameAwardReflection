@@ -7,6 +7,9 @@ public class AttackData : ScriptableObject
     //[SerializeField, Tooltip("ノックバック方向")]
     //private Vector3 m_blownAwayDirection;
 
+    [SerializeField]
+    private Vector3 m_initPos = Vector3.zero;
+
     [SerializeField, Tooltip("攻撃のプレハブ")]
     private GameObject m_attackPrefab;
 
@@ -31,6 +34,8 @@ public class AttackData : ScriptableObject
     public GameObject AttackPrefab => m_attackPrefab;
 
     public GameObject AttackRange => m_attackRange;
+
+    public Vector3 InitPos => m_initPos;
 
     public float WarningDuration => m_warningDuration;
 

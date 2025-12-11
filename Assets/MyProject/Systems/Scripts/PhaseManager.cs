@@ -1,22 +1,48 @@
 using UnityEngine;
 
 //フェーズはボスの体力ゲージごとに変化するのか時間ごと変化するのかが未定
-public enum GamePhase
-{
-    Phase1,
-    Phase2,
-    Phase3,
-    PhaseLength
-}
+//フェーズは敵ごとに管理するべき。
 public class PhaseManager : MonoBehaviour
 {
+    public enum EnemyPhase
+    {
+        Phase1,
+        Phase2,
+        Phase3,
+        PhaseLength
+    }
+
     [SerializeField]
-    private GamePhase m_currentPhase = GamePhase.Phase1;
+    private EnemyPhase m_currentPhase = EnemyPhase.Phase1;
 
-    public GamePhase CurrentPhase => m_currentPhase;
+    public EnemyPhase CurrentPhase => m_currentPhase;
 
-    public void SetPhase(GamePhase newPhase)
+    private void Start()
+    {
+        m_currentPhase = EnemyPhase.Phase1;
+    }
+
+    public void SetPhase(EnemyPhase newPhase)
     {
         m_currentPhase = newPhase;
+    }
+
+    public bool NextPhase()
+    {
+        bool isFinalPhase = false;
+
+        if (m_currentPhase < EnemyPhase.PhaseLength - 1)
+        {
+            m_currentPhase++;
+
+        }
+
+        if (m_currentPhase == EnemyPhase.PhaseLength - 1)
+        {
+            isFinalPhase = true;
+        }
+       
+
+        return isFinalPhase;
     }
 }

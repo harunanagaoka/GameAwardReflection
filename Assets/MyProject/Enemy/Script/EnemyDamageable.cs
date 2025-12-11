@@ -20,6 +20,8 @@ public class EnemyDamageable : Damageable
 
     public float HitPoint => m_hitPoint;
 
+    public float MaxHitPoint => m_enemyData.HP;
+
     protected override void Start()
     {
         base.Start();

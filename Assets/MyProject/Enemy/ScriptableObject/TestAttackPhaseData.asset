@@ -13,6 +13,15 @@ MonoBehaviour:
   m_Name: TestAttackPhaseData
   m_EditorClassIdentifier: 
   m_attackDatas:
-  - {fileID: 11400000, guid: bd3a5a6ee1695c44f9ede1c9a67af7cd, type: 2}
-  - {fileID: 11400000, guid: bd3a5a6ee1695c44f9ede1c9a67af7cd, type: 2}
-  - {fileID: 11400000, guid: bd3a5a6ee1695c44f9ede1c9a67af7cd, type: 2}
+  - {fileID: 11400000, guid: 5de0be07df0dd404e803669b358aae17, type: 2}
+  - {fileID: 11400000, guid: 5de0be07df0dd404e803669b358aae17, type: 2}
+  - {fileID: 11400000, guid: 5de0be07df0dd404e803669b358aae17, type: 2}
+  m_phaseChangeType: 0
+  m_phaseChangeRates:
+  - 1
+  - 0.5
+  - 0.2
+  m_phaseChangeAmounts:
+  - 1000
+  - 500
+  - 20

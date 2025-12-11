@@ -8,20 +8,22 @@ public class AttackPhaseFactory : MonoBehaviour
     [SerializeField]
     private AttackPhaseData[] m_attackPhaseDatas;
 
-    public AttackPhaseData GetAtkPhaseData(GamePhase phase)
+    public AttackPhaseData[] AttackPhaseDatas => m_attackPhaseDatas;
+
+    public AttackPhaseData GetAtkPhaseData(PhaseManager.EnemyPhase phase)
     {
         return m_attackPhaseDatas[(int)phase];
     }
 
-    private void OnValidate()
-    {
-        int length = (int)GamePhase.PhaseLength;
+    //private void OnValidate()
+    //{
+    //    int length = (int)PhaseManager.EnemyPhase.PhaseLength;
 
-        if (m_attackPhaseDatas == null || m_attackPhaseDatas.Length != length)
-        {
-            m_attackPhaseDatas = new AttackPhaseData[length];
-        }
-    }
+    //    if (m_attackPhaseDatas == null || m_attackPhaseDatas.Length != length)
+    //    {
+    //        m_attackPhaseDatas = new AttackPhaseData[length];
+    //    }
+    //}
 }
 
 //現時点でフェーズ制になる予定のため、配列数はフェーズ数で固定する。

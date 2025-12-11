@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class EnemyAttackFactory : ScriptableObject
 {
-    private AttackPhaseData m_attackDataList;
+    private AttackData m_attackData;
 
-    public void SetAttackPhaseData(AttackPhaseData attackDataList)
+    public void SetAttackData(AttackData attackData)
     {
         //âΩÇÉgÉäÉKÅ[Ç…Ç∑ÇÈÇ©ÇÕñ¢íË
-        m_attackDataList = attackDataList;
+        m_attackData = attackData;
     }
 
-    public GameObject CreateAttack(int AtkNum, Vector3 position, Quaternion rotation, Transform parent)
+    public GameObject CreateAttack(Vector3 position, Quaternion rotation, Transform parent)
     {
         GameObject attack = new GameObject("NewAttackObject");
         attack.transform.parent = parent;
@@ -18,7 +18,7 @@ public class EnemyAttackFactory : ScriptableObject
         attack.transform.rotation = rotation;
 
         var behaviour = attack.AddComponent<AttackBehaviour>();
-        behaviour.Initialize(m_attackDataList.AttackDatas[AtkNum]);
+        behaviour.Initialize(m_attackData);
 
         return attack;
     }

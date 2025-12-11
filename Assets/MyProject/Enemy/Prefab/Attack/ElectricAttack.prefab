@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 2966862394461334719}
   - component: {fileID: 6753646566959262410}
   - component: {fileID: 7627695778529041889}
+  - component: {fileID: -6166827373825794255}
   m_Layer: 0
-  m_Name: Attack
+  m_Name: ElectricAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,7 +49,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -67,3 +68,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: {r: 1, g: 0.8085324, b: 0, a: 0.3}
+--- !u!114 &-6166827373825794255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5300589677856941614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6066285afc9ce674496c69800f95dcd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
