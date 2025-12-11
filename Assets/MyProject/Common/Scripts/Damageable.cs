@@ -2,43 +2,40 @@ using UnityEngine;
 
 public abstract class Damageable : MonoBehaviour
 {
-    [SerializeField] protected int m_hitPoint = 0;
     [SerializeField] protected float m_maxHitInterval = 0;
 
     private float m_hitInterval = 0;
     private bool m_isDamageInterval = false;
 
-    protected abstract void OnDamageEvent();
-    protected abstract void OnDeathEvent();
+    protected abstract void OnDamagePenaltyEvent(float damage);
 
-    public int HitPoint => m_hitPoint;
+    protected abstract void OnDamageEvent();
 
     protected virtual bool CanTakeDamageCore =>
-    !m_isDamageInterval &&
-    m_hitPoint > 0;
+    !m_isDamageInterval;
 
     protected virtual void Start()
     {
         //共通の初期化あれば書いてね
     }
 
-    private void Update()
+    protected void Update()
     {
         ProcessInterval();
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         if (!CanTakeDamageCore) return;
 
-        m_hitPoint -= damage;
+        OnDamagePenaltyEvent(damage);
         OnDamageEvent();
         SetInterval();
 
-        if (m_hitPoint <= 0)
-        {
-            OnDeathEvent();
-        }
+        //if (m_hitPoint <= 0)
+        //{
+        //    OnDeathEvent();//HPの管理を継承先に任せたためコメントアウト
+        //}
     }
 
     private void SetInterval()
@@ -49,7 +46,7 @@ public abstract class Damageable : MonoBehaviour
 
     private void ProcessInterval()
     {
-        if (m_hitInterval < 0)
+        if (m_hitInterval <= 0)
         {
             return;
         }

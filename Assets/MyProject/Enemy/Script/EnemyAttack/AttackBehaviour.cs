@@ -25,7 +25,7 @@ public class AttackBehaviour : MonoBehaviour
 
         if (attack.TryGetComponent<AttackHitBox>(out AttackHitBox hitBox))
         {
-            hitBox.Initialize(transform.position, m_attackData.BlownAwayPower, m_attackData.BlownAwayTime, m_attackData.Damage);
+            hitBox.Initialize(transform.position, m_attackData.BlownAwayPower, m_attackData.BlownAwayTime, m_attackData.TimePenalty);
         }
 
         yield return new WaitForSeconds(m_attackData.LifeTime);

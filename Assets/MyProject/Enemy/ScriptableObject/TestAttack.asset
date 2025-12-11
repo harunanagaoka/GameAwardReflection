@@ -17,5 +17,5 @@ MonoBehaviour:
   m_warningDuration: 1
   m_blownAwayPower: 500
   m_blownAwayTime: 2
-  m_damage: 10
+  m_timePenalty: 5
   m_lifeTime: 1

@@ -47,6 +47,11 @@ public class MainGameTimer : MonoBehaviour
     {
         m_isTimerRunning = true;
     }
+
+    public void DecreseTime(float time)
+    {
+        m_currentTime -= time;
+    }
 }
 
 

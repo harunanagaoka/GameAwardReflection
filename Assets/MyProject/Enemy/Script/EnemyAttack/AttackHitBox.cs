@@ -8,9 +8,9 @@ public class AttackHitBox : MonoBehaviour
 
     private float m_blownAwayTime = 1;
 
-    private int m_damage = 1;
+    private float m_damage = 1;
 
-    public void Initialize(Vector3 basePosition,float blownAwayPower, float blownAwayTime,int damage)
+    public void Initialize(Vector3 basePosition,float blownAwayPower, float blownAwayTime,float damage)
     {
         m_basePosition = basePosition;
         m_blownAwayPower = blownAwayPower;

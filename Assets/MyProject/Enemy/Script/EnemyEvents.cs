@@ -9,4 +9,5 @@ public class EnemyEvents : MonoBehaviour
     //ó‘Ô•Ï‰»
     public UnityEvent OnDeath;
     public UnityEvent OnDamage;
+    public UnityEvent<float> OnDamagePenalty;
 }

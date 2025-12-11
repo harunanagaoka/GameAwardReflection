@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerAttackCollider : MonoBehaviour
 {
     [SerializeField]
-    int m_damage = 0;
+    float m_damage = 0;
 
     private void OnTriggerEnter(Collider other)
     {

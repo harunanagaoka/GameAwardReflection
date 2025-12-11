@@ -7,15 +7,21 @@ public class PlayerDamageable : Damageable
 
     private bool m_isDefending = false;
 
+    private MainGameTimer m_mainGameTimer;
+
     protected override bool CanTakeDamageCore =>
     base.CanTakeDamageCore && !m_isDefending;
 
     protected override void Start()
     {
         base.Start();
+
+        m_mainGameTimer = FindAnyObjectByType<MainGameTimer>();
+
         m_playerEvents = GetComponent<PlayerEvents>();
         m_playerEvents.OnDefence.AddListener(() => m_isDefending = true);
         m_playerEvents.OnDefenceEnd.AddListener(() => m_isDefending = false);
+        m_playerEvents.OnDamagePenalty.AddListener(TimePenalty);
     }
 
     protected override void OnDamageEvent()
@@ -23,8 +29,18 @@ public class PlayerDamageable : Damageable
         m_playerEvents.OnDamage?.Invoke();
     }
 
-    protected override void OnDeathEvent()
+    protected override void OnDamagePenaltyEvent(float damage)
     {
-        m_playerEvents.OnDeath?.Invoke();
+        m_playerEvents.OnDamagePenalty?.Invoke(damage);
+    }
+
+    //protected override void OnDeathEvent()
+    //{
+    //    m_playerEvents.OnDeath?.Invoke();//HPの概念がなくなったためコメントアウト
+    //}
+
+    private void TimePenalty(float penalty)
+    {
+        m_mainGameTimer.DecreseTime(penalty);
     }
 }

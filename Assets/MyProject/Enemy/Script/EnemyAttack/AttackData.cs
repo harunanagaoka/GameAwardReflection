@@ -3,6 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewAttackData", menuName = "Scriptable Objects/AttackData")]
 public class AttackData : ScriptableObject
 {
+    //途中でノックバック方向の仕様が変更されたため、コメントアウトしています。
     //[SerializeField, Tooltip("ノックバック方向")]
     //private Vector3 m_blownAwayDirection;
 
@@ -22,7 +23,7 @@ public class AttackData : ScriptableObject
     private float m_blownAwayTime;
 
     [SerializeField, Tooltip("ダメージ")]
-    private int m_damage;
+    private float m_timePenalty;
 
     [SerializeField, Tooltip("攻撃の持続時間")]
     private float m_lifeTime = 1.0f;
@@ -37,9 +38,8 @@ public class AttackData : ScriptableObject
 
     public float BlownAwayTime => m_blownAwayTime;
 
-    public int Damage => m_damage;
+    public float TimePenalty => m_timePenalty;
 
     public float LifeTime => m_lifeTime;
 }
 
-//ベータ版の途中でノックバック方向の仕様を変更したため、コメントアウトしています。

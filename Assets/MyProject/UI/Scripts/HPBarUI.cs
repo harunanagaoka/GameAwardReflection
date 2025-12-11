@@ -6,7 +6,7 @@ public class HpBarUI : MonoBehaviour
     private float m_currentHp = 0;
 
     [SerializeField]
-    private Damageable m_damageable;
+    private EnemyDamageable m_damageable;
 
     [SerializeField]
     private UnityEngine.UI.Slider m_hpSlider;
