@@ -8,7 +8,7 @@ public class PlayerAnimationController : MonoBehaviour
 
     private readonly int m_standingHash = Animator.StringToHash(AnimationNames.Standing);
     private readonly int m_runningHash = Animator.StringToHash(AnimationNames.Running);
-    private readonly int m_attackHash = Animator.StringToHash(AnimationNames.Attack);
+   // private readonly int m_attackHash = Animator.StringToHash(AnimationNames.Attack);
     private readonly int m_damageHash = Animator.StringToHash(AnimationNames.Damage);
 
     void Start()
@@ -18,7 +18,7 @@ public class PlayerAnimationController : MonoBehaviour
 
         m_playerEvents.OnStartMove.AddListener(PlayRunning);
 
-        m_playerEvents.OnAttack.AddListener(PlayAttack);
+       // m_playerEvents.OnAttack.AddListener(PlayAttack);
         m_playerEvents.OnDamage.AddListener(PlayDamage);
         m_playerEvents.OnStop.AddListener(PlayStanding);
 
@@ -36,7 +36,7 @@ public class PlayerAnimationController : MonoBehaviour
 
     private void PlayAttack()
     {
-        m_animator.Play(m_attackHash);
+      //  m_animator.Play(m_attackHash);
     }
 
     private void PlayDamage()

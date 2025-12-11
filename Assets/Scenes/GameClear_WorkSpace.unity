@@ -611,6 +611,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &937662283 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8253810924140563321, guid: 200a881fa8ef3c043ac208cc88d66e4e, type: 3}
+  m_PrefabInstance: {fileID: 1280639248}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd08d9f6bddfc504cb845f20c7f6b361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1064459913
 GameObject:
   m_ObjectHideFlags: 0
@@ -1234,10 +1245,18 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3670588851966735948, guid: 431bc26b8953e0a40bf4ccdd3edd814d, type: 3}
+      propertyPath: m_damageable
+      value: 
+      objectReference: {fileID: 937662283}
     - target: {fileID: 4519418962402285372, guid: 431bc26b8953e0a40bf4ccdd3edd814d, type: 3}
       propertyPath: m_timer
       value: 
       objectReference: {fileID: 710697255}
+    - target: {fileID: 6448028553995729217, guid: 431bc26b8953e0a40bf4ccdd3edd814d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
