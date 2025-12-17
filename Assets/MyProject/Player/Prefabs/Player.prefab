@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 8817709694191446654}
   - component: {fileID: 3142242169851939517}
   - component: {fileID: 463365025143328539}
+  - component: {fileID: 20979318562063172}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -129,10 +130,16 @@ MonoBehaviour:
   OnBlownAway:
     m_PersistentCalls:
       m_Calls: []
+  OnBlownAwayCanceled:
+    m_PersistentCalls:
+      m_Calls: []
   OnBlownAwayEnd:
     m_PersistentCalls:
       m_Calls: []
   OnDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDamagePenalty:
     m_PersistentCalls:
       m_Calls: []
 --- !u!54 &7850971286428412678
@@ -175,8 +182,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_bounceMultiplier: 1
-  m_targetForceRatio: 0.01
-  m_damage: 30
+  m_targetForceRatio: 0.5
+  m_damage: 0
   m_reflectionLayerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -207,8 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7b0d78e6113c9247a0610ba5e32d644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_hitPoint: 100
-  m_maxHitInterval: 0.5
+  m_maxHitInterval: 1
 --- !u!114 &3142242169851939517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,6 +241,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbe6b8bbbd90c144f8369a818c3a6862, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &20979318562063172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2704472200850051280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2be06a79abe7e946ba611d7a98d48de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_atkPrefab: {fileID: 283969890668651523, guid: 89fdaaa489ca19a4dbcd0d9c26d2c3a3, type: 3}
 --- !u!1 &8391965537249737200
 GameObject:
   m_ObjectHideFlags: 0

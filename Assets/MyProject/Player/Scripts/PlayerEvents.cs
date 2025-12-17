@@ -21,6 +21,7 @@ public class PlayerEvents : MonoBehaviour
     //èÛë‘ïœâª
     public UnityEvent OnDeath;
     public UnityEvent OnBlownAway;
+    public UnityEvent OnBlownAwayCanceled;
     public UnityEvent OnBlownAwayEnd;
     public UnityEvent OnDamage;
     public UnityEvent<float> OnDamagePenalty;

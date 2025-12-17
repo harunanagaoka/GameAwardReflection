@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2bf7b53af7bd5e4996fcdb07f08f742, type: 3}
+  m_Name: RocketPunch_Mideum
+  m_EditorClassIdentifier: 
+  m_initPos: {x: -5, y: 0, z: 0}
+  m_attackPrefab: {fileID: 3793399201196985688, guid: 7e6b487ee19136e43852c1e82526203e, type: 3}
+  m_attackRange: {fileID: 3793399201196985688, guid: 0a6c9d24dca7f534daa01315124aab4a, type: 3}
+  m_warningDuration: 5
+  m_blownAwayPower: 1000
+  m_blownAwayTime: 10
+  m_timePenalty: 10
+  m_lifeTime: 10

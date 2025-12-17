@@ -10,18 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3c8128f410c93048b10149ec5d26f90, type: 3}
-  m_Name: TestAttackPhaseData
+  m_Name: aaaaaaaaa
   m_EditorClassIdentifier: 
   m_attackDatas:
-  - {fileID: 11400000, guid: 5de0be07df0dd404e803669b358aae17, type: 2}
-  - {fileID: 11400000, guid: 3fdd630310ab596419c8f8e90cb06ca8, type: 2}
-  - {fileID: 11400000, guid: ab10dd3f67b07d048a96f17b32ee699a, type: 2}
+  - {fileID: 11400000, guid: 77953dcde926be5449f97b414a0daf51, type: 2}
   m_phaseChangeType: 0
-  m_phaseChangeRates:
-  - 1
-  - 0.5
-  - 0.2
-  m_phaseChangeAmounts:
-  - 1000
-  - 500
-  - 20
+  m_phaseChangeRates: []
+  m_phaseChangeAmounts: []

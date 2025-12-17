@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2bf7b53af7bd5e4996fcdb07f08f742, type: 3}
-  m_Name: RocketPunch
+  m_Name: atackdata
   m_EditorClassIdentifier: 
   m_initPos: {x: 0, y: 0, z: 0}
   m_attackPrefab: {fileID: 3793399201196985688, guid: 7e6b487ee19136e43852c1e82526203e, type: 3}
-  m_attackRange: {fileID: 3793399201196985688, guid: 0a6c9d24dca7f534daa01315124aab4a, type: 3}
-  m_warningDuration: 5
-  m_blownAwayPower: 10
-  m_blownAwayTime: 2
-  m_timePenalty: 5
-  m_lifeTime: 10
+  m_attackRange: {fileID: 0}
+  m_warningDuration: 1
+  m_blownAwayPower: 0
+  m_blownAwayTime: 0
+  m_timePenalty: 0
+  m_lifeTime: 1

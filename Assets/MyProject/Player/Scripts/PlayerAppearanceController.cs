@@ -28,6 +28,7 @@ public class PlayerAppearanceController : MonoBehaviour
         m_playerEvents.OnDefence.AddListener(OnDefenceStart);
         m_playerEvents.OnDefenceEnd.AddListener(OnDefenceEnd);
         m_playerEvents.OnBlownAway.AddListener(OnBlownAwayStart);
+        m_playerEvents.OnBlownAwayCanceled.AddListener(OnBlownAwayStop);
         m_playerEvents.OnBlownAwayEnd.AddListener(OnBlownAwayEnd);
 
         UpdateAppearance();
@@ -57,6 +58,12 @@ public class PlayerAppearanceController : MonoBehaviour
     private void OnBlownAwayStart()
     {
         m_isBlownAway = true;
+        UpdateAppearance();
+    }
+
+    private void OnBlownAwayStop()
+    {
+        m_isBlownAway = false;
         UpdateAppearance();
     }
 

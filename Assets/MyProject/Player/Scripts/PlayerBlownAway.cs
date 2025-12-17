@@ -75,10 +75,15 @@ public class PlayerBlownAway : MonoBehaviour
     {
         if (!m_isBlownAway) return;
 
-        if (collision.gameObject.TryGetComponent<EnemyDamageable>(out EnemyDamageable enemy))
-        {
-            enemy.TakeDamage(m_damage);
-        }
+        //if (collision.gameObject.TryGetComponent<EnemyDamageable>(out EnemyDamageable enemy))
+        //{
+        //    enemy.TakeDamage(m_damage);
+        //}
+    }
+
+    public void StopBlownAway()
+    {
+        m_isBlownAway = false;
     }
 
 

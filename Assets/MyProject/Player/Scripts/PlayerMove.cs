@@ -36,6 +36,7 @@ public class PlayerMove : MonoBehaviour
         m_playerEvents.OnTurnLeft.AddListener(() => m_inputRotation -= rotationSpeed);
         m_playerEvents.OnTurnRight.AddListener(() => m_inputRotation += rotationSpeed);
         m_playerEvents.OnBlownAway.AddListener(() => isCanMove = false);
+        m_playerEvents.OnBlownAwayCanceled.AddListener(() => isCanMove = true);
         m_playerEvents.OnBlownAwayEnd.AddListener(() => isCanMove = true);
         m_playerEvents.OnDefence.AddListener(SetDefendingVelocity);
         m_playerEvents.OnDefenceEnd.AddListener(SetBaseVelocity);

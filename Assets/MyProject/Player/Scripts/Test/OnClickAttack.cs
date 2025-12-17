@@ -1,0 +1,52 @@
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class OnClickAttack : MonoBehaviour
+{
+    [SerializeField]
+    private GameObject m_atkPrefab;
+
+    private PlayerEvents m_event;
+
+    private PlayerBlownAway m_blownAway;
+
+    private Gamepad m_gamepad;
+
+    private bool isInited = false;
+
+    void Start()
+    {
+        m_event = GetComponent<PlayerEvents>();
+        m_blownAway = GetComponent<PlayerBlownAway>();
+        m_event.OnBlownAwayCanceled.AddListener(BlowCancelAttack);
+        
+    }
+    private void Update()
+    {
+        if (!isInited)
+        {
+            m_gamepad = GamepadManager.Instance.GetGamepad(0);
+            isInited = true;
+        }
+
+        if (Input.GetMouseButtonDown(0) || m_gamepad.bButton.wasPressedThisFrame)
+        {
+
+            if (m_blownAway.IsBlownAway)
+            {
+                m_event.OnBlownAwayCanceled?.Invoke();
+               // m_event.OnAttack?.Invoke();
+            }
+
+        }
+
+        //isBlownAwayかつクリックしたら攻撃isBlownAway解除
+        //攻撃演出
+    }
+
+    private void BlowCancelAttack()
+    {
+        m_blownAway.StopBlownAway();
+        Instantiate(m_atkPrefab, transform.position, Quaternion.identity);
+    }
+}
