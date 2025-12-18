@@ -190,6 +190,7 @@ MonoBehaviour:
   m_maxStepCount: 20
   m_skinWidth: 0.05
   m_playerDefenceCollider: {fileID: 4002756542546610964}
+  m_inertiaTime: 0.3
 --- !u!114 &2578013956275005853
 MonoBehaviour:
   m_ObjectHideFlags: 0
