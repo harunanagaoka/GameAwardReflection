@@ -1,24 +1,30 @@
-using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ProcessTimeOver : MonoBehaviour
 {
-    bool isGameOver = false;
+    private MainGameEvents m_mainGameEvents;
+    private MainGameTimer m_mainGameTimer;
+    private bool m_isGameOver = false;
+
     void Start()
     {
-
+        m_mainGameTimer = GetComponent<MainGameTimer>();
+        m_mainGameEvents = GetComponent<MainGameEvents>();
     }
+
     void Update()
-    {
-        MainGameTimer mgt = GetComponent<MainGameTimer>();
-        if (!isGameOver && mgt.CurrentTime == 0)//CurrentTime‚ª0ˆÈ‰º‚É‚È‚Á‚½‚ç
+    { 
+        if (!m_isGameOver && m_mainGameTimer.CurrentTime <= 0)//CurrentTime‚ª0ˆÈ‰º‚É‚È‚Á‚½‚ç
         {
+            m_mainGameEvents.OnGameOver?.Invoke();
+
             Debug.Log("GameOver");
-            isGameOver = true;
+
+            m_isGameOver = true;
         }
 
-        if (isGameOver&& Input.GetButtonDown("Fire4") || isGameOver && Input.GetKeyDown(KeyCode.R))
+        if (m_isGameOver && Input.GetButtonDown("Fire4") || m_isGameOver && Input.GetKeyDown(KeyCode.R))
         {
             // Œ»Ý‚ÌƒV[ƒ“–¼‚ðŽæ“¾
             string currentSceneName = SceneManager.GetActiveScene().name;
