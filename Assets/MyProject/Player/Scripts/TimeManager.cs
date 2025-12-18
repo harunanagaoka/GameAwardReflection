@@ -17,12 +17,23 @@ public class TimeManager : MonoBehaviour
     //　時間を遅くしているかどうか
     private bool isSlowDown = false;
 
+    //　敵オブジェクト
+    [SerializeField]
+    private GameObject m_enemy;
+
+    //　敵のイベントスクリプト
+    private EnemyEvents m_enemyEvent;
+
+    private void Start()
+    {
+        m_enemyEvent = m_enemy.GetComponent<EnemyEvents>();
+
+        //イベントへの処理の登録方法
+        m_enemyEvent.OnDamage.AddListener(SlowDown);
+
+    }
     void Update()
     {
-        if(Keyboard.current.spaceKey.wasPressedThisFrame)
-        {
-            SlowDown();
-        }
         //　スローダウンフラグがtrueの時は時間計測
         if (isSlowDown)
         {
