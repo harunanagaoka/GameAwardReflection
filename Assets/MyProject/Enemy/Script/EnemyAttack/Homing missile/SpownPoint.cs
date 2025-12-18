@@ -3,11 +3,13 @@ using UnityEngine;
 public class SpownPoint : MonoBehaviour
 {
     [SerializeField]
-    private string objectName; // Inspector‚Å“ü—Í‚·‚éGameObject–¼
+    private GameObject Boss;
+    [SerializeField]
+    private GameObject Missile;
 
     void Start()
     {
-
+        Missile.transform.position = Boss.transform.position;
     }
 
 }

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3c8128f410c93048b10149ec5d26f90, type: 3}
   m_Name: MTestPhaseData
   m_EditorClassIdentifier: 
-  m_attackDatas: []
+  m_attackDatas:
+  - {fileID: 11400000, guid: 5ed96814c38c0354b9bafe75296fa486, type: 2}
   m_phaseChangeType: 0
   m_phaseChangeRates: []
   m_phaseChangeAmounts: []

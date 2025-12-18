@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6641483273258478383}
   - component: {fileID: 5135154233189439731}
   - component: {fileID: 7420367205513765643}
-  - component: {fileID: 3697089112805070597}
+  - component: {fileID: 4214677237910461836}
   m_Layer: 0
   m_Name: HormingMissile
   m_TagString: Untagged
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6066285afc9ce674496c69800f95dcd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3697089112805070597
+--- !u!114 &4214677237910461836
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -134,5 +134,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2d786f2638ec484897f34bdf847692c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Boss: {fileID: 0}
+  Telegraph: {fileID: 0}
   speed: 10
+  initialized: 0

@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Homing missile
   m_EditorClassIdentifier: 
   m_initPos: {x: 0, y: 0, z: 0}
-  m_attackPrefab: {fileID: 3793399201196985688, guid: 7e6b487ee19136e43852c1e82526203e, type: 3}
-  m_attackRange: {fileID: 3793399201196985688, guid: 0a6c9d24dca7f534daa01315124aab4a, type: 3}
-  m_warningDuration: 5
-  m_blownAwayPower: 10
-  m_blownAwayTime: 2
-  m_timePenalty: 5
-  m_lifeTime: 10
+  m_attackPrefab: {fileID: 7124306627692571507, guid: ac0298a93884115499391e50f9563e42, type: 3}
+  m_attackRange: {fileID: 6369805382271363907, guid: f012f8c294fb3d747820ca5912eaeca1, type: 3}
+  m_warningDuration: 3
+  m_blownAwayPower: 3
+  m_blownAwayTime: 0.5
+  m_timePenalty: 2
+  m_lifeTime: 5
