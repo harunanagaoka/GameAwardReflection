@@ -60,6 +60,6 @@ public class OnClickAttack : MonoBehaviour
     private void BlowCancelAttack()
     {
         m_blownAway.StopBlownAway();
-        Instantiate(m_atkPrefab, transform.position, Quaternion.identity);
+        Instantiate(m_atkPrefab, transform.position, Quaternion.identity, this.transform);
     }
 }
