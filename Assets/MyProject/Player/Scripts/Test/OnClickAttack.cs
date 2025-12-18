@@ -29,7 +29,7 @@ public class OnClickAttack : MonoBehaviour
             isInited = true;
         }
 
-        if (Input.GetMouseButtonDown(0) || m_gamepad.bButton.wasPressedThisFrame)
+        if (Input.GetMouseButtonDown(0))
         {
 
             if (m_blownAway.IsBlownAway)
@@ -38,6 +38,19 @@ public class OnClickAttack : MonoBehaviour
                // m_event.OnAttack?.Invoke();
             }
 
+        }
+
+        if(m_gamepad != null)
+        {
+            if (m_gamepad.bButton.wasPressedThisFrame)
+            {
+
+                if (m_blownAway.IsBlownAway)
+                {
+                    m_event.OnBlownAwayCanceled?.Invoke();
+                    // m_event.OnAttack?.Invoke();
+                }
+            }
         }
 
         //isBlownAwayÇ©Ç¬ÉNÉäÉbÉNÇµÇΩÇÁçUåÇisBlownAwayâèú

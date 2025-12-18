@@ -1,11 +1,10 @@
-using System.Net;
 using UnityEngine;
 
+//責務がガバい、改修予定。
 public class WaveManager : MonoBehaviour
 {
-    EnemyGenerator m_generator;
-
-    private int m_currentEnemyCount = 0;
+    [SerializeField]
+    private MainGameEvents m_mainGameEvents;
 
     private bool m_isCleared = false;
 
@@ -13,20 +12,31 @@ public class WaveManager : MonoBehaviour
 
     void Start()
     {
-        m_generator = GetComponent<EnemyGenerator>();
-        //m_generator.GenerateEnemy(Vector3.left);
-    }
+        if (m_mainGameEvents == null)
+        {
+            m_mainGameEvents = FindAnyObjectByType<MainGameEvents>();
 
+            if (m_mainGameEvents == null)
+            {
+                Debug.Log("MainGameEventsをセットしてください");
+            }
+        }
+    }
 
     void Update()
     {
-        m_isCleared = CheckWaveClear();
+        if (!m_isCleared)
+        {
+            m_isCleared = CheckWaveClear();
+        }
+       
     }
 
     private bool CheckWaveClear()
     {
         if(transform.childCount <= 0)
         {
+            m_mainGameEvents.OnGameClear?.Invoke();
             return true;
         }
 

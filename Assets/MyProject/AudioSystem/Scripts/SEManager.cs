@@ -2,14 +2,13 @@ using UnityEngine;
 
 public class SEManager : MonoBehaviour
 {
-    [SerializeField]
     private AudioSource[] m_audioSources;
 
     [SerializeField]
     private AudioClip[] m_audioClips;
 
     [SerializeField] 
-    private int m_audioSourceCount = 0;
+    private int m_audioSourceCount = 10;
 
     private int m_currentIndex = 0;
 
@@ -51,22 +50,7 @@ public class SEManager : MonoBehaviour
         }
     }
 
-    public void OnPlay(SoundEffectName seNum)
-    {
-        var source = GetFreeAudioSource();
-
-        source.clip = m_audioClips[(int)seNum];
-        source.loop = true;
-        source.Play();
-
-        m_currentIndex++;
-
-        if (m_currentIndex >= m_audioSources.Length)
-        {
-            m_currentIndex = 0;
-        }
-    }
-
+    //使っていないAudioSourceを選んでいます。
     private AudioSource GetFreeAudioSource()
     {
         int startIndex = m_currentIndex;
@@ -82,9 +66,27 @@ public class SEManager : MonoBehaviour
         m_currentIndex = (m_currentIndex + 1) % m_audioSources.Length;
         return source;
     }
+
+    private void OnValidate()
+    {
+    }
 }
 
-//public void OnStop(SoundEffectName seNum)
+//※今回のSEManagerは単発の再生に限定し、繰り返し再生する必要がある場合、MusicManagerで管理することにします。
+//　SEManagerの仕組みが、「今使っていないAudioSourceを探しそれを使う」ため、単発とエンドレス再生を混在させた場合
+//　エンドレスで再生している音源がAudioSourceの枠を圧迫するためです。
+//public void OnPlay(SoundEffectName seNum)
 //{
-//    m_audioSources[(int)(seNum)].Stop();
+//    var source = GetFreeAudioSource();
+
+//    source.clip = m_audioClips[(int)seNum];
+//    source.loop = true;
+//    source.Play();
+
+//    m_currentIndex++;
+
+//    if (m_currentIndex >= m_audioSources.Length)
+//    {
+//        m_currentIndex = 0;
+//    }
 //}
