@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2bf7b53af7bd5e4996fcdb07f08f742, type: 3}
+  m_Name: Missile
+  m_EditorClassIdentifier: 
+  m_initPos: {x: 0, y: 0, z: 0}
+  m_attackPrefab: {fileID: 8876830103931732692, guid: 86732551ef1340644804790723c37008, type: 3}
+  m_attackRange: {fileID: 6819951490074240406, guid: 2967b9f1253154d49b85dc7dc94ad62d, type: 3}
+  m_warningDuration: 1
+  m_blownAwayPower: 0
+  m_blownAwayTime: 0
+  m_timePenalty: 0
+  m_lifeTime: 1

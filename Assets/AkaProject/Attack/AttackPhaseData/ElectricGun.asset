@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8794af3d490b3cd4fb566ffedb61b42b, type: 3}
-  m_Name: testEnemy
+  m_Script: {fileID: 11500000, guid: c3c8128f410c93048b10149ec5d26f90, type: 3}
+  m_Name: ElectricGun
   m_EditorClassIdentifier: 
-  m_hitPoint: 500
-  m_onDamageColor: {r: 1, g: 0, b: 0, a: 1}
-  m_damageEffectTime: 0.5
+  m_attackDatas:
+  - {fileID: 11400000, guid: 002d59af956e65a43b4481fd532452a5, type: 2}
+  m_phaseChangeType: 0
+  m_phaseChangeRates: []
+  m_phaseChangeAmounts: []
