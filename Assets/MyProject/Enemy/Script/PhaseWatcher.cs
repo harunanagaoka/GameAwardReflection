@@ -88,8 +88,8 @@ public class PhaseWatcher : MonoBehaviour
 
     private void ChangePhase()
     {
-        m_phaseManager.NextPhase();
-        m_currentPhaseData = m_attackPhaseDatas[(int)m_phaseManager.CurrentPhase];
+        //m_phaseManager.NextPhase();
+        //m_currentPhaseData = m_attackPhaseDatas[(int)m_phaseManager.CurrentPhase];
     }
 
 
