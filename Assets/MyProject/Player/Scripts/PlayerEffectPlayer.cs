@@ -17,7 +17,7 @@ public class PlayerEffectPlayer : MonoBehaviour
     void Start()
     {
         //ƒCƒxƒ“ƒg‚Ì“o˜^—á
-        m_playerEvents.OnAttack.AddListener(PlayAttackEffect);
+        m_playerEvents.OnBlownAwayCanceled.AddListener(PlayAttackEffect);
         m_playerEvents.OnDamage.AddListener(PlayDamageEffect);
 
     }
