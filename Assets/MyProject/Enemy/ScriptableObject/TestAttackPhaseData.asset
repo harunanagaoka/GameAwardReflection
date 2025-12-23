@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_attackDatas:
   - {fileID: 11400000, guid: 5de0be07df0dd404e803669b358aae17, type: 2}
-  - {fileID: 11400000, guid: 3fdd630310ab596419c8f8e90cb06ca8, type: 2}
-  - {fileID: 11400000, guid: ab10dd3f67b07d048a96f17b32ee699a, type: 2}
+  - {fileID: 11400000, guid: 5de0be07df0dd404e803669b358aae17, type: 2}
+  - {fileID: 11400000, guid: 5de0be07df0dd404e803669b358aae17, type: 2}
   m_phaseChangeType: 0
   m_phaseChangeRates:
   - 1

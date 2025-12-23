@@ -1,35 +1,44 @@
-//AI産スクリプト
 using UnityEngine;
 
 public class PlayerAppearanceController : MonoBehaviour
 {
-    [SerializeField,Tooltip("通常の人型モデル")]
+    [SerializeField, Tooltip("通常の人型モデル")]
     private GameObject m_humanModel;
+
+    [SerializeField, Tooltip("攻撃中に使うモデル")]
+    private GameObject m_attackModel;
 
     [SerializeField, Tooltip("防御時 / 吹き飛ばし時に使う球状モデル")]
     private GameObject m_ballModel;
 
+    [SerializeField, Tooltip("攻撃モデルを表示する時間（秒）")]
+    private float m_attackDisplayTime = 0.15f;
+
     private PlayerEvents m_playerEvents;
 
-    // 現在の入力/状態を保持
     private bool m_isDefending = false;
     private bool m_isBlownAway = false;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // ★ 攻撃残り時間
+    private float m_attackTimer = 0f;
+
     void Start()
     {
         m_playerEvents = GetComponent<PlayerEvents>();
         if (m_playerEvents == null)
         {
-            Debug.LogWarning($"{nameof(PlayerAppearanceController)}: PlayerEvents が見つかりません。コンポーネントを同じ GameObject にアタッチしてください。");
+            Debug.LogWarning($"{nameof(PlayerAppearanceController)}: PlayerEvents が見つかりません。");
             return;
         }
 
-        m_playerEvents.OnDefence.AddListener(OnDefenceStart);
-        m_playerEvents.OnDefenceEnd.AddListener(OnDefenceEnd);
-        m_playerEvents.OnBlownAway.AddListener(OnBlownAwayStart);
-        m_playerEvents.OnBlownAwayCanceled.AddListener(OnBlownAwayStop);
-        m_playerEvents.OnBlownAwayEnd.AddListener(OnBlownAwayEnd);
+        m_playerEvents.OnDefence.AddListener(() => m_isDefending = true);
+        m_playerEvents.OnDefenceEnd.AddListener(() => m_isDefending = false);
+
+        m_playerEvents.OnBlownAway.AddListener(() => m_isBlownAway = true);
+        m_playerEvents.OnBlownAwayCanceled.AddListener(() => m_isBlownAway = false);
+        m_playerEvents.OnBlownAwayEnd.AddListener(() => m_isBlownAway = false);
+
+        m_playerEvents.OnBlownAwayCanceled.AddListener(OnAttack);
 
         UpdateAppearance();
     }
@@ -37,61 +46,47 @@ public class PlayerAppearanceController : MonoBehaviour
     void OnDestroy()
     {
         if (m_playerEvents == null) return;
-        m_playerEvents.OnDefence.RemoveListener(OnDefenceStart);
-        m_playerEvents.OnDefenceEnd.RemoveListener(OnDefenceEnd);
-        m_playerEvents.OnBlownAway.RemoveListener(OnBlownAwayStart);
-        m_playerEvents.OnBlownAwayEnd.RemoveListener(OnBlownAwayEnd);
+
+        m_playerEvents.OnAttack.RemoveListener(OnAttack);
     }
 
-    private void OnDefenceStart()
+    void Update()
     {
-        m_isDefending = true;
+        if (m_attackTimer > 0f)
+        {
+            m_attackTimer -= Time.deltaTime;
+            if (m_attackTimer < 0f)
+                m_attackTimer = 0f;
+        }
+
         UpdateAppearance();
     }
 
-    private void OnDefenceEnd()
+    private void OnAttack()
     {
-        m_isDefending = false;
-        UpdateAppearance();
+        // 攻撃が来たら「残り時間を上書き」
+        m_attackTimer = m_attackDisplayTime;
     }
 
-    private void OnBlownAwayStart()
-    {
-        m_isBlownAway = true;
-        UpdateAppearance();
-    }
-
-    private void OnBlownAwayStop()
-    {
-        m_isBlownAway = false;
-        UpdateAppearance();
-    }
-
-    private void OnBlownAwayEnd()
-    {
-        m_isBlownAway = false;
-        UpdateAppearance();
-    }
-
-    // 球にする条件:
-    // - BlownAway 中 もしくは Defending 中
     private void UpdateAppearance()
     {
+        bool isAttacking = m_attackTimer > 0f;
+
+        // 優先順位:
+        // 球体 > 攻撃 > 通常
         bool showBall = m_isBlownAway || m_isDefending;
-        SetActiveSafe(m_humanModel, !showBall);
+        bool showAttack = !showBall && isAttacking;
+        bool showHuman = !showBall && !showAttack;
+
         SetActiveSafe(m_ballModel, showBall);
+        SetActiveSafe(m_attackModel, showAttack);
+        SetActiveSafe(m_humanModel, showHuman);
     }
 
-    private void SetActiveSafe(GameObject safe, bool active)
+    private void SetActiveSafe(GameObject obj, bool active)
     {
-        if (safe == null) {
-            return; 
-        }
-
-        if (safe.activeSelf == active) {
-            return; 
-        }
-
-        safe.SetActive(active);
+        if (obj == null) return;
+        if (obj.activeSelf == active) return;
+        obj.SetActive(active);
     }
 }

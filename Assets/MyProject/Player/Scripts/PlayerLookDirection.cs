@@ -6,7 +6,7 @@ public class PlayerOrientationController : MonoBehaviour
 
     void Awake()
     {
-        m_playerEvents = GetComponentInParent<PlayerEvents>();
+        m_playerEvents = GetComponent<PlayerEvents>();
 
         if(m_playerEvents == null)
         {
