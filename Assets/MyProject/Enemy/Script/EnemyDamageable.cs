@@ -30,8 +30,8 @@ public class EnemyDamageable : Damageable
         m_enemyEvents.OnDamage.AddListener(ShowDamageEffect);
         m_enemyEvents.OnDamagePenalty.AddListener(DecreaseHP);
 
-        m_material = GetComponent<Renderer>().material;
-        m_defaultColor = m_material.color;
+       // m_material = GetComponent<Renderer>().material;
+       // m_defaultColor = m_material.color;
         m_hitPoint = m_enemyData.HP;
     }
 
@@ -73,11 +73,11 @@ public class EnemyDamageable : Damageable
 
     private IEnumerator DamageEffect()
     {
-        m_material.color = m_enemyData.OnDamageColor;
+        //m_material.color = m_enemyData.OnDamageColor;
 
         yield return new WaitForSeconds(m_enemyData.DamageEffectTime);
 
-        m_material.color = m_defaultColor;
+        //m_material.color = m_defaultColor;
 
         yield return null;
     }

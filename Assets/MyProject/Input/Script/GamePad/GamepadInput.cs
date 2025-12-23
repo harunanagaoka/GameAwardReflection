@@ -108,7 +108,7 @@ public class GamepadInput : MonoBehaviour
         }
 
         //çUåÇ
-        if (gamepad.bButton.wasPressedThisFrame)
+        if (gamepad.bButton.wasReleasedThisFrame)
         {
             playerEvent.OnAttack?.Invoke();
         }

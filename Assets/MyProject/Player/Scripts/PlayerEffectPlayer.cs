@@ -25,7 +25,7 @@ public class PlayerEffectPlayer : MonoBehaviour
     //以下Enemyのエフェクト再生用の関数例
     private void PlayAttackEffect()
     {
-        Instantiate(m_attackEffect,transform.position,Quaternion.identity,transform);
+        Instantiate(m_attackEffect,transform.position, m_attackEffect.transform.rotation, transform);
     }
 
     private void PlayDamageEffect()
