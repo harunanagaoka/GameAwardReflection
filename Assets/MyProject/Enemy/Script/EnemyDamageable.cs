@@ -22,6 +22,12 @@ public class EnemyDamageable : Damageable
 
     public float MaxHitPoint => m_enemyData.HP;
 
+    protected override void Awake()
+    {
+        base.Awake();
+        m_hitPoint = m_enemyData.HP;
+    }
+
     protected override void Start()
     {
         base.Start();
@@ -32,12 +38,18 @@ public class EnemyDamageable : Damageable
 
        // m_material = GetComponent<Renderer>().material;
        // m_defaultColor = m_material.color;
-        m_hitPoint = m_enemyData.HP;
+        
     }
 
     private void Update()
     {
         base.Update();
+
+        if (Input.GetKeyDown(KeyCode.O)) {
+            //デバッグよう
+            Debug.Log("デバッグ用、50ダメージ");
+            base.TakeDamage(50);
+        }
 
         if (!m_isDead && m_hitPoint < 0)
         {

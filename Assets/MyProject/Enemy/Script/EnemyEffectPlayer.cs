@@ -28,6 +28,6 @@ public class EnemyEffectPlayer : MonoBehaviour
     }
     private void PlayDeathEffect()
     {
-         Instantiate(m_deathEffect, transform.position, Quaternion.identity, transform);
+         Instantiate(m_deathEffect, transform.position, Quaternion.identity);
     }
 }

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 //フェーズはボスの体力ゲージごとに変化するのか時間ごと変化するのかが未定
-//フェーズは敵ごとに管理するべき。
+//フェーズは敵ごとに管理するべきだが・・・。
 public class PhaseManager : MonoBehaviour
 {
     public enum EnemyPhase

@@ -19,6 +19,11 @@ public abstract class Damageable : MonoBehaviour
         //‹¤’Ê‚Ì‰Šú‰»‚ ‚ê‚Î‘‚¢‚Ä‚Ë
     }
 
+    protected virtual void Awake()
+    {
+
+    }
+
     protected void Update()
     {
         ProcessInterval();

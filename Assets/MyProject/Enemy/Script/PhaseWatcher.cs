@@ -4,6 +4,9 @@ using static PhaseManager;
 public class PhaseWatcher : MonoBehaviour
 {//AttackPhaseの変更基準を監視して、フェーズ変更の通知を行う
 
+    [SerializeField]
+    private EnemyData m_enemyData;
+
     private AttackPhaseData[] m_attackPhaseDatas;
 
     private AttackPhaseData m_currentPhaseData;
@@ -71,14 +74,16 @@ public class PhaseWatcher : MonoBehaviour
         {
             case PhaseChangeType.HPRateBased:
 
-                float[] copyRate = (float[])m_currentPhaseData.PhaseChangeRates.Clone();
-                m_changePhaseAmount = copyRate;
+                //float[] copyRate = (float[])m_currentPhaseData.PhaseChangeRates.Clone();
+                float[] rates = (float[])m_enemyData.PhaseChangeRates.Clone();
+                m_changePhaseAmount = rates;
 
                 break;
             case PhaseChangeType.HPAmountBased:
 
-                float[] copyAm = (float[])m_currentPhaseData.PhaseChangeAmounts.Clone();
-                m_changePhaseAmount = copyAm;
+               // float[] copyAm = (float[])m_currentPhaseData.PhaseChangeAmounts.Clone();
+                float[] amounts = (float[])m_enemyData.PhaseChangeAmounts.Clone();
+                m_changePhaseAmount = amounts;
 
                 break;
             default:
@@ -88,8 +93,8 @@ public class PhaseWatcher : MonoBehaviour
 
     private void ChangePhase()
     {
-        //m_phaseManager.NextPhase();
-        //m_currentPhaseData = m_attackPhaseDatas[(int)m_phaseManager.CurrentPhase];
+        m_phaseManager.NextPhase();
+        m_currentPhaseData = m_attackPhaseDatas[(int)m_phaseManager.CurrentPhase];//これいる？
     }
 
 
