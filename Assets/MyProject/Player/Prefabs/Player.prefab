@@ -230,7 +230,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_humanModel: {fileID: 8923132373542127776}
+  m_attackModel: {fileID: 0}
   m_ballModel: {fileID: 8391965537249737200}
+  m_attackDisplayTime: 0.15
 --- !u!114 &463365025143328539
 MonoBehaviour:
   m_ObjectHideFlags: 0

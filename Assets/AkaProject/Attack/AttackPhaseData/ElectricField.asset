@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: ElectricField
   m_EditorClassIdentifier: 
   m_attackDatas:
-  - {fileID: 11400000, guid: 065f886473586284bbef9136a716f5aa, type: 2}
-  - {fileID: 11400000, guid: bd478a03fc3687c4e8803ad7c06302f6, type: 2}
-  - {fileID: 11400000, guid: 99e752bc6c635654d9f10e227bb4b8b2, type: 2}
-  - {fileID: 11400000, guid: e7e45135605e85844982a143114b6c43, type: 2}
+  - {fileID: 11400000, guid: 46c2976774b273d49830395d69725a84, type: 2}
+  - {fileID: 11400000, guid: 286ab97f5e5914e4c99e9805590cd7cd, type: 2}
+  - {fileID: 11400000, guid: 8b6739f91c2f00b4989275e574974e39, type: 2}
   m_phaseChangeType: 0
   m_phaseChangeRates: []
   m_phaseChangeAmounts: []

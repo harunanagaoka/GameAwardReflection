@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2bf7b53af7bd5e4996fcdb07f08f742, type: 3}
   m_Name: ElectricField 4
   m_EditorClassIdentifier: 
-  m_initPos: {x: -8, y: 0, z: 8}
+  m_initPos: {x: -8, y: 0, z: 4}
   m_attackPrefab: {fileID: 5300589677856941614, guid: d2dcef12772f08b4193325b5f21e453d, type: 3}
   m_attackRange: {fileID: 3277831950082551637, guid: 44f8c41dcf56ec348b7f11cac492a78f, type: 3}
   m_warningDuration: 2
   m_blownAwayPower: 0
-  m_blownAwayTime: 0
+  m_blownAwayTime: 10
   m_timePenalty: 10
   m_lifeTime: 4

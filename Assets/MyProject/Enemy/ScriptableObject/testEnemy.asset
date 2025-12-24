@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8794af3d490b3cd4fb566ffedb61b42b, type: 3}
   m_Name: testEnemy
   m_EditorClassIdentifier: 
-  m_hitPoint: 500
+  m_hitPoint: 900
   m_onDamageColor: {r: 1, g: 0, b: 0, a: 1}
   m_damageEffectTime: 0.5

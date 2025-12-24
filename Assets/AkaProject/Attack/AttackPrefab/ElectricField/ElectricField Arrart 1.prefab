@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3145831873650763331}
   - component: {fileID: 6545422574819094693}
   m_Layer: 0
-  m_Name: ElectricField Arrart
+  m_Name: ElectricField Arrart 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,5 +87,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 22, y: 1, z: 3}
+  m_Size: {x: 8, y: 0.1, z: 12}
   m_Center: {x: 0, y: 0, z: 0}
