@@ -10,4 +10,5 @@ public class EnemyEvents : MonoBehaviour
     public UnityEvent OnDeath;
     public UnityEvent OnDamage;
     public UnityEvent<float> OnDamagePenalty;
+    public UnityEvent OnPhaseChange;
 }

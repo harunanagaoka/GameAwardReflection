@@ -47,6 +47,8 @@ public class EnemyAttackController : MonoBehaviour
 
         // UŒ‚ŠJn
         StartCoroutine(AttackLoop());
+
+        m_enemyEvents.OnPhaseChange.AddListener(GetCurrentPhaseData);
     }
 
     private void GetCurrentPhaseData()

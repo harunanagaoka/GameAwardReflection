@@ -19,10 +19,13 @@ public class PhaseWatcher : MonoBehaviour
 
     private float[] m_changePhaseAmount;//フェーズ数と絶対同じだという保証がほしいが、今はなし
 
+    private EnemyEvents m_enemyEvents;
+
     void Start()
     {
         m_enemyDamageable = TryGetComponent<EnemyDamageable>(out var damageable) ? damageable : null;
         m_phaseManager = GetComponent<PhaseManager>();
+        m_enemyEvents = GetComponent<EnemyEvents>();
     }
 
     void Update()
@@ -95,7 +98,6 @@ public class PhaseWatcher : MonoBehaviour
     {
         m_phaseManager.NextPhase();
         m_currentPhaseData = m_attackPhaseDatas[(int)m_phaseManager.CurrentPhase];//これいる？
+        m_enemyEvents.OnPhaseChange?.Invoke();
     }
-
-
 }
