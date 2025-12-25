@@ -18,7 +18,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ab1d32f31ad90de46904cec27adafb22, type: 2}
   m_phaseChangeType: 0
   m_phaseChangeRates:
-  - 0
-  - 0
-  - 0
+  - 1
   m_phaseChangeAmounts: []

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: SniperBeam
   m_EditorClassIdentifier: 
   m_initPos: {x: 0, y: 0, z: 0}
-  m_attackPrefab: {fileID: 1410574297178449361, guid: 8fe7dca1bd1806840bbe004d58f9e375, type: 3}
-  m_attackRange: {fileID: 6397925798152969217, guid: 374b09a848cd41742bf7c4a4972cf94a, type: 3}
+  m_attackPrefab: {fileID: 4471602909716153382, guid: b74039a0f591d6446a97d7245f0ee50f, type: 3}
+  m_attackRange: {fileID: 6271286065305739971, guid: 91d99848e592f704d930659d68bc5e33, type: 3}
   m_warningDuration: 3
   m_blownAwayPower: 10
   m_blownAwayTime: 10
