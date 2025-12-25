@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2bf7b53af7bd5e4996fcdb07f08f742, type: 3}
+  m_Name: SniperBeam
+  m_EditorClassIdentifier: 
+  m_initPos: {x: 0, y: 0, z: 0}
+  m_attackPrefab: {fileID: 1410574297178449361, guid: 8fe7dca1bd1806840bbe004d58f9e375, type: 3}
+  m_attackRange: {fileID: 6397925798152969217, guid: 374b09a848cd41742bf7c4a4972cf94a, type: 3}
+  m_warningDuration: 3
+  m_blownAwayPower: 10
+  m_blownAwayTime: 10
+  m_timePenalty: 100
+  m_lifeTime: 3
