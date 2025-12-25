@@ -24,12 +24,18 @@ public class TimeManager : MonoBehaviour
     //　敵のイベントスクリプト
     private EnemyEvents m_enemyEvent;
 
+    private PlayerEvents m_playerEvent;
+
     private void Start()
     {
         m_enemyEvent = m_enemy.GetComponent<EnemyEvents>();
 
+        m_playerEvent = PlayerManager.Instance.Players[0].GetComponent<PlayerEvents>();
+
         //イベントへの処理の登録方法
         m_enemyEvent.OnDamage.AddListener(SlowDown);
+        m_playerEvent.OnDamage.AddListener(SlowDown);
+        m_playerEvent.OnBlownAway.AddListener(SlowDown);
 
     }
     void Update()
@@ -57,5 +63,8 @@ public class TimeManager : MonoBehaviour
         Time.timeScale = 1f;
         isSlowDown = false;
     }
+
+
+
 }
 
