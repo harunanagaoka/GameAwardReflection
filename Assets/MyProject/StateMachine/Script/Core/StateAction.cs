@@ -1,16 +1,18 @@
-using UnityEngine;
-
-public class StateAction : MonoBehaviour
+public abstract class StateAction : IStateComponent
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public StateActionSO m_originSO;
 
-    // Update is called once per frame
-    void Update()
+    protected StateActionSO OriginSO => m_originSO;
+
+    public abstract void OnUpdate();
+
+    public virtual void Awake(StateMachine stateMachine) { }
+    public void OnStateEnter(){ }
+
+    public void OnStateExit(){ }
+
+    public enum SpecificMoment
     {
-        
+        OnStateEnter, OnStateExit, OnUpdate,
     }
 }

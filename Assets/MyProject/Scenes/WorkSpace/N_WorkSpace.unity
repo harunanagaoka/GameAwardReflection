@@ -436,6 +436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c52971bc5e5d04846a969ae487f91410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_enemyData: {fileID: 0}
 --- !u!1 &559327899 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3677717078595683746, guid: 6dbd5a3603637154792cfc194cd1256e, type: 3}
@@ -620,6 +621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c52971bc5e5d04846a969ae487f91410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_enemyData: {fileID: 0}
 --- !u!1001 &1450558871
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -708,6 +710,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: {r: 0.08533284, g: 0.85478145, b: 0.8867924, a: 0.3}
+--- !u!1 &1748693434
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1748693436}
+  - component: {fileID: 1748693435}
+  m_Layer: 0
+  m_Name: Test
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1748693435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748693434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9b26f5a03f7d8e48b7a680a5cfecf8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_transitionTableSO: {fileID: 11400000, guid: 6bef7c906a097fd46b68295a71d7b701, type: 2}
+--- !u!4 &1748693436
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748693434}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.0335145, y: 3.8098385, z: 0.1543745}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1881929259 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 48933042647074680, guid: 6dbd5a3603637154792cfc194cd1256e, type: 3}
@@ -738,6 +785,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c52971bc5e5d04846a969ae487f91410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_enemyData: {fileID: 0}
 --- !u!1001 &2108716369
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1402,3 +1450,4 @@ SceneRoots:
   - {fileID: 2549875589978924644}
   - {fileID: 8701482635287100121}
   - {fileID: 298861078511807839}
+  - {fileID: 1748693436}

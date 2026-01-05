@@ -3,16 +3,30 @@ using UnityEngine;
 public class StateMachine : MonoBehaviour
 {
     [SerializeField]
-    private TransitionTableSO m_transitionTable;
+    private TransitionTableSO m_transitionTableSO;
 
     private State m_currentState;
-    //StateとStateクラスをもつ
+
     private void Awake()
     {
         //最初のステートを生成し、ステートに入る
-        m_currentState = m_transitionTable.InitConnectedStatesAndTransitions(this);
+        m_currentState = m_transitionTableSO.InitConnectedStatesAndTransitions(this);
     }
 
+    private void OnEnable()
+    {
+        UnityEditor.AssemblyReloadEvents.afterAssemblyReload += OnAfterAssemblyReload;
+    }
+
+    private void OnAfterAssemblyReload()
+    {
+        m_currentState = m_transitionTableSO.InitConnectedStatesAndTransitions(this);
+    }
+
+    private void OnDisable()
+    {
+        UnityEditor.AssemblyReloadEvents.afterAssemblyReload -= OnAfterAssemblyReload;
+    }
     private void Start()
     {
         m_currentState.OnStateEnter();

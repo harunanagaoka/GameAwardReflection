@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "StateSO", menuName = "Scriptable Objects/StateSO")]
 public class StateSO : ScriptableObject
 {
-    //[SerializeField] private StateActionSO[] _actions = null;
+    [SerializeField] private StateActionSO[] m_actions = null;
 
     public State CreateStateInstance(StateMachine stateMachine, Dictionary<ScriptableObject, object> createdInstances)
     {
@@ -18,8 +18,21 @@ public class StateSO : ScriptableObject
         state.m_stateSO = this;
         state.m_stateMachine = stateMachine;
         state.m_transitions = new StateTransition[0];
-        //state._actions = GetActions(_actions, stateMachine, createdInstances);ÇÃÇøÇ…çÏÇÈ
+        state.m_stateActions = GetActions(m_actions, stateMachine, createdInstances);
 
         return state;
+    }
+
+    private static StateAction[] GetActions(StateActionSO[] scriptableActions,
+            StateMachine stateMachine, Dictionary<ScriptableObject, object> createdInstances)
+    {
+        int count = scriptableActions.Length;
+        var actions = new StateAction[count];
+        for (int i = 0; i < count; i++)
+        {
+            actions[i] = scriptableActions[i].GetStateAction(stateMachine, createdInstances);
+        }
+
+        return actions;
     }
 }
