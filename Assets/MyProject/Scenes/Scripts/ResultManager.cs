@@ -13,7 +13,7 @@ public class ResultManager : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.N))
         {
-         UnityEngine.SceneManagement.SceneManager.LoadScene("ResultScene");
+         UnityEngine.SceneManagement.SceneManager.LoadScene("Result");
         }
     }
 }
