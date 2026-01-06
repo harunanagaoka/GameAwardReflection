@@ -10,10 +10,19 @@ public class AttackPhaseFactory : MonoBehaviour
 
     public AttackPhaseData[] AttackPhaseDatas => m_attackPhaseDatas;
 
-    public AttackPhaseData GetAtkPhaseData(PhaseManager.EnemyPhase phase)
+    public AttackPhaseData GetCurrentPhaseData(int phaseIndex)
+    {
+        int index = Mathf.Clamp(phaseIndex, 0 ,m_attackPhaseDatas.Length - 1);
+
+        return m_attackPhaseDatas[index];
+    }
+
+    public AttackPhaseData GetAtkPhaseData(PhaseManager.EnemyPhase phase)//‹ŒŠÖ”
     {
         return m_attackPhaseDatas[(int)phase];
     }
+
+
 
     //private void OnValidate()
     //{

@@ -10,24 +10,24 @@ public enum PhaseChangeType
 public class AttackPhaseData : ScriptableObject
 {
     [SerializeField]
+    private AttackSequence[] m_attackSequences;
+
+    [SerializeField,Tooltip("旧データ　そのうち消します")]
     private AttackData[] m_attackDatas;
 
-    [SerializeField]
+    [SerializeField, Tooltip("旧データ　そのうち消します")]
     private PhaseChangeType m_phaseChangeType;
-
-    //[SerializeField]
-    //private float[] m_phaseChangeRates;
-
-    //[SerializeField]
-    //private float[] m_phaseChangeAmounts;
 
     public AttackData[] AttackDatas => m_attackDatas;
 
     public PhaseChangeType PhaseChangeType => m_phaseChangeType;
+}
 
-    //public float[] PhaseChangeRates => m_phaseChangeRates;
-
-    //public float[] PhaseChangeAmounts => m_phaseChangeAmounts;
-
-    //あるフェーズで使う攻撃のデータを持つ
+[System.Serializable]
+public class AttackSequence
+{
+    public AttackData Attack;
+    public int Count;
+    public float Interval;
+    public Vector3[] SpawnOffsets;
 }
