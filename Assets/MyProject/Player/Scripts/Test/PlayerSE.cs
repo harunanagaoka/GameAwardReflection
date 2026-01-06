@@ -24,7 +24,7 @@ public class PlayerSE : MonoBehaviour
 
     private void PlayDamageSE()
     {
-        m_seManager.OnPlayOneShot((SoundEffectName.OnDamage));
+        m_seManager.OnPlayOneShot((SoundEffectName.OnPlayerDamage));
     }
     private void PlayBlownAwaySE()
     {
