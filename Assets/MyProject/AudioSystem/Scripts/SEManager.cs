@@ -14,16 +14,8 @@ public class SEManager : MonoBehaviour
 
     public enum SoundEffectName
     {
-        cofirm,
-        whistle,
-        pl_footSteps,
-        pl_Jamp,
-        pl_respawn,
-        coin_fall,
-        nCoin_get,
-        bCoin_get,
-        seaContact,
-        CountDown
+        OnDamage,
+        OnBlownAway
     }
 
     private void Awake()
