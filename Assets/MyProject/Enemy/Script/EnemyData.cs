@@ -3,6 +3,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewEnemyData", menuName = "Scriptable Objects/EnemyData")]
 public class EnemyData : ScriptableObject
 {
+    [SerializeField, Tooltip("“G‚ÌƒvƒŒƒnƒu")]
+    private GameObject m_prefab;
+
+    [SerializeField,Tooltip("“G‚Ì‰ŠúˆÊ’u")]
+    private Vector3 m_initPosition;
+
     [SerializeField, Tooltip("“G‚ÌHP")]
     private int m_hitPoint;
 
@@ -17,6 +23,10 @@ public class EnemyData : ScriptableObject
 
     [SerializeField]
     private float[] m_phaseChangeAmounts;
+
+    public GameObject Prefab => m_prefab;
+
+    public Vector3 InitPos => m_initPosition;
 
     public int HP => m_hitPoint;
 
