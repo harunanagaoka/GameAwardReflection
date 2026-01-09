@@ -9,12 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3c8128f410c93048b10149ec5d26f90, type: 3}
-  m_Name: NewAttackPhaseData
+  m_Script: {fileID: 11500000, guid: a24d07b51a664f34f96584f46ed4fbed, type: 3}
+  m_Name: testPhaseData
   m_EditorClassIdentifier: 
-  m_attackDatas:
-  - {fileID: 0}
-  m_phaseChangeType: 0
-  m_phaseChangeRates:
-  - 0
-  m_phaseChangeAmounts: []
+  m_isSpawnSmallEnemy: 1

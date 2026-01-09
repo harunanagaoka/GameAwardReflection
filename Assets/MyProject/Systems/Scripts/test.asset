@@ -12,5 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68a551e68c02df442a5255285132e2c9, type: 3}
   m_Name: test
   m_EditorClassIdentifier: 
-  m_phaseDatas: []
-  m_phaseDescriptors: []
+  m_bossData: {fileID: 11400000, guid: dea6b876589f3144287eab27bf815945, type: 2}
+  m_phaseDescriptors:
+  - m_phaseData: {fileID: 11400000, guid: c8eea8308e8a4134eb72b351d6ee13f1, type: 2}
+    changeCondition:
+      changeThreshold: 0.7
+  - m_phaseData: {fileID: 11400000, guid: c8eea8308e8a4134eb72b351d6ee13f1, type: 2}
+    changeCondition:
+      changeThreshold: 0.5
+  - m_phaseData: {fileID: 11400000, guid: c8eea8308e8a4134eb72b351d6ee13f1, type: 2}
+    changeCondition:
+      changeThreshold: 0.3

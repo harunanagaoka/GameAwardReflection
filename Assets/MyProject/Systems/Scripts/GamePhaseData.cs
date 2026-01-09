@@ -20,6 +20,9 @@ public class GamePhaseData : ScriptableObject
     public struct PhaseDescriptor
     {
         [SerializeField]
+        private PhaseData m_phaseData;
+
+        [SerializeField]
         private PhaseChangeCondition changeCondition;
 
         public bool CanChangePhase(EnemyDamageable boss)
@@ -31,7 +34,7 @@ public class GamePhaseData : ScriptableObject
     [Serializable]
     public struct PhaseChangeCondition
     {
-        [SerializeField]
+        [SerializeField,Tooltip("絶対に0～1の範囲で設定すること")]//絶対に0～1の範囲にすること！！制限しようとしたけどバグでできませんでした・・・
         private float changeThreshold;
 
         public bool IsSatisfied(EnemyDamageable boss)

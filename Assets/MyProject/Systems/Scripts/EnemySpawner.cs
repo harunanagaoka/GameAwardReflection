@@ -3,10 +3,10 @@ using UnityEngine;
 //ìGÇÃê∂ê¨
 public class EnemySpawner : MonoBehaviour
 {
-    public EnemyDamageable SpawnEnemy(EnemyData enemy)
+    public GameObject SpawnEnemy(EnemyData enemy)
     {
-        GameObject obj = Instantiate(enemy.Prefab,enemy.InitPos,Quaternion.identity);//êeÇ∆Ç©ÇÕÇ†Ç∆Ç©ÇÁçlÇ¶ÇÈ
+        GameObject obj = Instantiate(enemy.Prefab,enemy.InitPos,enemy.Prefab.transform.rotation,transform);
 
-        return obj.GetComponent<EnemyDamageable>();
+        return obj;
     }
 }

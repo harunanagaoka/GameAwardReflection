@@ -10,13 +10,30 @@ public class GamepadInput : MonoBehaviour
 
     private float m_stickDeadzone = 0.1f;
 
+    private bool m_wasInit = false;
     private void Start()
     {
-        Initialize();
+        if (PlayerManager.Instance != null)
+        {
+            PlayerManager.Instance.OnResisterPlayer += Initialize;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (PlayerManager.Instance != null)
+        {
+            PlayerManager.Instance.OnResisterPlayer -= Initialize;
+        }
     }
 
     void Update()
     {
+        if (!m_wasInit)
+        {
+            return;
+        }
+
         // 各プレイヤーの入力処理
         for (int i = 0; i < m_playerEvents.Count; i++)
         {
@@ -131,6 +148,8 @@ public class GamepadInput : MonoBehaviour
 
         // ゲームパッド割り当て
         GamepadManager.Instance.RegisterPlayers();
+
+        m_wasInit = true;
     }
 
     // 再初期化

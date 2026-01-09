@@ -8,6 +8,8 @@ public class KeyboardInput : MonoBehaviour
 {
     private List<PlayerEvents> m_playerEvents = new List<PlayerEvents>();
 
+    private bool m_wasInit = false;
+
     // 新: 柔軟なバインディングリスト
     private enum KeyEventType { Hold, Down, Up }
 
@@ -48,12 +50,28 @@ public class KeyboardInput : MonoBehaviour
 
     private void Start()
     {
-        Initialize();
+        if (PlayerManager.Instance != null)
+        {
+            PlayerManager.Instance.OnResisterPlayer += Initialize;
+        }// Initialize();
+    }
+
+    private void OnDisable()
+    {
+        if (PlayerManager.Instance != null)
+        {
+            PlayerManager.Instance.OnResisterPlayer -= Initialize;
+        }
     }
 
     void Update()
     {
-        if (PlayerManager.Instance.Players.Count == 0)
+        if (!m_wasInit)
+        {
+            return;
+        }
+
+            if (PlayerManager.Instance.Players.Count == 0)
         {
             return;
         }
@@ -133,7 +151,7 @@ public class KeyboardInput : MonoBehaviour
         }
     }
 
-    private void Initialize()
+    public void Initialize()
     {
         // プレイヤーリスト初期化
         m_playerEvents.Clear();
@@ -166,6 +184,8 @@ public class KeyboardInput : MonoBehaviour
             AddBinding(0, KeyCode.D, KeyEventType.Hold, m_playerEvents[0].OnMoveRight, isMovement: true);
             AddBinding(0, KeyCode.A, KeyEventType.Hold, m_playerEvents[0].OnMoveLeft, isMovement: true);
         }
+
+        m_wasInit = true;
     }
 
     private void AddBinding(int playerIndex, KeyCode key, KeyEventType type, UnityEvent unityEvent, bool isMovement = false)

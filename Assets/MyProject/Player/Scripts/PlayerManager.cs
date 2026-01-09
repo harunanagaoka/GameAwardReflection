@@ -1,4 +1,5 @@
 //AI産スクリプトです
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,24 +13,12 @@ public class PlayerManager : MonoBehaviour
 
     public IReadOnlyList<GameObject> Players => players;
 
-    public static PlayerManager Instance
-    {
-        get
-        {
-            if (m_instance == null)
-            {
-                GameObject obj = new GameObject("PlayerManager");
-                m_instance = obj.AddComponent<PlayerManager>();
-                DontDestroyOnLoad(obj);
-            }
+    public Action OnResisterPlayer;
 
-            return m_instance;
-        }
-    }
+    public static PlayerManager Instance => m_instance;
 
     private void Awake()
     {
-        // 既にインスタンスが存在する場合は破棄
         if (m_instance != null && m_instance != this)
         {
             Destroy(gameObject);
@@ -55,6 +44,7 @@ public class PlayerManager : MonoBehaviour
         }
 
         players.Add(player);
+        OnResisterPlayer?.Invoke();
         Debug.Log($"プレイヤー登録: {player.name} (現在 {PlayerCount}人)");
     }
 

@@ -18,6 +18,9 @@ public class EnemyData : ScriptableObject
     [SerializeField, Tooltip("ダメージ演出の時間")]
     private float m_damageEffectTime = 0.5f;
 
+    [SerializeField,Tooltip("敵の攻撃パターンが登録できます")]
+    EnemyAttackPatternData m_enemyAttackPatternData;
+
     [SerializeField,Tooltip("フェーズが変わるHP割合・Rate以下になるごとにひとつ進みます")]
     private float[] m_phaseChangeRates;
 
@@ -33,6 +36,8 @@ public class EnemyData : ScriptableObject
     public Color OnDamageColor => m_onDamageColor;
 
     public float DamageEffectTime => m_damageEffectTime;
+
+    public EnemyAttackPatternData AttackPetternData => m_enemyAttackPatternData;
 
     public float[] PhaseChangeRates => m_phaseChangeRates;
 

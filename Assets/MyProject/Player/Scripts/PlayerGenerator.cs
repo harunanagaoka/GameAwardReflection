@@ -10,12 +10,13 @@ public class PlayerGenerator : MonoBehaviour
    
     void Awake()
     {
-        PlayerManager.Instance.ResetManager();
-        GeneratePlayer();
+
     }
 
-    private void GeneratePlayer()
+    public void GeneratePlayer()
     {
+        PlayerManager.Instance.ResetManager();
+
         for (int i = 0; i < m_playerCount; i++)
         {
             GameObject player = GameObject.Instantiate(m_playerPrefab);

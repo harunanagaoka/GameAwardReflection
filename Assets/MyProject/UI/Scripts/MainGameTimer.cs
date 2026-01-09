@@ -16,7 +16,6 @@ public class MainGameTimer : MonoBehaviour
 
     private void Awake()
     {
-        m_currentTime = m_maxTime;
         if (m_startOnAwake)
         {
             ResetTimer();
@@ -45,7 +44,13 @@ public class MainGameTimer : MonoBehaviour
 
     public void StartTimer()
     {
+        m_currentTime = m_maxTime;
         m_isTimerRunning = true;
+    }
+
+    public void StopTimer()
+    {
+        m_isTimerRunning = false;
     }
 
     public void DecreseTime(float time)

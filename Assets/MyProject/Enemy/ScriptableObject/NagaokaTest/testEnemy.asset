@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8794af3d490b3cd4fb566ffedb61b42b, type: 3}
+  m_Name: testEnemy
+  m_EditorClassIdentifier: 
+  m_prefab: {fileID: 3677717078595683746, guid: 89bb2975433f13d49aa3e6bd952cd18c, type: 3}
+  m_initPosition: {x: 0, y: 0, z: 0}
+  m_hitPoint: 900
+  m_onDamageColor: {r: 1, g: 0, b: 0, a: 1}
+  m_damageEffectTime: 0.5
+  m_enemyAttackPatternData: {fileID: 11400000, guid: 1cc9309cf5032ea448c95672468bf3d0, type: 2}
+  m_phaseChangeRates:
+  - 0.75
+  - 0.5
+  - 0.25
+  m_phaseChangeAmounts: []
