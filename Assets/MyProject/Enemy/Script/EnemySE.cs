@@ -12,12 +12,14 @@ public class EnemySE : MonoBehaviour
 
     private void Start()
     {
-        m_enemyEvents = GetComponent<EnemyEvents>();
+
+    }
+
+    public void Initialize(EnemyEvents events)
+    {
+        m_enemyEvents = events;
         var audioManager = GameObject.Find("AudioManager");
         m_seManager = audioManager.GetComponent<SEManager>();
-        //m_enemyEvents‚ÉEnemyEvents‚ğGetComponent‚·‚éˆ—
-        //GameObject.Find("AudioManager");‚ÅAudioManager‚ğæ“¾‚·‚éˆ—
-        //m_seManager‚ÉSEManager‚ğGetComponent‚·‚éˆ—
         m_enemyEvents.OnDamage.AddListener(PlayDamageSE);
     }
 

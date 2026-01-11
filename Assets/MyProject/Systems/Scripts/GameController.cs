@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -52,7 +51,6 @@ public class GameController : MonoBehaviour
 
         if (!m_isGameOver && !m_isGameCleared)
         {
-            //クリア判定とゲームオーバー判定
             CheckGameEnd();
         }
     }
@@ -93,22 +91,18 @@ public class GameController : MonoBehaviour
 
     private void HandleDebugInput()
     {
+        //m_isDebugをtrueにして再生後Sキーを押すとメインゲームスタートの処理を手動で呼べます
         if (!m_isGameStarted && !m_isGameOver && !m_isGameCleared && Input.GetKey(KeyCode.S))
         {
             MainGameStart();
         }
 
+        //m_isDebugをtrueにした状態でゲームオーバー状態になった時、Rキーかゲームパッドでシーン再読み込みできます。
         if (m_isGameOver && Input.GetButtonDown("Fire4") || m_isGameOver && Input.GetKeyDown(KeyCode.R))
         {
-            // 現在のシーン名を取得
             string currentSceneName = SceneManager.GetActiveScene().name;
 
-            // 同じシーンをロード（再読み込み）
             SceneManager.LoadScene(currentSceneName);
         }
     }
-
-    //ゲームオーバー　敵がゼロでないのに制限時間が切れる
-    //ゲームクリア―　制限時間内に敵をゼロにする
-    //クリアーの方は制限時間がゼロでなければ　でいいのか？
 }

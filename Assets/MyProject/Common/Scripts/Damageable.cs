@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class Damageable : MonoBehaviour
 {
-    [SerializeField] protected float m_maxHitInterval = 0;
+    protected float m_maxHitInterval = 0;
 
     private float m_hitInterval = 0;
     private bool m_isDamageInterval = false;
@@ -21,7 +21,7 @@ public abstract class Damageable : MonoBehaviour
 
     protected virtual void Awake()
     {
-
+        //‹¤’Ê‚Ì‰Šú‰»‚ ‚ê‚Î‘‚¢‚Ä‚Ë
     }
 
     protected void Update()

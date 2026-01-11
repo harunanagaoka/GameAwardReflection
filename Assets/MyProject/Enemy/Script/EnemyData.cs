@@ -15,6 +15,9 @@ public class EnemyData : ScriptableObject
     [SerializeField, Tooltip("ダメージを受けた時の色")]
     private Color m_onDamageColor = Color.red;
 
+    [SerializeField, Tooltip("ダメージを受けるインターバル時間")]
+    private float m_damageInterval = 0.5f;
+
     [SerializeField, Tooltip("ダメージ演出の時間")]
     private float m_damageEffectTime = 0.5f;
 
@@ -34,6 +37,8 @@ public class EnemyData : ScriptableObject
     public int HP => m_hitPoint;
 
     public Color OnDamageColor => m_onDamageColor;
+
+    public float DamageInterval => m_damageInterval;
 
     public float DamageEffectTime => m_damageEffectTime;
 

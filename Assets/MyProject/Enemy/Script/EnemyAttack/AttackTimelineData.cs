@@ -4,15 +4,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewAttackTimelineData", menuName = "Scriptable Objects/AttackTimelineData")]
 public class AttackTimelineData : ScriptableObject
 {
-    [SerializeField, Tooltip("‚Ğ‚Æ‚Â‚ÌƒtƒF[ƒY“à‚Å‚ÌUŒ‚ƒpƒ^[ƒ“‚ğİ’è‚Å‚«‚Ü‚·B")]
-    private AttackStepData[] m_stepDatas;
 
     [SerializeField]
-    private AttackTimelineData[] m_timelines;
+    private AttackTimeline[] m_timelines;
 
-    public AttackStepData[] StepDatas => m_stepDatas;
-
-    public AttackTimelineData[] Timelines => m_timelines;
+    public AttackTimeline[] Timelines => m_timelines;
 
     /*
      Timeline
@@ -29,7 +25,12 @@ public class AttackTimelineData : ScriptableObject
         [SerializeField, Tooltip("“¯‚É¶¬‚µ‚½‚¢UŒ‚‚ğ“o˜^‚·‚é")]
         private AttackStepData[] m_stepDatas;
 
+        [SerializeField]
+        private float m_interval;
+
         public AttackStepData[] StepDatas => m_stepDatas;
+
+        public float Interval => m_interval;
     }
 
     [Serializable]
@@ -38,11 +39,7 @@ public class AttackTimelineData : ScriptableObject
         [SerializeField]
         private AttackData m_attackData;
 
-        [SerializeField]
-        private float m_interval;
-
         public AttackData AttackData => m_attackData;
 
-        public float Interval => m_interval;
     }
 }

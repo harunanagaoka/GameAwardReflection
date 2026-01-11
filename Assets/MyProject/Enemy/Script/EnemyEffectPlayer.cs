@@ -3,7 +3,6 @@ using UnityEngine;
 public class EnemyEffectPlayer : MonoBehaviour
 {
     //エフェクトを再生するEnemyを登録する
-    [SerializeField]
     private EnemyEvents m_enemyEvents;
 
     //EnemyEventsのOnDamageのエフェクト
@@ -16,7 +15,12 @@ public class EnemyEffectPlayer : MonoBehaviour
 
     void Start()
     {
-        //イベントの登録例
+
+    }
+
+    public void Initialize(EnemyEvents evemt)
+    {
+        m_enemyEvents = evemt;
         m_enemyEvents.OnDamage.AddListener(PlayDamageEffect);
         m_enemyEvents.OnDeath.AddListener(PlayDeathEffect);
     }

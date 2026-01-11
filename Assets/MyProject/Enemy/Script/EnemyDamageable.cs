@@ -1,11 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
-//エフェクトの処理分けたいなあ
-[RequireComponent(typeof(EnemyEvents))]
+
 public class EnemyDamageable : Damageable
 {
-    [SerializeField]
     private EnemyData m_enemyData;
 
     private EnemyEvents m_enemyEvents;
@@ -14,35 +12,50 @@ public class EnemyDamageable : Damageable
 
     private Color m_defaultColor;
 
-    private float m_hitPoint;
+    private float m_maxHitPoint;
+
+    private float m_currentHitPoint;
 
     private bool m_isDead = false;
 
-    public float HitPoint => m_hitPoint;
+    private bool m_wasInitialized = false;
+
+    public float HitPoint => m_currentHitPoint;
 
     public float MaxHitPoint => m_enemyData.HP;
 
     protected override void Awake()
     {
         base.Awake();
-        m_hitPoint = m_enemyData.HP;
+    }
+
+    public void Initialize(EnemyData data,EnemyEvents events)
+    {
+        m_enemyData = data;
+        m_maxHitPoint = data.HP;
+        m_currentHitPoint = data.HP;
+        m_maxHitInterval = data.DamageInterval;
+        m_enemyEvents = events;
+        m_enemyEvents.OnDamage.AddListener(ShowDamageEffect);
+        m_enemyEvents.OnDamagePenalty.AddListener(DecreaseHP);
+
+        m_wasInitialized = true;
+
+        // m_material = GetComponent<Renderer>().material;
+        // m_defaultColor = m_material.color;
     }
 
     protected override void Start()
     {
         base.Start();
-
-        m_enemyEvents = GetComponent<EnemyEvents>();
-        m_enemyEvents.OnDamage.AddListener(ShowDamageEffect);
-        m_enemyEvents.OnDamagePenalty.AddListener(DecreaseHP);
-
-       // m_material = GetComponent<Renderer>().material;
-       // m_defaultColor = m_material.color;
-        
     }
 
     private void Update()
     {
+        if (!m_wasInitialized) {
+            return;
+        }
+
         base.Update();
 
         if (Input.GetKeyDown(KeyCode.O)) {
@@ -51,7 +64,7 @@ public class EnemyDamageable : Damageable
             base.TakeDamage(50);
         }
 
-        if (!m_isDead && m_hitPoint < 0)
+        if (!m_isDead && m_currentHitPoint < 0)
         {
             m_isDead = true;
             OnDeathEvent();
@@ -75,7 +88,7 @@ public class EnemyDamageable : Damageable
 
     private void DecreaseHP(float damage)
     {
-        m_hitPoint -= damage;
+        m_currentHitPoint -= damage;
     }
 
     private void ShowDamageEffect()

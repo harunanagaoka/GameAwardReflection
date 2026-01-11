@@ -1,27 +1,15 @@
 using UnityEngine;
 
-public class EnemyAttackFactory : ScriptableObject
+public class EnemyAttackFactory : MonoBehaviour
 {
-    private AttackData m_attackData;
-
-    public void SetAttackData(AttackData attackData)
-    {
-        //âΩÇÉgÉäÉKÅ[Ç…Ç∑ÇÈÇ©ÇÕñ¢íË
-        m_attackData = attackData;
-    }
-
-    public GameObject CreateAttack(Vector3 position, Quaternion rotation, Transform parent)
+    public GameObject CreateAttack(AttackData data ,Transform parent)
     {
         GameObject attack = new GameObject("NewAttackObject");
         attack.transform.parent = parent;
-        attack.transform.position = position;
-        attack.transform.rotation = rotation;
 
         var behaviour = attack.AddComponent<AttackBehaviour>();
-        behaviour.Initialize(m_attackData);
+        behaviour.Initialize(data);
 
         return attack;
     }
 }
-
-//AttackPhaseSOÇ…éùÇΩÇπÇÈSO

@@ -16,6 +16,7 @@ MonoBehaviour:
   m_initPosition: {x: 0, y: 0, z: 0}
   m_hitPoint: 900
   m_onDamageColor: {r: 1, g: 0, b: 0, a: 1}
+  m_damageInterval: 0.5
   m_damageEffectTime: 0.5
   m_enemyAttackPatternData: {fileID: 11400000, guid: 1cc9309cf5032ea448c95672468bf3d0, type: 2}
   m_phaseChangeRates:

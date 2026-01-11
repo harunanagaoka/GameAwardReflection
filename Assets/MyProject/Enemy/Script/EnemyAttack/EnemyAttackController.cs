@@ -5,25 +5,33 @@ using UnityEngine;
 public class EnemyAttackController : MonoBehaviour
 {
     EnemyData m_enemyData;
+    EnemyEvents m_enemyEvents;//使わないかも。
+    EnemyAttackFactory m_factory;//初期化
 
     private List<Coroutine> m_runningTasks = new();
+
+    public void Initialize(EnemyData data,EnemyEvents events,EnemyAttackFactory factory)
+    {
+        m_enemyData = data;
+        m_factory = factory;
+        m_enemyEvents = events;
+    }
+
     public void OnPhaseChanged(int phase)
     {
         StopAllTasks();
 
-        var sequenceData = m_enemyData.AttackPetternData.AttackTaskDatas[phase].StepDatas;
+        var timelineDatas = m_enemyData.AttackPetternData.AttackTaskDatas[phase];//Timelineを抜き出す
 
-        StartTasks(sequenceData);
+        StartTasks(timelineDatas);
     }
 
-    //順番にひとつずつ生成する
-    private void StartTasks(AttackTimelineData.AttackStepData[] steps)
+    //攻撃の生成を開始する
+    private void StartTasks(AttackTimelineData timelineDatas)
     {
-            foreach (var step in steps)
+        foreach (var timeline in timelineDatas.Timelines)
         {
-            if (step.AttackData == null) continue;
-
-            var c = StartCoroutine(RunAttackTask(step));
+            var c = StartCoroutine(RunAttackTimeline(timeline));
             m_runningTasks.Add(c);
         }
     }
@@ -37,45 +45,29 @@ public class EnemyAttackController : MonoBehaviour
             {
                 StopCoroutine(c);
             }
-               
+
         }
         m_runningTasks.Clear();
     }
 
-    //private IEnumerator StartTimeline(AttackTimelineData.AttackTimeline[] timelines)
-    //{
-    //    //のちにフェーズ内で攻撃パターン切り替えもできるようにする
-    //}
-
-    private IEnumerator RunAttackTimeline(AttackTimelineData.AttackStepData[] steps)
+    private IEnumerator RunAttackTimeline(AttackTimelineData.AttackTimeline timeline)
     {
         int index = 0;
 
         while (true)
         {
-            yield return new WaitForSeconds(steps[index].Interval);
+            yield return new WaitForSeconds(timeline.Interval);
 
-            var attack = steps[index].AttackData;
+            var attack = timeline.StepDatas[index].AttackData;
             ExecuteAttack(attack);
 
-            index = (index + 1) % steps.Length;
-        }
-    }
-
-    private IEnumerator RunAttackTask(AttackTimelineData.AttackStepData steps)
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(steps.Interval);
-
-            var attack = steps.AttackData;
-            ExecuteAttack(attack);
+            index = (index + 1) % timeline.StepDatas.Length;
         }
     }
 
     private void ExecuteAttack(AttackData data)
     {
-        // AttackFactoryに投げる
+        m_factory.CreateAttack(data, this.transform);
     }
 
 }
