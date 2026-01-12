@@ -13,7 +13,7 @@ public class PlayerManager : MonoBehaviour
 
     public IReadOnlyList<GameObject> Players => players;
 
-    public Action OnResisterPlayer;
+    public Action OnResisterPlayer = delegate { };
 
     public static PlayerManager Instance => m_instance;
 

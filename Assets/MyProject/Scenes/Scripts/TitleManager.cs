@@ -6,11 +6,14 @@ public class TitleManager : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown((KeyCode.N))
-)
+        if (Input.GetKeyDown((KeyCode.T)))
         {
-            //Main_Proto‚ğŒÄ‚Ño‚·ˆ—
-            SceneManager.LoadScene("Main_Proto");
+            SceneManager.LoadScene("Tutorial");
+        }
+
+        if (Input.GetKeyDown((KeyCode.N)))
+        {
+            SceneManager.LoadScene("Main");
         }
     }
 }

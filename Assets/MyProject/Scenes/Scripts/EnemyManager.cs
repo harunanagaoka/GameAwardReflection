@@ -22,6 +22,11 @@ public class EnemyManager : MonoBehaviour
         m_enemySpawner = GetComponent<EnemySpawner>();
     }
 
+    public void Initialize()
+    {
+        m_enemySpawner = GetComponent<EnemySpawner>();
+    }
+
     private void OnBossDefeated()
     {
         OnBossEnemyDied?.Invoke();
