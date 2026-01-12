@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6467466752103891135}
+  - component: {fileID: 1820038522138235145}
   - component: {fileID: 8904238830339107431}
   - component: {fileID: 184720757167762183}
-  - component: {fileID: 1338432825922288427}
-  - component: {fileID: 6365088891680437889}
+  - component: {fileID: 7032904274946223647}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -35,6 +35,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1820038522138235145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2119699796301282802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9310eeac04fc344f8cd372a9676c37f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_playerGenerator: {fileID: 0}
+  m_isDebug: 1
 --- !u!114 &8904238830339107431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47,8 +61,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e18b2a3cd39df6b44baabcb50f639379, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_maxTime: 20
-  m_startOnAwake: 1
+  m_maxTime: 90
+  m_startOnAwake: 0
 --- !u!114 &184720757167762183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,7 +84,7 @@ MonoBehaviour:
   OnGameClear:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1338432825922288427
+--- !u!114 &7032904274946223647
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -79,18 +93,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 2119699796301282802}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4767ee5136fa8814c851cff0cdcef590, type: 3}
+  m_Script: {fileID: 11500000, guid: 36198da1a92d4b24abfc84a5414e0f6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6365088891680437889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2119699796301282802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 011506064c886c34ea69f3db1b764a36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_gamePhaseData: {fileID: 11400000, guid: d2c2ff7f141621146bfd9e914520c025, type: 2}
+  m_enemyManager: {fileID: 0}

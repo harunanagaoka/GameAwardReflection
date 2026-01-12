@@ -16,6 +16,7 @@ public class PlayerEvents : MonoBehaviour
     //ƒAƒNƒVƒ‡ƒ“
     public UnityEvent OnAttack;
     public UnityEvent OnDefence;
+    public UnityEvent OnDefenceBleaked;
     public UnityEvent OnDefenceEnd;
 
     //ó‘Ô•Ï‰»

@@ -1,37 +1,45 @@
 using UnityEngine;
 
+[RequireComponent (typeof(UnityEngine.UI.Slider))]
 public class HpBarUI : MonoBehaviour
 {
-    private float m_maxHp = 0;
-    private float m_currentHp = 0;
-
     [SerializeField]
-    private EnemyDamageable m_damageable;
+    private EnemyManager m_enemyManager;
 
-    [SerializeField]
+    private EnemyDamageable m_bossHP;
+
     private UnityEngine.UI.Slider m_hpSlider;
 
     private bool m_isInitialized = false;
 
+    private void Start()
+    {
+        m_hpSlider = GetComponent<UnityEngine.UI.Slider>();
+        m_enemyManager.OnBossJoined += Initialize;
+    }
+
+    private void OnDisable()
+    {
+        m_enemyManager.OnBossJoined -= Initialize;
+    }
+
     void Update()
     {
+        //タイミングがEnemyDamageableのStartと被り、HPの最大値が0になる可能性があるため、Updateで初期化する
         if (!m_isInitialized)
         {
-            //タイミングがEnemyDamageableのStartと被り、HPの最大値が0になる可能性があるため、Updateで初期化する
-            Initialize();
+            return;
         }
 
         //OnDamageイベントを使うべきだが、今回は簡易的にUpdateで対応する。
-        m_currentHp = m_damageable.HitPoint;
-        m_hpSlider.value = m_currentHp / m_maxHp;
+
+        m_hpSlider.value = m_bossHP.HitPoint / m_bossHP.MaxHitPoint;
     }
 
     private void Initialize()
     {
-        m_maxHp = m_damageable.HitPoint;
-        m_currentHp = m_maxHp;
-
-        m_hpSlider.value = m_currentHp / m_maxHp;//最大値は1
+        m_bossHP = m_enemyManager.BossHP;
+        m_hpSlider.value = m_bossHP.HitPoint / m_bossHP.MaxHitPoint;//最大値は1
         m_isInitialized = true;
     }
 }

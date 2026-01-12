@@ -12,6 +12,8 @@ public class MainGameTimer : MonoBehaviour
 
     private bool m_isTimerRunning = false;
 
+    public float MaxTime => m_maxTime;
+
     public float CurrentTime => m_currentTime;
 
     private void Awake()

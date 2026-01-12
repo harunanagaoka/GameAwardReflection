@@ -4,10 +4,12 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
     [SerializeField]
+    private PlayerGenerator m_playerGenerator;//仮置き　生成タイミングによりPhaseControllerに置いてもいいかも
+
+    [SerializeField]
     private bool m_isDebug = false;
 
     private PhaseController m_phaseController;
-    private PlayerGenerator m_playerGenerator;//仮置き　生成タイミングによりPhaseControllerに置いてもいいかも
     private MainGameEvents m_mainGameEvents;
     private MainGameTimer m_timer;
 
@@ -20,7 +22,6 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
-        m_playerGenerator = GetComponent<PlayerGenerator>();
         m_phaseController = GetComponent<PhaseController>();
         m_mainGameEvents = GetComponent<MainGameEvents>();
         m_timer = GetComponent<MainGameTimer>();

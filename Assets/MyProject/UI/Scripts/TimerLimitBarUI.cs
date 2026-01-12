@@ -28,7 +28,7 @@ public class TimeLimitBarUI : MonoBehaviour
 
     private void Initialize()
     {
-        m_maxTime = m_timer.CurrentTime;
+        m_maxTime = m_timer.MaxTime;
         m_currentTime = m_maxTime;
 
         m_timeLimitSlider.value = m_currentTime / m_maxTime;//ç≈ëÂílÇÕ1

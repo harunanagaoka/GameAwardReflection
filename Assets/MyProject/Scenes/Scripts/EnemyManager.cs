@@ -9,7 +9,13 @@ public class EnemyManager : MonoBehaviour
 
     private EnemyAttackController m_bossAttackController;//‚»‚Ì‚¤‚¿•¡”‘Î‰ž‚É‚·‚é
 
+    private EnemyDamageable m_bossHP;
+
+    public event Action OnBossJoined;
+
     public event Action OnBossEnemyDied;
+
+    public EnemyDamageable BossHP => m_bossHP;
 
     private void Start()
     {
@@ -25,7 +31,7 @@ public class EnemyManager : MonoBehaviour
     {
         GameObject bossObject = m_enemySpawner.SpawnEnemy(enemyData);
         m_bossEvents = bossObject.AddComponent<EnemyEvents>();
-        var damageable = bossObject.AddComponent<EnemyDamageable>();
+        m_bossHP = bossObject.AddComponent<EnemyDamageable>();
         var attackFactory = bossObject.AddComponent<EnemyAttackFactory>();
         m_bossAttackController = bossObject.AddComponent<EnemyAttackController>();
         var destroyer = bossObject.AddComponent<EnemyDestroy>();
@@ -33,14 +39,16 @@ public class EnemyManager : MonoBehaviour
         var SEPlayer = bossObject.GetComponent<EnemySE>();
 
         m_bossEvents.OnDeath.AddListener(OnBossDefeated);
-        damageable.Initialize(enemyData, m_bossEvents);
+        m_bossHP.Initialize(enemyData, m_bossEvents);
         m_bossAttackController.Initialize(enemyData, m_bossEvents,attackFactory);
         SetEnemyPhase(currentphase);
         destroyer.Initialize(m_bossEvents);
         effectPlayer.Initialize(m_bossEvents);
         SEPlayer.Initialize(m_bossEvents);
 
-        return damageable;
+        OnBossJoined?.Invoke();
+
+        return m_bossHP;
     }
 
     public void SetEnemyPhase(int phase)
