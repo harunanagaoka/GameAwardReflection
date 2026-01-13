@@ -1,10 +1,10 @@
 
 using UnityEngine;
-using System.Collections;
-using UnityEngine.InputSystem;
 
 public class TimeManager : MonoBehaviour
 {
+    [SerializeField]
+    private EnemyManager m_enemyManager;
 
     //　Time.timeScaleに設定する値
     [SerializeField]
@@ -17,27 +17,25 @@ public class TimeManager : MonoBehaviour
     //　時間を遅くしているかどうか
     private bool isSlowDown = false;
 
-    //　敵オブジェクト
-    [SerializeField]
-    private GameObject m_enemy;
 
     //　敵のイベントスクリプト
     private EnemyEvents m_enemyEvent;
 
     private PlayerEvents m_playerEvent;
 
-    private void Start()
+
+    private void Awake()
     {
-        m_enemyEvent = m_enemy.GetComponent<EnemyEvents>();
-
-        m_playerEvent = PlayerManager.Instance.Players[0].GetComponent<PlayerEvents>();
-
-        //イベントへの処理の登録方法
-        m_enemyEvent.OnDamage.AddListener(SlowDown);
-        m_playerEvent.OnDamage.AddListener(SlowDown);
-        m_playerEvent.OnBlownAway.AddListener(SlowDown);
-
+        m_enemyManager.OnBossJoined += ResisterEnemyEvent;
+        PlayerManager.Instance.OnResisterPlayer += ResisterPlayerEvent;
     }
+
+    private void OnDisable()
+    {
+        m_enemyManager.OnBossJoined -= ResisterEnemyEvent;
+        PlayerManager.Instance.OnResisterPlayer -= ResisterPlayerEvent;
+    }
+
     void Update()
     {
         //　スローダウンフラグがtrueの時は時間計測
@@ -64,7 +62,18 @@ public class TimeManager : MonoBehaviour
         isSlowDown = false;
     }
 
+    private void ResisterEnemyEvent()
+    {
+        m_enemyEvent = m_enemyManager.BossEnemy.GetComponent<EnemyEvents>();
+        m_enemyEvent.OnDamage.AddListener(SlowDown);
+        
+    }
 
-
+    private void ResisterPlayerEvent()
+    {
+        m_playerEvent = PlayerManager.Instance.Players[0].GetComponent<PlayerEvents>();
+        m_playerEvent.OnBlownAway.AddListener(SlowDown);
+        m_playerEvent.OnDamage.AddListener(SlowDown);
+    }
 }
 
