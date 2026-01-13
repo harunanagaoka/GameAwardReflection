@@ -2157,13 +2157,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_bounceMultiplier: 1
   m_targetForceRatio: 0.5
-  m_damage: 0
+  m_damage: 10
   m_reflectionLayerMask:
     serializedVersion: 2
     m_Bits: 64
   m_maxStepCount: 20
   m_skinWidth: 0.05
-  m_playerDefenceCollider: {fileID: 0}
+  m_playerDefenceCollider: {fileID: 5436697890327010728}
   m_inertiaTime: 0.3
 --- !u!114 &3310594970198192046
 MonoBehaviour:
@@ -3125,10 +3125,10 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 100
+  m_Center: {x: 0, y: 100, z: 0}
 --- !u!96 &2004025444777888882
 TrailRenderer:
   serializedVersion: 3

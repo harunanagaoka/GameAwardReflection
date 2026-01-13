@@ -18,6 +18,8 @@ public class GameController : MonoBehaviour
     private bool m_isGameOver = false;
     private bool m_isGameCleared = false;
 
+    private bool m_isInited = false;
+
     private bool IsInGame => m_isGameStarted && !m_isGameOver && !m_isGameCleared;
 
 
@@ -45,6 +47,14 @@ public class GameController : MonoBehaviour
         {
             HandleDebugInput();
         }
+
+
+        if (!m_isInited)
+        {
+            MainGameStart();
+            m_isInited = true;
+        }
+
         if (m_isGameOver || m_isGameCleared)
         {
             var gamepad = Gamepad.current;

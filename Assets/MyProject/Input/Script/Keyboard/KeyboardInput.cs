@@ -48,7 +48,7 @@ public class KeyboardInput : MonoBehaviour
         Right
     }
 
-    private void Awake()
+    private void Start()
     {
         if (PlayerManager.Instance != null)
         {
