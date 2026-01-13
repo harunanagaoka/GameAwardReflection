@@ -1,8 +1,12 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class TutorialManager : MonoBehaviour
 {
+    [SerializeField]
+    private bool m_isDebug = false;
+
     [SerializeField]
     private PlayerGenerator m_playerGenerator;
 
@@ -15,14 +19,24 @@ public class TutorialManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        m_playerGenerator.GeneratePlayer();
-        m_enemyManager.Initialize();
-        m_enemyManager.SpawnBossEnemy(m_tutorialEnemyData,0);
+        if (m_isDebug)
+        {
+            m_playerGenerator.GeneratePlayer();
+            m_enemyManager.Initialize();
+            m_enemyManager.SpawnBossEnemy(m_tutorialEnemyData, 0);
+        }
     }
 
     void Update()
     {
-        if (Input.GetKeyDown((KeyCode.N)))
+        var gamepad = Gamepad.current;
+
+        if (Input.GetKeyDown((KeyCode.Space)))
+        {
+            SceneManager.LoadScene("Main");
+        }
+
+        if (gamepad != null && gamepad.buttonEast.wasPressedThisFrame)
         {
             SceneManager.LoadScene("Main");
         }

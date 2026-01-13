@@ -200,6 +200,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyManager
       objectReference: {fileID: 0}
+    - target: {fileID: 1947386319766506445, guid: a8ab3b03d9c3f9f4c98d1418d305b0c1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3679690024405971119, guid: a8ab3b03d9c3f9f4c98d1418d305b0c1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -678,6 +682,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2954919898722193967, guid: 79d9bce0da0cd4642b8a941e146f46e3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -712,9 +720,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cf4569b92df4e8438ce130dd1cc87d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_enemyManager: {fileID: 0}
   timeScale: 0
   slowTime: 0.3
-  m_enemy: {fileID: 0}
 --- !u!4 &1324075782
 Transform:
   m_ObjectHideFlags: 0
@@ -884,7 +892,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5029613515071636126, guid: 2cf89c88137f18e429686e2b1a87581a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5288506870975059584, guid: 2cf89c88137f18e429686e2b1a87581a, type: 3}
       propertyPath: m_Enabled
@@ -1485,6 +1493,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: InputManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2651803504863490653, guid: e996732281ebb48498e0bbfbde0b9125, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2877076062335061464, guid: e996732281ebb48498e0bbfbde0b9125, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1631,6 +1643,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e07982a338374b49a31ec593f2127f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_isDebug: 0
   m_playerGenerator: {fileID: 856639260}
   m_enemyManager: {fileID: 1661921325}
   m_tutorialEnemyData: {fileID: 11400000, guid: dea6b876589f3144287eab27bf815945, type: 2}
@@ -1642,10 +1655,10 @@ SceneRoots:
   - {fileID: 449075883}
   - {fileID: 1781926020}
   - {fileID: 1944619248}
-  - {fileID: 1442652853}
   - {fileID: 1653487142}
+  - {fileID: 5226248744710347670}
+  - {fileID: 1442652853}
   - {fileID: 1972680872}
   - {fileID: 304397326}
-  - {fileID: 5226248744710347670}
   - {fileID: 329291169}
   - {fileID: 1065235967}
