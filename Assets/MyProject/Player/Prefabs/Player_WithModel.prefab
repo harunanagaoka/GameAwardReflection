@@ -126,7 +126,7 @@ MonoBehaviour:
   OnDefence:
     m_PersistentCalls:
       m_Calls: []
-  OnDefenceCanceled:
+  OnDefenceBleaked:
     m_PersistentCalls:
       m_Calls: []
   OnDefenceEnd:
@@ -225,9 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_humanModel: {fileID: 7865263108122031416}
-  m_attackModel: {fileID: 8320288124469893524}
   m_ballModel: {fileID: 6363031771432309445}
-  m_attackDisplayTime: 0.15
 --- !u!114 &463365025143328539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,6 +303,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 125d45050d7390b41af76bb1df0d3fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_maxGaugeValue: 100
+  m_decreceValue: 1
+  m_recoveryValue: 1
 --- !u!1001 &6093210312774938516
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -753,11 +754,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d46fd31a7d2fb1242bbaf0ab39e6bff6, type: 3}
---- !u!1 &8320288124469893524 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d46fd31a7d2fb1242bbaf0ab39e6bff6, type: 3}
-  m_PrefabInstance: {fileID: 9202806936790164677}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8663880442595607342 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d46fd31a7d2fb1242bbaf0ab39e6bff6, type: 3}

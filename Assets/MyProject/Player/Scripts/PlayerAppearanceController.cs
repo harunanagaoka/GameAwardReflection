@@ -5,13 +5,13 @@ public class PlayerAppearanceController : MonoBehaviour
     [SerializeField, Tooltip("í èÌÇÃêlå^ÉÇÉfÉã")]
     private GameObject m_humanModel;
 
-    [SerializeField, Tooltip("çUåÇíÜÇ…égÇ§ÉÇÉfÉã")]
+    //[SerializeField, Tooltip("çUåÇíÜÇ…égÇ§ÉÇÉfÉã")]
     private GameObject m_attackModel;
 
     [SerializeField, Tooltip("ñhå‰éû / êÅÇ´îÚÇŒÇµéûÇ…égÇ§ãÖèÛÉÇÉfÉã")]
     private GameObject m_ballModel;
 
-    [SerializeField, Tooltip("çUåÇÉÇÉfÉãÇï\é¶Ç∑ÇÈéûä‘ÅiïbÅj")]
+    //[SerializeField, Tooltip("çUåÇÉÇÉfÉãÇï\é¶Ç∑ÇÈéûä‘ÅiïbÅj")]
     private float m_attackDisplayTime = 0.15f;
 
     private PlayerEvents m_playerEvents;
@@ -38,7 +38,7 @@ public class PlayerAppearanceController : MonoBehaviour
         m_playerEvents.OnBlownAwayCanceled.AddListener(() => m_isBlownAway = false);
         m_playerEvents.OnBlownAwayEnd.AddListener(() => m_isBlownAway = false);
 
-        m_playerEvents.OnBlownAwayCanceled.AddListener(OnAttack);
+        //m_playerEvents.OnBlownAwayCanceled.AddListener(OnAttack);
 
         UpdateAppearance();
     }
@@ -75,11 +75,11 @@ public class PlayerAppearanceController : MonoBehaviour
         // óDêÊèáà :
         // ãÖëÃ > çUåÇ > í èÌ
         bool showBall = m_isBlownAway || m_isDefending;
-        bool showAttack = !showBall && isAttacking;
-        bool showHuman = !showBall && !showAttack;
+        //bool showAttack = !showBall && isAttacking;
+        bool showHuman = !showBall;
 
         SetActiveSafe(m_ballModel, showBall);
-        SetActiveSafe(m_attackModel, showAttack);
+        //SetActiveSafe(m_attackModel, showAttack);
         SetActiveSafe(m_humanModel, showHuman);
     }
 
