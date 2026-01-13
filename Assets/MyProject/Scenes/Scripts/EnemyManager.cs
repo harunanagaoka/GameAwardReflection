@@ -11,9 +11,13 @@ public class EnemyManager : MonoBehaviour
 
     private EnemyDamageable m_bossHP;
 
-    public event Action OnBossJoined;
+    private GameObject m_bossEnemy;//bossHP,bossEvents‚Ö‚ÌŽQÆ‚à‚±‚¿‚ç‚É“‡—\’è
 
-    public event Action OnBossEnemyDied;
+    public event Action OnBossJoined = delegate { };
+
+    public event Action OnBossEnemyDied = delegate { };
+
+    public GameObject BossEnemy => m_bossEnemy;
 
     public EnemyDamageable BossHP => m_bossHP;
 
@@ -35,6 +39,7 @@ public class EnemyManager : MonoBehaviour
     public EnemyDamageable SpawnBossEnemy(EnemyData enemyData,int currentphase)
     {
         GameObject bossObject = m_enemySpawner.SpawnEnemy(enemyData);
+        m_bossEnemy = bossObject;
         m_bossEvents = bossObject.AddComponent<EnemyEvents>();
         m_bossHP = bossObject.AddComponent<EnemyDamageable>();
         var attackFactory = bossObject.AddComponent<EnemyAttackFactory>();
