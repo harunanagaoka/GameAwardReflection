@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
@@ -43,6 +44,20 @@ public class GameController : MonoBehaviour
         if (m_isDebug)
         {
             HandleDebugInput();
+        }
+        if (m_isGameOver || m_isGameCleared)
+        {
+            var gamepad = Gamepad.current;
+            if (gamepad != null && gamepad.buttonSouth.wasPressedThisFrame)
+            {
+                SceneManager.LoadScene("Title");
+            }
+
+            if (Input.GetKeyDown((KeyCode.Space)))
+            {
+                SceneManager.LoadScene("Title");
+            }
+
         }
 
         if (!IsInGame)
