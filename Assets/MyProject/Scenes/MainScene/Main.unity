@@ -1073,10 +1073,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4596107375984338175, guid: cfb042f3edb31b142a1d6b5e6804d45e, type: 3}
-      propertyPath: m_text
-      value: Geme Clear
-      objectReference: {fileID: 0}
     - target: {fileID: 5794622926389965034, guid: cfb042f3edb31b142a1d6b5e6804d45e, type: 3}
       propertyPath: m_Name
       value: GameClear
@@ -1488,10 +1484,6 @@ PrefabInstance:
     - target: {fileID: 4688696630265357624, guid: 507b3401ad82cf9409da5a75ea862f6d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5227276494895092853, guid: 507b3401ad82cf9409da5a75ea862f6d, type: 3}
-      propertyPath: m_text
-      value: Game Over
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
