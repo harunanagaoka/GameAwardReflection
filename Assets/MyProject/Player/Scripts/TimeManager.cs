@@ -24,7 +24,7 @@ public class TimeManager : MonoBehaviour
     private PlayerEvents m_playerEvent;
 
 
-    private void Awake()
+    private void Start()
     {
         m_enemyManager.OnBossJoined += ResisterEnemyEvent;
         PlayerManager.Instance.OnResisterPlayer += ResisterPlayerEvent;
