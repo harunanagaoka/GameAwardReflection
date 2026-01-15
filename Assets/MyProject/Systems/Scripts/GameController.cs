@@ -58,7 +58,7 @@ public class GameController : MonoBehaviour
         if (m_isGameOver || m_isGameCleared)
         {
             var gamepad = Gamepad.current;
-            if (gamepad != null && gamepad.buttonSouth.wasPressedThisFrame)
+            if (gamepad != null && gamepad.buttonEast.wasPressedThisFrame)
             {
                 SceneManager.LoadScene("Title");
             }

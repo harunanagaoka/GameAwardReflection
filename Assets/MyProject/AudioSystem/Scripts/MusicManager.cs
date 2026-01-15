@@ -10,15 +10,14 @@ public class MusicManager : MonoBehaviour
 
     public enum MusicName
     {
-        Main,
-        Title,
-        ResultFirst,
-        ResultLoop
+        Main
     }
 
     private void Start()
     {
-        m_audioSource = GetComponent<AudioSource>();
+        m_audioSource = new AudioSource();
+        m_audioSource = gameObject.AddComponent<AudioSource>();
+        OnPlay(MusicName.Main);
     }
 
     public void OnPlay(MusicName musicNum)
