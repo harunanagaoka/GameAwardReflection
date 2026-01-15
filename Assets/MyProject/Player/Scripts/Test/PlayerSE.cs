@@ -18,17 +18,17 @@ public class PlayerSE : MonoBehaviour
         m_seManager = audioManager.GetComponent<SEManager>();
         //m_playerEvents‚ÉPlayerEvents‚ğGetComponent‚·‚éˆ—
         //m_seManager‚ÉSEManager‚ğGetComponent‚·‚éˆ—
-        m_playerEvents.OnDamage.AddListener(PlayDamageSE);
+        m_playerEvents.OnBlownAwayCanceled.AddListener(PlayAttackClowSE);
         m_playerEvents.OnBlownAway.AddListener(PlayBlownAwaySE);
     }
 
-    private void PlayDamageSE()
+    private void PlayAttackClowSE()
     {
-        m_seManager.OnPlayOneShot((SoundEffectName.OnPlayerDamage));
+        m_seManager.OnPlayOneShot((SoundEffectName.PlayerAttackClow));
     }
     private void PlayBlownAwaySE()
     {
-        m_seManager.OnPlayOneShot((SoundEffectName.OnBlownAway));
+        m_seManager.OnPlayOneShot((SoundEffectName.Reflection));
     }
 
 }

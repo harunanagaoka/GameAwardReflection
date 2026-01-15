@@ -14,9 +14,9 @@ public class SEManager : MonoBehaviour
 
     public enum SoundEffectName
     {
-        OnPlayerDamage,
-        OnBlownAway,
-        OnEnemyDamage
+        PlayerAttackClow,
+        Reflection,
+        PlayerAttack
     }
 
     private void Awake()

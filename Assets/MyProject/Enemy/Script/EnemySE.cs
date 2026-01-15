@@ -27,6 +27,6 @@ public class EnemySE : MonoBehaviour
     private void PlayDamageSE()
     {
         //“G‚ÉUŒ‚‚ğ“–‚Ä‚½‚ÌSE‚ğÄ¶‚·‚éƒR[ƒh
-        m_seManager.OnPlayOneShot((SoundEffectName.OnEnemyDamage));
+        m_seManager.OnPlayOneShot((SoundEffectName.PlayerAttack));
     }
 }
