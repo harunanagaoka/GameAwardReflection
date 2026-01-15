@@ -27,12 +27,12 @@ public class AttackBehaviour : MonoBehaviour
 
         if (attack.TryGetComponent<AttackHitBox>(out AttackHitBox hitBox))
         {
-            hitBox.Initialize(transform.position, m_attackData.BlownAwayPower, m_attackData.BlownAwayTime, m_attackData.TimePenalty);
+            hitBox.Initialize(m_attackData.InitPos, m_attackData.BlownAwayPower, m_attackData.BlownAwayTime, m_attackData.TimePenalty);
         }
         else
         {
             var newhitBox = attack.AddComponent<AttackHitBox>();
-            newhitBox.Initialize(transform.position, m_attackData.BlownAwayPower, m_attackData.BlownAwayTime, m_attackData.TimePenalty);
+            newhitBox.Initialize(m_attackData.InitPos, m_attackData.BlownAwayPower, m_attackData.BlownAwayTime, m_attackData.TimePenalty);
         }
 
         yield return new WaitForSeconds(m_attackData.LifeTime);

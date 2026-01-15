@@ -97,14 +97,14 @@ public class PlayerBlownAway : MonoBehaviour
         m_playerEvents.OnBlownAwayCanceled?.Invoke();
     }
 
-    public void BlowAway(Vector3 enemyPos, float force, float time)
+    public void BlowAway(Vector3 basePos, float force, float time)
     {
         if (m_state != BlownAwayState.None || !m_isCanBlownAway)
             return;
 
         m_state = BlownAwayState.BlownAway;
 
-        Vector3 newDirection = transform.position - enemyPos;
+        Vector3 newDirection = transform.position - basePos;
         m_blowAwayDirection = newDirection.normalized;
         m_blowAwayForce = force;
         m_blowAwayTime = time;

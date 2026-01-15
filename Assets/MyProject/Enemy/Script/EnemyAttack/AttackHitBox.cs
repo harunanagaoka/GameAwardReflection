@@ -18,6 +18,11 @@ public class AttackHitBox : MonoBehaviour
         m_damage = damage;
     }
 
+    private void Update()
+    {
+        m_basePosition = transform.position;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent<PlayerBlownAway>(out PlayerBlownAway playerBlowAway))
