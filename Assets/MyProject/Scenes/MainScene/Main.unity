@@ -1864,7 +1864,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_enemyManager: {fileID: 49177877}
-  timeScale: 0
+  timeScale: 0.1
   slowTime: 0.3
 --- !u!4 &1596042142
 Transform:
