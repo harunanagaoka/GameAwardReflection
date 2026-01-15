@@ -45,4 +45,9 @@ public class PlayerAnimationController : MonoBehaviour
         m_animator.SetBool("Damage", false);
         m_animator.SetBool("Attack", false);
     }
+
+    private void OnDamageAnimationFinished()
+    {
+        SetIdle();
+    }
 }
