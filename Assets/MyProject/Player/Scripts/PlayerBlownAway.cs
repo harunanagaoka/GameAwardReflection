@@ -13,7 +13,9 @@ public class PlayerBlownAway : MonoBehaviour
 
     private BlownAwayState m_state = BlownAwayState.None;
 
-    private bool m_isCanBlownAway = false;
+    private PlayerState m_playerState;
+
+    //private bool m_isCanBlownAway = false;
 
     private Rigidbody m_rigidbody;
     private PlayerEvents m_playerEvents;
@@ -59,9 +61,10 @@ public class PlayerBlownAway : MonoBehaviour
     {
         m_rigidbody = GetComponent<Rigidbody>();
         m_playerEvents = GetComponent<PlayerEvents>();
+        m_playerState = GetComponent<PlayerState>();
 
-        m_playerEvents.OnDefence.AddListener(() => m_isCanBlownAway = true);
-        m_playerEvents.OnDefenceEnd.AddListener(() => m_isCanBlownAway = false);
+        //m_playerEvents.OnDefence.AddListener(() => m_isCanBlownAway = true);
+        //m_playerEvents.OnDefenceEnd.AddListener(() => m_isCanBlownAway = false);
 
         var sphere = m_playerDefenceCollider as SphereCollider;
         if (sphere != null)
@@ -74,13 +77,24 @@ public class PlayerBlownAway : MonoBehaviour
 
     void FixedUpdate()
     {
-        switch (m_state)
+        //switch (m_state)
+        //{
+        //    case BlownAwayState.BlownAway:
+        //        BlowAwayMove();
+        //        break;
+
+        //    case BlownAwayState.Inertia:
+        //        InertiaMove();
+        //        break;
+        //}
+
+        switch (m_playerState.CurrentState)
         {
-            case BlownAwayState.BlownAway:
+            case PlayerState.PlState.BlownAway:
                 BlowAwayMove();
                 break;
 
-            case BlownAwayState.Inertia:
+            case PlayerState.PlState.Inertia:
                 InertiaMove();
                 break;
         }
@@ -88,10 +102,14 @@ public class PlayerBlownAway : MonoBehaviour
 
     public void StopBlownAway()
     {
-        if (m_state != BlownAwayState.BlownAway)
+        //if (m_state != BlownAwayState.BlownAway)
+        //    return;
+
+        if (m_playerState.CurrentState != PlayerState.PlState.BlownAway)
             return;
 
         m_state = BlownAwayState.Inertia;
+        m_playerState.SetState(PlayerState.PlState.Inertia);
         m_inertiaRemainingTime = m_inertiaTime;
 
         m_playerEvents.OnBlownAwayCanceled?.Invoke();
@@ -99,10 +117,14 @@ public class PlayerBlownAway : MonoBehaviour
 
     public void BlowAway(Vector3 basePos, float force, float time)
     {
-        if (m_state != BlownAwayState.None || !m_isCanBlownAway)
+        //if (m_state != BlownAwayState.None || !m_isCanBlownAway)
+        //    return;
+
+        if (m_playerState.CurrentState != PlayerState.PlState.Defence)
             return;
 
         m_state = BlownAwayState.BlownAway;
+        m_playerState.SetState(PlayerState.PlState.BlownAway);
 
         Vector3 newDirection = transform.position - basePos;
         m_blowAwayDirection = newDirection.normalized;
@@ -115,7 +137,10 @@ public class PlayerBlownAway : MonoBehaviour
 
     public void Reflect(Vector3 normal)
     {
-        if (m_state == BlownAwayState.None)
+        //if (m_state == BlownAwayState.None)
+        //    return;
+
+        if (m_playerState.CurrentState == PlayerState.PlState.Idle)
             return;
 
         normal = normal.normalized;
@@ -146,6 +171,7 @@ public class PlayerBlownAway : MonoBehaviour
         if (m_inertiaRemainingTime <= 0f)
         {
             m_state = BlownAwayState.None;
+            m_playerState.SetState(PlayerState.PlState.Idle);
             m_playerEvents.OnBlownAwayEnd?.Invoke();
             return;
         }
@@ -191,6 +217,7 @@ public class PlayerBlownAway : MonoBehaviour
         if (m_blowAwayTime <= 0f)
         {
             m_state = BlownAwayState.None;
+            m_playerState.SetState(PlayerState.PlState.Idle);
             m_playerEvents.OnBlownAwayEnd?.Invoke();
         }
     }

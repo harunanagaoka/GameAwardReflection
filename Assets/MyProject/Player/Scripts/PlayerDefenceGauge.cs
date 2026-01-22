@@ -15,6 +15,8 @@ public class PlayerDefenceGauge : MonoBehaviour
 
     private PlayerEvents m_playerEvents;
 
+    private PlayerState m_playerState;
+
     private PlayerBlownAway m_playerBlownAway;
 
     private bool m_isKeepDefence;
@@ -27,14 +29,18 @@ public class PlayerDefenceGauge : MonoBehaviour
         m_playerBlownAway = GetComponent<PlayerBlownAway>();
         m_playerEvents = GetComponent<PlayerEvents>();
         m_playerEvents.OnDefence.AddListener(()=> m_isKeepDefence = true);
+        m_playerEvents.OnDefence.AddListener(SetDefenceState);
+        m_playerState = GetComponent<PlayerState>();
         //m_playerEvents.OnDefenceBleaked.AddListener(() => m_isKeepDefence = false);
         m_playerEvents.OnDefenceEnd.AddListener(() => m_isKeepDefence = false);
+        m_playerEvents.OnDefenceEnd.AddListener(SetDefenceEndState);
     }
 
     void Update()
     {
+        PlayerState.PlState state = m_playerState.CurrentState;
 
-        if (m_isKeepDefence && !m_playerBlownAway.IsBlownAway)
+        if (m_isKeepDefence && state != PlayerState.PlState.BlownAway)
         {
             DecreceDefenceGauge(m_decreceValue);
 
@@ -44,7 +50,7 @@ public class PlayerDefenceGauge : MonoBehaviour
             }
         }
 
-        if(!m_isKeepDefence && !m_playerBlownAway.IsBlownAway)
+        if(!m_isKeepDefence && state != PlayerState.PlState.BlownAway)
         {
             RecoveryDefenceGauge(m_recoveryValue);
         }
@@ -70,6 +76,20 @@ public class PlayerDefenceGauge : MonoBehaviour
     {
         m_currentGaugeValue = 0;
         m_playerEvents.OnDefenceBleaked?.Invoke();
+    }
+
+    private void SetDefenceState()
+    {
+        if(m_playerState.CurrentState != PlayerState.PlState.BlownAway || m_playerState.CurrentState != PlayerState.PlState.Defence)
+        m_playerState.SetState(PlayerState.PlState.Defence);
+    }
+
+    private void SetDefenceEndState()
+    {
+        if(m_playerState.CurrentState == PlayerState.PlState.Defence || m_playerState.CurrentState != PlayerState.PlState.BlownAway)
+        {
+            m_playerState.SetState(PlayerState.PlState.Idle);
+        }
     }
 
 }
