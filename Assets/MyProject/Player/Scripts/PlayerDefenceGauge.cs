@@ -19,6 +19,8 @@ public class PlayerDefenceGauge : MonoBehaviour
 
     private bool m_isKeepDefence;
 
+    public float DefencePercentage => m_currentGaugeValue / m_maxGaugeValue;
+
 
     void Start()
     {
@@ -31,11 +33,12 @@ public class PlayerDefenceGauge : MonoBehaviour
 
     void Update()
     {
+
         if (m_isKeepDefence && !m_playerBlownAway.IsBlownAway)
         {
             DecreceDefenceGauge(m_decreceValue);
 
-            if(m_currentGaugeValue < 0)
+            if(m_currentGaugeValue <= 0)
             {
                 ProcessGuardGaugeBreak();
             }
