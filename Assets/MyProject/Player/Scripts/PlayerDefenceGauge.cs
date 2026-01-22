@@ -27,7 +27,7 @@ public class PlayerDefenceGauge : MonoBehaviour
         m_playerBlownAway = GetComponent<PlayerBlownAway>();
         m_playerEvents = GetComponent<PlayerEvents>();
         m_playerEvents.OnDefence.AddListener(()=> m_isKeepDefence = true);
-        m_playerEvents.OnDefenceBleaked.AddListener(() => m_isKeepDefence = false);
+        //m_playerEvents.OnDefenceBleaked.AddListener(() => m_isKeepDefence = false);
         m_playerEvents.OnDefenceEnd.AddListener(() => m_isKeepDefence = false);
     }
 
