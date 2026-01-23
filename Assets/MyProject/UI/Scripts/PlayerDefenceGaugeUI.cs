@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PlayerDefenceGaugeUI : MonoBehaviour
 {
+
+    [SerializeField]
     private PlayerDefenceGauge m_defenceGauge;
 
     [SerializeField]
@@ -31,7 +33,7 @@ public class PlayerDefenceGaugeUI : MonoBehaviour
 
     private void Initialize()
     {
-        m_defenceGauge = PlayerManager.Instance.Players[0].GetComponent<PlayerDefenceGauge>();
+        //m_defenceGauge = PlayerManager.Instance.Players[0].GetComponent<PlayerDefenceGauge>();
         m_defenceGaugeSlider.value = m_defenceGauge.DefencePercentage;
     }
 }
