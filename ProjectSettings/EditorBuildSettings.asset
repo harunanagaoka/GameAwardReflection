@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MyProject/Scenes/ResultScene/Result.unity
     guid: 28afff36bfee84744b3f89865c793cf2
+  - enabled: 0
+    path: Assets/MyProject/Scenes/Tutorial/Movie.unity
+    guid: a83bb39085b7d324386419f878bd345e
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
