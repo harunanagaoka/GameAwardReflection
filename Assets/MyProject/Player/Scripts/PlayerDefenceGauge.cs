@@ -50,7 +50,7 @@ public class PlayerDefenceGauge : MonoBehaviour
         }
     }
 
-    private void DecreceDefenceGauge(float value)
+    public void DecreceDefenceGauge(float value)
     {
         if (m_currentGaugeValue > 0)
         {
