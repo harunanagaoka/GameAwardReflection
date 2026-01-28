@@ -11,6 +11,9 @@ public class PlayerDefenceGauge : MonoBehaviour
     [SerializeField]
     private float m_recoveryValue = 1;
 
+    [SerializeField]
+    private float m_attackDecreceValue = 100;
+
     private float m_currentGaugeValue;
 
     private PlayerEvents m_playerEvents;
@@ -24,11 +27,13 @@ public class PlayerDefenceGauge : MonoBehaviour
 
     void Start()
     {
+        m_currentGaugeValue = m_maxGaugeValue;
         m_playerBlownAway = GetComponent<PlayerBlownAway>();
         m_playerEvents = GetComponent<PlayerEvents>();
-        m_playerEvents.OnDefence.AddListener(()=> m_isKeepDefence = true);
+        m_playerEvents.OnDefence.AddListener(() => m_isKeepDefence = true);
         //m_playerEvents.OnDefenceBleaked.AddListener(() => m_isKeepDefence = false);
         m_playerEvents.OnDefenceEnd.AddListener(() => m_isKeepDefence = false);
+        m_playerEvents.OnBlownAway.AddListener(() => AttackDecreceDefenceGauge());
     }
 
     void Update()
@@ -36,7 +41,7 @@ public class PlayerDefenceGauge : MonoBehaviour
 
         if (m_isKeepDefence && !m_playerBlownAway.IsBlownAway)
         {
-            DecreceDefenceGauge(m_decreceValue);
+           // DecreceDefenceGauge(m_decreceValue);
 
             if(m_currentGaugeValue <= 0)
             {
@@ -72,4 +77,11 @@ public class PlayerDefenceGauge : MonoBehaviour
         m_playerEvents.OnDefenceBleaked?.Invoke();
     }
 
+    public void AttackDecreceDefenceGauge()
+    {
+        if (m_isKeepDefence)
+        {
+            m_currentGaugeValue -= m_attackDecreceValue;
+        }
+    }
 }

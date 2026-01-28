@@ -2375,6 +2375,7 @@ MonoBehaviour:
   m_maxGaugeValue: 100
   m_decreceValue: 1
   m_recoveryValue: 1
+  m_attackDecreceValue: 20
 --- !u!1 &7231919279034011422
 GameObject:
   m_ObjectHideFlags: 0
