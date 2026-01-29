@@ -46,5 +46,6 @@ public class AttackData : ScriptableObject
     public float TimePenalty => m_timePenalty;
 
     public float LifeTime => m_lifeTime;
+
 }
 

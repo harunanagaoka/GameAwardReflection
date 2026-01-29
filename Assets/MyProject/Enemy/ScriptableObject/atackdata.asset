@@ -20,3 +20,4 @@ MonoBehaviour:
   m_blownAwayTime: 0
   m_timePenalty: 0
   m_lifeTime: 1
+  m_guardGaugeDecreceValue: 100
