@@ -24,7 +24,7 @@ public class TimerTextView : MonoBehaviour
         int minutes = Mathf.FloorToInt(time / 60f);
         int seconds = Mathf.FloorToInt(time % 60f);
 
-        timerText.text = $"{minutes:00}:{seconds:00}";
+        timerText.text = $"{minutes:0}:{seconds:00}";
     }
 }
 
