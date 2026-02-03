@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerDefenceGauge : MonoBehaviour
 {
+
     [SerializeField]
     private float m_maxGaugeValue = 100;
 
