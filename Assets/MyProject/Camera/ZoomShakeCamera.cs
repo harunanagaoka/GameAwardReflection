@@ -14,22 +14,35 @@ public class ZoomShakeCamera : MonoBehaviour
     [SerializeField] private float shakePowerX = 0.15f;
     [SerializeField] private float shakePowerZ = 0.05f;
 
-    private Vector3 defaultLocalPosition;
-    private Coroutine effectCoroutine;
-
+    [Header("Enemy")]
     [SerializeField] private EnemyManager m_enemyManager;
+
     private EnemyEvents m_enemyEvent;
+    private Transform bossTransform;
+
+    private Vector3 defaultLocalPosition;
+    private Vector3 defaultParentPosition;
+    private Transform cameraParent;
+
+    private Coroutine effectCoroutine;
+    private bool isFollowingBoss = false;
 
     private void Awake()
     {
-        m_enemyManager.OnBossJoined += GetEnemyEvent;
-
         if (targetCamera == null)
         {
             targetCamera = Camera.main;
         }
 
+        cameraParent = targetCamera.transform.parent;
+
         defaultLocalPosition = targetCamera.transform.localPosition;
+        if (cameraParent != null)
+        {
+            defaultParentPosition = cameraParent.position;
+        }
+
+        m_enemyManager.OnBossJoined += GetEnemyEvent;
     }
 
     private void OnDisable()
@@ -44,8 +57,23 @@ public class ZoomShakeCamera : MonoBehaviour
 
     private void GetEnemyEvent()
     {
-        m_enemyEvent = m_enemyManager.BossEnemy.GetComponent<EnemyEvents>();
+        bossTransform = m_enemyManager.BossEnemy.transform;
+
+        m_enemyEvent = bossTransform.GetComponent<EnemyEvents>();
         m_enemyEvent.OnDamage.AddListener(PlayEffect);
+    }
+
+    private void LateUpdate()
+    {
+        if (!isFollowingBoss) return;
+        if (bossTransform == null || cameraParent == null) return;
+
+        // Åö å¸Ç´ÇÕêGÇÁÇ∏ÅAà íu(XZ)ÇæÇØí«è]
+        cameraParent.position = new Vector3(
+            bossTransform.position.x,
+            defaultParentPosition.y,
+            bossTransform.position.z
+        );
     }
 
     public void PlayEffect()
@@ -60,13 +88,15 @@ public class ZoomShakeCamera : MonoBehaviour
 
     private IEnumerator ZoomShakeRoutine()
     {
+        isFollowingBoss = true;
+
         Vector3 zoomPos =
             defaultLocalPosition + targetCamera.transform.forward * zoomDistance;
 
         // á@ ÉYÅ[ÉÄÉCÉì
         yield return MoveCameraRealtime(defaultLocalPosition, zoomPos, zoomTime);
 
-        // áA óhÇÍÅiÉYÅ[ÉÄà íuÇäÓèÄÇ…Åj
+        // áA óhÇÍ
         float elapsed = 0f;
         while (elapsed < holdTime)
         {
@@ -86,6 +116,8 @@ public class ZoomShakeCamera : MonoBehaviour
         yield return MoveCameraRealtime(zoomPos, defaultLocalPosition, zoomTime);
 
         targetCamera.transform.localPosition = defaultLocalPosition;
+
+        isFollowingBoss = false;
     }
 
     private IEnumerator MoveCameraRealtime(Vector3 from, Vector3 to, float duration)

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -1466423569623951928}
   - component: {fileID: 3984727128417661810}
   - component: {fileID: 5609564020203307224}
+  - component: {fileID: 2262730292157805929}
   m_Layer: 6
   m_Name: Enemy_WithModel
   m_TagString: Untagged
@@ -113,6 +114,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_seManager: {fileID: 0}
+--- !u!114 &2262730292157805929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3677717078595683746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e898120c3d5910c468f5222c8ce466fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SelectEnemy: {fileID: 3677717078595683746}
+  MovingLeft: -0.02
+  MovingRight: 0.02
+  MoveRange: 8.5
 --- !u!1001 &9177270521773101291
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -232,9 +249,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f5403641bd4d78e49b41cab22c0d233e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 782979653348725620}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f5403641bd4d78e49b41cab22c0d233e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3990744106902176351}
   m_SourcePrefab: {fileID: 100100000, guid: f5403641bd4d78e49b41cab22c0d233e, type: 3}
 --- !u!1 &8330919594692586938 stripped
 GameObject:
@@ -275,22 +289,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47564d240658e0a44aaec9c9f54862e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3990744106902176351
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8330919594692586938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e898120c3d5910c468f5222c8ce466fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SelectEnemy: {fileID: 8330919594692586938}
-  MovingLeft: -0.02
-  MovingRight: 0.02
-  MoveRange: 8.5
 --- !u!4 &8707304812285163264 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f5403641bd4d78e49b41cab22c0d233e, type: 3}
