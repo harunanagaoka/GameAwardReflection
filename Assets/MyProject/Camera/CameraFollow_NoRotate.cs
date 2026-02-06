@@ -6,11 +6,16 @@ public class CameraFollow_NoRotate : MonoBehaviour
     [SerializeField] private float smoothSpeed = 5f;
     [SerializeField] private string playerTag = "Player";
 
+    [Header("Camera Clamp (World Position)")]
+    [SerializeField] private float minX;
+    [SerializeField] private float maxX;
+    [SerializeField] private float minZ;
+    [SerializeField] private float maxZ;
+
     private Transform target;
 
     void LateUpdate()
     {
-        // まだプレイヤーがいなければ探す
         if (target == null)
         {
             GameObject player = GameObject.FindGameObjectWithTag(playerTag);
@@ -21,8 +26,12 @@ public class CameraFollow_NoRotate : MonoBehaviour
             return;
         }
 
-        // 位置だけ追従（回転は一切使わない）
         Vector3 desiredPos = target.position + offset;
+
+        // ★ ここが追加ポイント
+        desiredPos.x = Mathf.Clamp(desiredPos.x, minX, maxX);
+        desiredPos.z = Mathf.Clamp(desiredPos.z, minZ, maxZ);
+
         transform.position = Vector3.Lerp(
             transform.position,
             desiredPos,
