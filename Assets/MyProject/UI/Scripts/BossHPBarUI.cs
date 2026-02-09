@@ -1,54 +1,56 @@
-using UnityEngine;
-using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine;
+using UnityEngine.UI;
 
-public class BossHpBarUI : MonoBehaviour
+[RequireComponent(typeof(UnityEngine.UI.Slider))]
+public class BossHPBarUI : MonoBehaviour
 {
+    private EnemyEvents m_enemyEvents;
+
     [SerializeField]
     private EnemyManager m_enemyManager;
 
+    [Header("即時減少のHPバー")]
     [SerializeField]
-    private List<Image> m_hpFillImages = new List<Image>();
+    private List<Image> HPBars = new List<Image>();
 
+    [Header("フェーズごとの遅延HPバー")]
     [SerializeField]
-    private List<Image> m_decreaseHPFillImages = new List<Image>();
+    private List<Image> DelayBars = new List<Image>();
 
+    [Header("待機HPバー")]
     [SerializeField]
-    private List<float> faseRatioCurrent = new List<float>();
-    // HPフェーズ比率
+    private List<Image> HPBank = new List<Image>();
+
+    [Header("フェーズごとの攻撃ヒット数")]
+    [SerializeField]
+    private List<int> HitsAttack = new List<int>();
 
     private EnemyDamageable m_bossHP;
 
     private bool m_isInitialized = false;
-    // 初期化が完了したかどうか
 
-    private float m_prevHpRate = 1f;
-    // 前フレームのHP割合（HP減少を検知するため）
-
-    private Coroutine m_decreaseCoroutine;
-    // 遅延減少バーのアニメーション用コルーチン
-
-    [SerializeField]
-    private float m_decreaseDelay = 1.0f;
-    // HPが減ってから遅延バーが動き始めるまでの時間
-
-    [SerializeField]
-    private float m_decreaseDuration = 0.5f;
-    // 遅延バーが滑らかに減るアニメーション時間
-
-    private int m_currentPhase = 0; // 現在のフェーズ番号
+    // 現在のフェーズ
+    private int currentPhase = 0;
+    // 現在のフェーズでのヒット数
+    private int currentHitCount = 0;
 
     private void Start()
     {
-        // ボスが登場したときに Initialize を呼ぶよう登録
+        Image hpBarImage = HPBars[0];
+        hpBarImage.fillAmount = 1f;
+
         m_enemyManager.OnBossJoined += Initialize;
     }
 
     private void OnDisable()
     {
-        // 無効化時にイベント購読解除（メモリリーク防止）
         m_enemyManager.OnBossJoined -= Initialize;
+
+        if (m_enemyEvents != null)
+            m_enemyEvents.OnDamage.RemoveListener(ReduceHPUI);
     }
 
     void Update()
@@ -58,103 +60,86 @@ public class BossHpBarUI : MonoBehaviour
             return;
         }
 
-        // 現在のHP割合
-        float hpRate = m_bossHP.HitPoint / m_bossHP.MaxHitPoint;
-
-        // 即時反映バー更新
-        m_hpFillImage.fillAmount = hpRate;
-
-        // HPが減ったときだけ遅延バーを動かす
-        if (hpRate < m_prevHpRate)
-        {
-            if (m_decreaseCoroutine != null)
-            {
-                StopCoroutine(m_decreaseCoroutine);
-            }
-
-            m_decreaseCoroutine = StartCoroutine(DelayAndSmoothDecreaseBar(hpRate));
-        }
-
-        // ★ HPが0になった瞬間だけフェーズ切り替え
-        if (hpRate <= 0f && m_prevHpRate > 0f)
-        {
-            SwitchPhase();
-        }
-
-        // 次フレーム用に保存
-        m_prevHpRate = hpRate;
-    }
-
-
-    private IEnumerator DelayAndSmoothDecreaseBar(float targetRate)
-    {
-        // 指定秒数だけ待つ（ダメージ演出のため）
-        yield return new WaitForSeconds(m_decreaseDelay);
-
-        float start = m_decreaseHPFillImage.fillAmount;
-        // アニメーション開始時点の fillAmount
-
-        float time = 0f;
-
-        // 指定時間かけて滑らかに減らす
-        while (time < m_decreaseDuration)
-        {
-            time += Time.deltaTime;
-
-            // Lerpで徐々に targetRate に近づける
-            m_decreaseHPFillImage.fillAmount =
-                Mathf.Lerp(start, targetRate, time / m_decreaseDuration);
-
-            yield return null;
-        }
-
-        // 最終的に目標値に合わせる
-        m_decreaseHPFillImage.fillAmount = targetRate;
+        // debug用
+        if (Input.GetKeyDown(KeyCode.Space)) { ReduceHPUI(); }
     }
 
     private void Initialize()
     {
-        // ボスのHP情報を取得
+        // ★ すでに初期化済みなら何もしない（AddListener の多重登録を防ぐ）
+        if (m_isInitialized)
+            return;
+
         m_bossHP = m_enemyManager.BossHP;
 
-        // 初期HP割合を計算
-        float hpRate = m_bossHP.HitPoint / m_bossHP.MaxHitPoint;
+        // ★ EnemyEvents を取得
+        m_enemyEvents = m_enemyManager.BossEnemy.GetComponent<EnemyEvents>();
 
-        // 即時バーと遅延バーを満タンに設定
-        m_hpFillImage.fillAmount = hpRate;
-        m_decreaseHPFillImage.fillAmount = hpRate;
+        // ★ OnDamage に ReduceHPUI を登録
+        m_enemyEvents.OnDamage.AddListener(ReduceHPUI);
 
-        // 前回HP割合も初期値に
-        m_prevHpRate = hpRate;
-
-        // 初期化完了
         m_isInitialized = true;
+    }
+
+    public void ReduceHPUI()
+    {
+        if (!m_isInitialized || currentPhase >= HitsAttack.Count)
+            return;
+
+        currentHitCount++;
+
+        int totalHits = HitsAttack[currentPhase];
+        float hpRate = Mathf.Clamp01(1f - (float)currentHitCount / totalHits);
+
+        // 即時バー更新
+        HPBars[currentPhase].fillAmount = hpRate;
+
+        // 遅延バー開始
+        StartCoroutine(
+            DelayAndSmoothDecreaseBar(DelayBars[currentPhase].fillAmount, hpRate)
+        );
+
+        // フェーズ切り替え
+        if (currentHitCount >= totalHits)
+        {
+            SwitchPhase();
+        }
     }
 
     private void SwitchPhase()
     {
-        // 現在のフェーズのバーを非表示
-        if (Fillnum != null && m_currentPhase < Fillnum.Count)
+        currentPhase++;
+        currentHitCount = 0;
+
+        if(DelayBars[currentPhase-1].fillAmount == 0f)
         {
-            Fillnum[m_currentPhase].gameObject.SetActive(false);
+            DelayBars[currentPhase - 1].fillAmount = 0f;
         }
 
-        // 次のフェーズへ
-        m_currentPhase++;
-
-        // 次のフェーズのバーを表示
-        if (Fillnum != null && m_currentPhase < Fillnum.Count)
+        if (currentPhase >= HPBars.Count)
         {
-            Fillnum[m_currentPhase].gameObject.SetActive(true);
-
-            // HPバーを満タンにリセット
-            m_hpFillImage = Fillnum[m_currentPhase];
-            m_hpFillImage.fillAmount = 1f;
-            m_decreaseHPFillImage = Fillnum[m_currentPhase];
-            m_decreaseHPFillImage.fillAmount = 1f;
+            return;
         }
 
-        // 必要に応じて他の初期化処理や演出を追加
+        HPBank[currentPhase - 1].gameObject.SetActive(false);
+        HPBars[currentPhase - 1].fillAmount = 0f;
+
+        HPBars[currentPhase].fillAmount = 1f;
+        DelayBars[currentPhase].fillAmount = 1f;
+    }
+
+    IEnumerator DelayAndSmoothDecreaseBar(float startValue, float targetValue)
+    {
+        var delayBar = DelayBars[currentPhase];
+
+        yield return new WaitForSeconds(0.2f);
+
+        while (delayBar.fillAmount > targetValue)
+        {
+            delayBar.fillAmount =
+                Mathf.MoveTowards(delayBar.fillAmount, targetValue, 0.5f * Time.deltaTime);
+
+            yield return null;
+        }
     }
 }
-
