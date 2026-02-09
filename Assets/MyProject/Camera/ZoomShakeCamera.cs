@@ -4,6 +4,7 @@ using UnityEngine;
 public class ZoomShakeCamera : MonoBehaviour
 {
     [SerializeField] private Camera targetCamera;
+    [SerializeField] private CameraFollow_NoRotate cameraFollow; // ★ 追加
 
     [Header("Zoom Settings")]
     [SerializeField] private float zoomDistance = 2.0f;
@@ -68,7 +69,7 @@ public class ZoomShakeCamera : MonoBehaviour
         if (!isFollowingBoss) return;
         if (bossTransform == null || cameraParent == null) return;
 
-        // ★ 向きは触らず、位置(XZ)だけ追従
+        // ★ 向きは触らず、位置(XZ)のみ追従
         cameraParent.position = new Vector3(
             bossTransform.position.x,
             defaultParentPosition.y,
@@ -88,6 +89,8 @@ public class ZoomShakeCamera : MonoBehaviour
 
     private IEnumerator ZoomShakeRoutine()
     {
+        // ===== 演出開始 =====
+        cameraFollow.IsActive = false;   // ★ 通常追従OFF
         isFollowingBoss = true;
 
         Vector3 zoomPos =
@@ -117,7 +120,9 @@ public class ZoomShakeCamera : MonoBehaviour
 
         targetCamera.transform.localPosition = defaultLocalPosition;
 
+        // ===== 演出終了 =====
         isFollowingBoss = false;
+        cameraFollow.IsActive = true;    // ★ 通常追従ON
     }
 
     private IEnumerator MoveCameraRealtime(Vector3 from, Vector3 to, float duration)

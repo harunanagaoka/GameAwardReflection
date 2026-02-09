@@ -12,10 +12,14 @@ public class CameraFollow_NoRotate : MonoBehaviour
     [SerializeField] private float minZ;
     [SerializeField] private float maxZ;
 
+    public bool IsActive { get; set; } = true; // ★ 外部制御用
+
     private Transform target;
 
     void LateUpdate()
     {
+        if (!IsActive) return;
+
         if (target == null)
         {
             GameObject player = GameObject.FindGameObjectWithTag(playerTag);
@@ -28,7 +32,6 @@ public class CameraFollow_NoRotate : MonoBehaviour
 
         Vector3 desiredPos = target.position + offset;
 
-        // ★ ここが追加ポイント
         desiredPos.x = Mathf.Clamp(desiredPos.x, minX, maxX);
         desiredPos.z = Mathf.Clamp(desiredPos.z, minZ, maxZ);
 
