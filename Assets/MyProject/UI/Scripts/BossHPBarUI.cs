@@ -61,7 +61,7 @@ public class BossHPBarUI : MonoBehaviour
         }
 
         // debug—p
-        if (Input.GetKeyDown(KeyCode.Space)) { ReduceHPUI(); }
+        //if (Input.GetKeyDown(KeyCode.Space)) { ReduceHPUI(); }
     }
 
     private void Initialize()
