@@ -16,7 +16,7 @@ MonoBehaviour:
   m_attackPrefab: {fileID: 8876830103931732692, guid: ad744f625d33d3f4aabc8c4c20c32433, type: 3}
   m_attackRange: {fileID: 6819951490074240406, guid: d2c34a8dcc41a5e4eb4aa402a5537c3c, type: 3}
   m_warningDuration: 2
-  m_blownAwayPower: 1000
+  m_blownAwayPower: 300
   m_blownAwayTime: 10
   m_timePenalty: 10
   m_lifeTime: 0.2
