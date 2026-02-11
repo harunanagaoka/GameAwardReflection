@@ -9,10 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8fa69355c1236f4786671adbdfe7eb7, type: 3}
-  m_Name: Timeline_BossLv1
+  m_Script: {fileID: 11500000, guid: 65100a54d77b3da489f8334248da4383, type: 3}
+  m_Name: TestMoveTimeline_1
   m_EditorClassIdentifier: 
   m_timelines:
   - m_stepDatas:
-    - m_attackData: {fileID: 11400000, guid: df601d3b2508f164c917730aac212f9d, type: 2}
-    m_interval: 4
+    - m_targetPos: {x: 5, y: 0, z: 5}
+      m_moveDuration: 5
+      m_velocity: 3
+    - m_targetPos: {x: -5, y: 0, z: 5}
+      m_moveDuration: 5
+      m_velocity: 3
+    m_interval: 0.1

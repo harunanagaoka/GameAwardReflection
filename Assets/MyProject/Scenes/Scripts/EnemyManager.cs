@@ -9,6 +9,8 @@ public class EnemyManager : MonoBehaviour
 
     private EnemyAttackController m_bossAttackController;//ÇªÇÃÇ§Çøï°êîëŒâûÇ…Ç∑ÇÈ
 
+    private EnemyMoveController m_bossMoveController;
+
     private EnemyDamageable m_bossHP;
 
     private GameObject m_bossEnemy;//bossHP,bossEventsÇ÷ÇÃéQè∆Ç‡Ç±ÇøÇÁÇ…ìùçáó\íË
@@ -43,7 +45,9 @@ public class EnemyManager : MonoBehaviour
         m_bossEvents = bossObject.AddComponent<EnemyEvents>();
         m_bossHP = bossObject.AddComponent<EnemyDamageable>();
         var attackFactory = bossObject.AddComponent<EnemyAttackFactory>();
+        var enemyMover = bossObject.AddComponent<EnemyMover>();
         m_bossAttackController = bossObject.AddComponent<EnemyAttackController>();
+        m_bossMoveController = bossObject.AddComponent<EnemyMoveController>();
         var destroyer = bossObject.AddComponent<EnemyDestroy>();
         var effectPlayer = bossObject.GetComponent<EnemyEffectPlayer>();
         var SEPlayer = bossObject.GetComponent<EnemySE>();
@@ -51,6 +55,7 @@ public class EnemyManager : MonoBehaviour
         m_bossEvents.OnDeath.AddListener(OnBossDefeated);
         m_bossHP.Initialize(enemyData, m_bossEvents);
         m_bossAttackController.Initialize(enemyData, m_bossEvents,attackFactory);
+        m_bossMoveController.Initialize(enemyData, enemyMover);
         SetEnemyPhase(currentphase);
         destroyer.Initialize(m_bossEvents);
         effectPlayer.Initialize(m_bossEvents);
@@ -64,5 +69,6 @@ public class EnemyManager : MonoBehaviour
     public void SetEnemyPhase(int phase)
     {
         m_bossAttackController.OnPhaseChanged(phase);
+        m_bossMoveController.OnPhaseChanged(phase);
     }
 }

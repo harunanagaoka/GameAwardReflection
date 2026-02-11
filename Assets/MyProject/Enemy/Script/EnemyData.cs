@@ -24,6 +24,9 @@ public class EnemyData : ScriptableObject
     [SerializeField,Tooltip("“G‚ÌUŒ‚ƒpƒ^[ƒ“‚ª“o˜^‚Å‚«‚Ü‚·")]
     EnemyAttackPatternData m_enemyAttackPatternData;
 
+    [SerializeField,Tooltip("“G‚ÌˆÚ“®ƒpƒ^[ƒ“‚ª“o˜^‚Å‚«‚Ü‚·")]
+    EnemyMovePetternData m_enemyMovePetternData;
+
     [SerializeField,Tooltip("ƒtƒF[ƒY‚ª•Ï‚í‚éHPŠ„‡ERateˆÈ‰º‚É‚È‚é‚²‚Æ‚É‚Ð‚Æ‚Âi‚Ý‚Ü‚·")]
     private float[] m_phaseChangeRates;
 
@@ -43,6 +46,8 @@ public class EnemyData : ScriptableObject
     public float DamageEffectTime => m_damageEffectTime;
 
     public EnemyAttackPatternData AttackPetternData => m_enemyAttackPatternData;
+
+    public EnemyMovePetternData MovePetternData => m_enemyMovePetternData;
 
     public float[] PhaseChangeRates => m_phaseChangeRates;
 
