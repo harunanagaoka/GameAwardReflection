@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: EnemyAttackPattern
   m_EditorClassIdentifier: 
   m_attackTaskDatas:
-  - {fileID: 11400000, guid: 2f8f7e2e0c5d2994481e18c128b94262, type: 2}
+  - {fileID: 11400000, guid: 1fe42831dfab13646bb930b413059f2f, type: 2}
   - {fileID: 11400000, guid: 8a98d871081b94141a93fe69587580e9, type: 2}
   - {fileID: 11400000, guid: 1fed142bac8f6f448a398183e4824f72, type: 2}
