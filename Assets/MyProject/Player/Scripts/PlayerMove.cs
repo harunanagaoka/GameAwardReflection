@@ -18,7 +18,9 @@ public class PlayerMove : MonoBehaviour
 
     Rigidbody m_rigidbody;
 
-    private bool isCanMove = true;
+    private bool m_isCanMove = true;
+
+    private bool m_isStun = false;
 
     //“ü—Í•ûŒüŽó‚¯Žæ‚è
     private Vector3 m_inputDirection;
@@ -35,9 +37,12 @@ public class PlayerMove : MonoBehaviour
         m_playerEvents.OnMoveBackward.AddListener(() => m_inputDirection += Vector3.back);
         m_playerEvents.OnTurnLeft.AddListener(() => m_inputRotation -= rotationSpeed);
         m_playerEvents.OnTurnRight.AddListener(() => m_inputRotation += rotationSpeed);
-        m_playerEvents.OnBlownAway.AddListener(() => isCanMove = false);
-        m_playerEvents.OnBlownAwayCanceled.AddListener(() => isCanMove = true);
-        m_playerEvents.OnBlownAwayEnd.AddListener(() => isCanMove = true);
+        m_playerEvents.OnBlownAway.AddListener(() => m_isCanMove = false);
+        m_playerEvents.OnBlownAwayCanceled.AddListener(() => m_isCanMove = true);
+        m_playerEvents.OnBlownAwayEnd.AddListener(() => m_isCanMove = true);
+        m_playerEvents.OnStun.AddListener(() => m_isStun = true);
+        m_playerEvents.OnStunEnd.AddListener(()=> m_isStun = false);
+        m_playerEvents.OnStunEnd.AddListener(SetBaseVelocity);
         m_playerEvents.OnDefence.AddListener(SetDefendingVelocity);
         m_playerEvents.OnDefenceEnd.AddListener(SetBaseVelocity);
 
@@ -47,7 +52,7 @@ public class PlayerMove : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (isCanMove)
+        if (m_isCanMove && !m_isStun)
         {
 
             // ˆÚ“®
@@ -73,12 +78,18 @@ public class PlayerMove : MonoBehaviour
 
     private void SetDefendingVelocity()
     {
+
         m_currentVelocity = m_defendingVelocity;
     }
     
     private void SetBaseVelocity()
     {
         m_currentVelocity = m_baseVelocity;
+    }
+
+    public void SetCanMove(bool canMove)
+    {
+        m_isCanMove = canMove;
     }
 }
 
