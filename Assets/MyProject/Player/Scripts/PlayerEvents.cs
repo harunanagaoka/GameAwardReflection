@@ -10,9 +10,8 @@ public class PlayerEvents : MonoBehaviour
     public UnityEvent OnMoveLeft;
     public UnityEvent OnMoveForward;
     public UnityEvent OnMoveBackward;
-    //public UnityEvent OnTurnLeft;
-    //public UnityEvent OnTurnRight;
-    public UnityEvent<Vector2> OnRotate;
+    public UnityEvent OnTurnLeft;
+    public UnityEvent OnTurnRight;
     public UnityEvent OnStop;
 
     //ƒAƒNƒVƒ‡ƒ“
@@ -26,8 +25,6 @@ public class PlayerEvents : MonoBehaviour
     public UnityEvent OnBlownAway;
     public UnityEvent OnBlownAwayCanceled;
     public UnityEvent OnBlownAwayEnd;
-    public UnityEvent OnStun;
-    public UnityEvent OnStunEnd;
     public UnityEvent OnDamage;
     public UnityEvent<float> OnDamagePenalty;
     

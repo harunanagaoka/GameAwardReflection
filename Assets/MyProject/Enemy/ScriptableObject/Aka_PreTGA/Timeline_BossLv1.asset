@@ -15,4 +15,5 @@ MonoBehaviour:
   m_timelines:
   - m_stepDatas:
     - m_attackData: {fileID: 11400000, guid: df601d3b2508f164c917730aac212f9d, type: 2}
+    - m_attackData: {fileID: 11400000, guid: d1827e059dcab4b48b19fa11b6a4294b, type: 2}
     m_interval: 4

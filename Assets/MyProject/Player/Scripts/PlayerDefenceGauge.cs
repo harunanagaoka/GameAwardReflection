@@ -23,8 +23,6 @@ public class PlayerDefenceGauge : MonoBehaviour
 
     private bool m_isKeepDefence;
 
-    private bool m_isStun;
-
     public float DefencePercentage => m_currentGaugeValue / m_maxGaugeValue;
 
 
@@ -36,15 +34,13 @@ public class PlayerDefenceGauge : MonoBehaviour
         m_playerEvents.OnDefence.AddListener(() => m_isKeepDefence = true);
         //m_playerEvents.OnDefenceBleaked.AddListener(() => m_isKeepDefence = false);
         m_playerEvents.OnDefenceEnd.AddListener(() => m_isKeepDefence = false);
-        m_playerEvents.OnStun.AddListener(()=> m_isStun = true);
-        m_playerEvents.OnStunEnd.AddListener(()=> m_isStun = false);
-        m_playerEvents.OnDamage.AddListener(() => AttackDecreceDefenceGauge());
+        m_playerEvents.OnBlownAway.AddListener(() => AttackDecreceDefenceGauge());
     }
 
     void Update()
     {
 
-        if (m_isKeepDefence && !m_playerBlownAway.IsBlownAway && !m_isStun)
+        if (m_isKeepDefence && !m_playerBlownAway.IsBlownAway)
         {
            // DecreceDefenceGauge(m_decreceValue);
 
@@ -84,7 +80,7 @@ public class PlayerDefenceGauge : MonoBehaviour
 
     public void AttackDecreceDefenceGauge()
     {
-        if (m_isKeepDefence && !m_isStun)
+        if (m_isKeepDefence)
         {
             m_currentGaugeValue -= m_attackDecreceValue;
         }

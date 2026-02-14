@@ -71,10 +71,6 @@ public class GamepadInput : MonoBehaviour
             playerEvent.OnStartMove?.Invoke();
         }
 
-        if (isMoving)
-        {
-            playerEvent.OnRotate.Invoke(leftStick);
-        }
 
         if (isMoving)
         {
