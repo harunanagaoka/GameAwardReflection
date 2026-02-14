@@ -10,8 +10,6 @@ public class PlayerDamageable : Damageable
 
     private bool m_isDefending = false;
 
-    private bool m_isStun = false;
-
     private MainGameTimer m_mainGameTimer;
 
     protected override bool CanTakeDamageCore =>
@@ -27,9 +25,6 @@ public class PlayerDamageable : Damageable
         m_playerEvents.OnDefence.AddListener(() => m_isDefending = true);
         m_playerEvents.OnDefenceEnd.AddListener(() => m_isDefending = false);
         m_playerEvents.OnDamagePenalty.AddListener(TimePenalty);
-        m_playerEvents.OnStun.AddListener(() => m_isStun = true);
-        m_playerEvents.OnStunEnd.AddListener(() => m_isStun = false);
-
         m_maxHitInterval = m_playerData.DamageInterval;
     }
 

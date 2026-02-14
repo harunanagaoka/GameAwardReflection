@@ -10,8 +10,9 @@ public class PlayerEvents : MonoBehaviour
     public UnityEvent OnMoveLeft;
     public UnityEvent OnMoveForward;
     public UnityEvent OnMoveBackward;
-    public UnityEvent OnTurnLeft;
-    public UnityEvent OnTurnRight;
+    //public UnityEvent OnTurnLeft;
+    //public UnityEvent OnTurnRight;
+    public UnityEvent<Vector2> OnRotate;
     public UnityEvent OnStop;
 
     //ƒAƒNƒVƒ‡ƒ“
