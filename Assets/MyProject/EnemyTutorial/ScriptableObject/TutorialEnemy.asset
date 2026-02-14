@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8794af3d490b3cd4fb566ffedb61b42b, type: 3}
   m_Name: TutorialEnemy
   m_EditorClassIdentifier: 
-  m_prefab: {fileID: 3677717078595683746, guid: 89bb2975433f13d49aa3e6bd952cd18c, type: 3}
-  m_initPosition: {x: 7.5, y: 0, z: 0}
+  m_prefab: {fileID: 3677717078595683746, guid: be94aaccc77008b4485553fc40a385e7, type: 3}
+  m_initPosition: {x: 0, y: 0, z: 4}
   m_hitPoint: 299
   m_onDamageColor: {r: 1, g: 0, b: 0, a: 1}
   m_damageInterval: 0.5
   m_damageEffectTime: 0.5
-  m_enemyAttackPatternData: {fileID: 11400000, guid: 7ec396192571bd0489d80c394d25cd88, type: 2}
+  m_enemyAttackPatternData: {fileID: 11400000, guid: 2bbfc989c25db344995dad7b924b954d, type: 2}
   m_phaseChangeRates:
   - 0
   - 0
