@@ -121,7 +121,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3677717078595683746}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e898120c3d5910c468f5222c8ce466fd, type: 3}
   m_Name: 
@@ -197,27 +197,27 @@ PrefabInstance:
     - target: {fileID: -8616966979360992332, guid: f5403641bd4d78e49b41cab22c0d233e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 0e2f88ea1abbe004ba83705d79e815fd, type: 2}
+      objectReference: {fileID: 2100000, guid: f62682b936906db4da7a9426ddcce286, type: 2}
     - target: {fileID: -3305487462719769660, guid: f5403641bd4d78e49b41cab22c0d233e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 0e2f88ea1abbe004ba83705d79e815fd, type: 2}
+      objectReference: {fileID: 2100000, guid: f62682b936906db4da7a9426ddcce286, type: 2}
     - target: {fileID: -2823002789231928358, guid: f5403641bd4d78e49b41cab22c0d233e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 0e2f88ea1abbe004ba83705d79e815fd, type: 2}
+      objectReference: {fileID: 2100000, guid: f62682b936906db4da7a9426ddcce286, type: 2}
     - target: {fileID: -1993409010296328654, guid: f5403641bd4d78e49b41cab22c0d233e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 0e2f88ea1abbe004ba83705d79e815fd, type: 2}
+      objectReference: {fileID: 2100000, guid: f62682b936906db4da7a9426ddcce286, type: 2}
     - target: {fileID: -1204840228607952622, guid: f5403641bd4d78e49b41cab22c0d233e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 0e2f88ea1abbe004ba83705d79e815fd, type: 2}
+      objectReference: {fileID: 2100000, guid: f62682b936906db4da7a9426ddcce286, type: 2}
     - target: {fileID: -649878432491719562, guid: f5403641bd4d78e49b41cab22c0d233e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 0e2f88ea1abbe004ba83705d79e815fd, type: 2}
+      objectReference: {fileID: 2100000, guid: f62682b936906db4da7a9426ddcce286, type: 2}
     - target: {fileID: 919132149155446097, guid: f5403641bd4d78e49b41cab22c0d233e, type: 3}
       propertyPath: m_Name
       value: boos_anime_taiki_v02
@@ -225,19 +225,19 @@ PrefabInstance:
     - target: {fileID: 1501017438428671670, guid: f5403641bd4d78e49b41cab22c0d233e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 0e2f88ea1abbe004ba83705d79e815fd, type: 2}
+      objectReference: {fileID: 2100000, guid: f62682b936906db4da7a9426ddcce286, type: 2}
     - target: {fileID: 2946669853808996959, guid: f5403641bd4d78e49b41cab22c0d233e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 0e2f88ea1abbe004ba83705d79e815fd, type: 2}
+      objectReference: {fileID: 2100000, guid: f62682b936906db4da7a9426ddcce286, type: 2}
     - target: {fileID: 7086256797878703289, guid: f5403641bd4d78e49b41cab22c0d233e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 0e2f88ea1abbe004ba83705d79e815fd, type: 2}
+      objectReference: {fileID: 2100000, guid: f62682b936906db4da7a9426ddcce286, type: 2}
     - target: {fileID: 7974626576320163838, guid: f5403641bd4d78e49b41cab22c0d233e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 0e2f88ea1abbe004ba83705d79e815fd, type: 2}
+      objectReference: {fileID: 2100000, guid: f62682b936906db4da7a9426ddcce286, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 7514736498039866866, guid: f5403641bd4d78e49b41cab22c0d233e, type: 3}

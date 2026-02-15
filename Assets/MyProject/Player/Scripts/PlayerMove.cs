@@ -18,11 +18,13 @@ public class PlayerMove : MonoBehaviour
 
     Rigidbody m_rigidbody;
 
-    private bool isCanMove = true;
+    private bool m_isCanMove = true;
+
+    private bool m_isStun = false;
 
     //“ü—Í•ûŒüŽó‚¯Žæ‚è
     private Vector3 m_inputDirection;
-    private float m_inputRotation;
+    private Vector2 m_inputRotation;
 
     private void Start()
     {
@@ -33,11 +35,13 @@ public class PlayerMove : MonoBehaviour
         m_playerEvents.OnMoveLeft.AddListener(() => m_inputDirection += Vector3.left);
         m_playerEvents.OnMoveForward.AddListener(() => m_inputDirection += Vector3.forward);
         m_playerEvents.OnMoveBackward.AddListener(() => m_inputDirection += Vector3.back);
-        m_playerEvents.OnTurnLeft.AddListener(() => m_inputRotation -= rotationSpeed);
-        m_playerEvents.OnTurnRight.AddListener(() => m_inputRotation += rotationSpeed);
-        m_playerEvents.OnBlownAway.AddListener(() => isCanMove = false);
-        m_playerEvents.OnBlownAwayCanceled.AddListener(() => isCanMove = true);
-        m_playerEvents.OnBlownAwayEnd.AddListener(() => isCanMove = true);
+        m_playerEvents.OnRotate.AddListener(InputRotation);
+        m_playerEvents.OnBlownAway.AddListener(() => m_isCanMove = false);
+        m_playerEvents.OnBlownAwayCanceled.AddListener(() => m_isCanMove = true);
+        m_playerEvents.OnBlownAwayEnd.AddListener(() => m_isCanMove = true);
+        m_playerEvents.OnStun.AddListener(() => m_isStun = true);
+        m_playerEvents.OnStunEnd.AddListener(()=> m_isStun = false);
+        m_playerEvents.OnStunEnd.AddListener(SetBaseVelocity);
         m_playerEvents.OnDefence.AddListener(SetDefendingVelocity);
         m_playerEvents.OnDefenceEnd.AddListener(SetBaseVelocity);
 
@@ -47,7 +51,7 @@ public class PlayerMove : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (isCanMove)
+        if (m_isCanMove && !m_isStun)
         {
 
             // ˆÚ“®
@@ -58,27 +62,39 @@ public class PlayerMove : MonoBehaviour
             }
 
             // ‰ñ“]
-            if (m_inputRotation != 0)
+            if (m_inputRotation != Vector2.zero)
             {
-                Quaternion deltaRotation = Quaternion.Euler(0, m_inputRotation * Time.fixedDeltaTime, 0);
-                m_rigidbody.MoveRotation(m_rigidbody.rotation * deltaRotation);
+                Vector3 dir = new Vector3(m_inputRotation.x, 0f, m_inputRotation.y);
+                Quaternion targetRot = Quaternion.LookRotation(dir, Vector3.up);
+                m_rigidbody.MoveRotation(targetRot);
             }
 
         }
 
         // ƒŠƒZƒbƒg
         m_inputDirection = Vector3.zero;
-        m_inputRotation = 0;
+        m_inputRotation = Vector2.zero;
     }
 
     private void SetDefendingVelocity()
     {
+
         m_currentVelocity = m_defendingVelocity;
     }
     
     private void SetBaseVelocity()
     {
         m_currentVelocity = m_baseVelocity;
+    }
+
+    public void SetCanMove(bool canMove)
+    {
+        m_isCanMove = canMove;
+    }
+
+    private void InputRotation(Vector2 rotate)
+    {
+        m_inputRotation = rotate;
     }
 }
 
