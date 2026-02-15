@@ -25,7 +25,6 @@ public class PlayerDamageable : Damageable
         m_playerEvents.OnDefence.AddListener(() => m_isDefending = true);
         m_playerEvents.OnDefenceEnd.AddListener(() => m_isDefending = false);
         m_playerEvents.OnDamagePenalty.AddListener(TimePenalty);
-
         m_maxHitInterval = m_playerData.DamageInterval;
     }
 

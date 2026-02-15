@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d8fa69355c1236f4786671adbdfe7eb7, type: 3}
-  m_Name: Timeline_BossLv1
+  m_Name: WithEnergyTimeline
   m_EditorClassIdentifier: 
   m_timelines:
   - m_stepDatas:
-    - m_attackData: {fileID: 11400000, guid: df601d3b2508f164c917730aac212f9d, type: 2}
-    m_interval: 4
+    - m_attackData: {fileID: 11400000, guid: b2ea0f54b4bab7048ae6f2950d85a302, type: 2}
+    m_interval: 1.5
