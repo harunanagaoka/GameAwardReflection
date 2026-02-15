@@ -81,4 +81,9 @@ public class PhaseController : MonoBehaviour
     {
         OnAllPhasesCompleted?.Invoke();
     }
+
+    public float GetCurrentPhaseProgress()
+    {
+        return m_gamePhaseData.GetCurrentPhaseProgress(m_currentPhase, m_bossEnemy);
+    }
 }

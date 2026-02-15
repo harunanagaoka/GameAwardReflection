@@ -10,6 +10,10 @@ public class PlayerDamageable : Damageable
 
     private bool m_isDefending = false;
 
+    private float m_currentHitPoint;
+
+    public float HitPoint => m_currentHitPoint;
+
     private MainGameTimer m_mainGameTimer;
 
     protected override bool CanTakeDamageCore =>
@@ -25,7 +29,10 @@ public class PlayerDamageable : Damageable
         m_playerEvents.OnDefence.AddListener(() => m_isDefending = true);
         m_playerEvents.OnDefenceEnd.AddListener(() => m_isDefending = false);
         m_playerEvents.OnDamagePenalty.AddListener(TimePenalty);
+        m_playerEvents.OnDamagePenalty.AddListener(DecreaseHP);
         m_maxHitInterval = m_playerData.DamageInterval;
+
+        m_currentHitPoint = m_playerData.MaxHitPoint;
     }
 
     protected override void OnDamageEvent()
@@ -36,6 +43,11 @@ public class PlayerDamageable : Damageable
     protected override void OnDamagePenaltyEvent(float damage)
     {
         m_playerEvents.OnDamagePenalty?.Invoke(damage);
+    }
+
+    private void DecreaseHP(float damage)
+    {
+        m_currentHitPoint -= damage;
     }
 
     //protected override void OnDeathEvent()
