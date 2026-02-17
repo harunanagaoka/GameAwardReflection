@@ -491,10 +491,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4132995750109314393, guid: e72f3be431dac9949964f9f20ee53f5b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5836299895441654697}
+      addedObject: {fileID: 4728114069622986148}
     - targetCorrespondingSourceObject: {fileID: 4132995750109314393, guid: e72f3be431dac9949964f9f20ee53f5b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4728114069622986148}
+      addedObject: {fileID: 7934137703311535926}
   m_SourcePrefab: {fileID: 100100000, guid: e72f3be431dac9949964f9f20ee53f5b, type: 3}
 --- !u!114 &63135945409387720 stripped
 MonoBehaviour:
@@ -605,32 +605,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4132995750109314393, guid: e72f3be431dac9949964f9f20ee53f5b, type: 3}
   m_PrefabInstance: {fileID: 5255545213697860554}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5836299895441654697
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8193221152013934227}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0028be63ac2327a47a0b1fd2977caf92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_enemyManager: {fileID: 0}
-  HPBars:
-  - {fileID: 5845251595138644562}
-  - {fileID: 3350968458318563738}
-  - {fileID: 2925431683702894448}
-  DelayBars:
-  - {fileID: 366803686465663917}
-  - {fileID: 6797512888338497749}
-  - {fileID: 5121681204055462936}
-  HPBank:
-  - {fileID: 660383780874369410}
-  - {fileID: 8467960969512276901}
-  - {fileID: 1554410908076994701}
-  HitsAttack: 030000000500000005000000
 --- !u!114 &4728114069622986148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -682,6 +656,32 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7934137703311535926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8193221152013934227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bef5aba8456452419880c6ec1bfa882, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_enemyManager: {fileID: 0}
+  m_phaseController: {fileID: 0}
+  HPBars:
+  - {fileID: 5845251595138644562}
+  - {fileID: 3350968458318563738}
+  - {fileID: 2925431683702894448}
+  DelayBars:
+  - {fileID: 366803686465663917}
+  - {fileID: 6797512888338497749}
+  - {fileID: 5121681204055462936}
+  HPBank:
+  - {fileID: 660383780874369410}
+  - {fileID: 8467960969512276901}
+  - {fileID: 1554410908076994701}
 --- !u!114 &8467960969512276901 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4425718075611017327, guid: e72f3be431dac9949964f9f20ee53f5b, type: 3}

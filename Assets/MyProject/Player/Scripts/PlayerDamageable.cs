@@ -12,12 +12,14 @@ public class PlayerDamageable : Damageable
 
     private float m_currentHitPoint;
 
+    private bool m_isStun = false;
+
     public float HitPoint => m_currentHitPoint;
 
     private MainGameTimer m_mainGameTimer;
 
     protected override bool CanTakeDamageCore =>
-    base.CanTakeDamageCore && !m_isDefending;
+    base.CanTakeDamageCore && !m_isDefending && !m_isStun;
 
     protected override void Start()
     {
@@ -28,6 +30,8 @@ public class PlayerDamageable : Damageable
         m_playerEvents = GetComponent<PlayerEvents>();
         m_playerEvents.OnDefence.AddListener(() => m_isDefending = true);
         m_playerEvents.OnDefenceEnd.AddListener(() => m_isDefending = false);
+        m_playerEvents.OnStun.AddListener(() => m_isStun = true);
+        m_playerEvents.OnStunEnd.AddListener(()=>  m_isStun = false);
         m_playerEvents.OnDamagePenalty.AddListener(TimePenalty);
         m_playerEvents.OnDamagePenalty.AddListener(DecreaseHP);
         m_maxHitInterval = m_playerData.DamageInterval;
