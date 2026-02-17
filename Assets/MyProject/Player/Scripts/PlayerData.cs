@@ -10,6 +10,9 @@ public class PlayerData : ScriptableObject
     //private float m_speed;
 
     [SerializeField]
+    private float m_maxHitPoint = 100;
+
+    [SerializeField]
     private float m_maxDamageInterval = 0;
 
     //public Vector3 SpawnPos => m_spawnPos;
@@ -17,5 +20,7 @@ public class PlayerData : ScriptableObject
     //public float Speed => m_speed;
 
     public float DamageInterval => m_maxDamageInterval;
+
+    public float MaxHitPoint => m_maxHitPoint;
 
 }
