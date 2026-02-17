@@ -12,12 +12,19 @@ public class AttackHitBox : MonoBehaviour
 
     private BreakDefenceAttack m_breakDefence = null;
 
+    private ActionStunAttack m_stunAttack = null;
+
     public void Initialize(Vector3 basePosition,float blownAwayPower, float blownAwayTime,float damage)
     {
         m_basePosition = basePosition;
         m_blownAwayPower = blownAwayPower;
         m_blownAwayTime = blownAwayTime;
         m_damage = damage;
+
+        if (TryGetComponent<ActionStunAttack>(out ActionStunAttack stun))
+        {
+            m_stunAttack = stun;
+        }
 
         if (TryGetComponent<BreakDefenceAttack>(out BreakDefenceAttack breakDefence))
         {
@@ -41,6 +48,12 @@ public class AttackHitBox : MonoBehaviour
         {
             //防御キャンセル
             m_breakDefence.BreakDefence();
+        }
+
+        if (m_stunAttack)
+        {
+            //スタン
+            m_stunAttack.StartStunCoroutine();
         }
 
         if (other.TryGetComponent<PlayerDamageable>(out PlayerDamageable playerDamageable))

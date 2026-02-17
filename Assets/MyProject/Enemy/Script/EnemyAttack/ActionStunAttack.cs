@@ -11,10 +11,9 @@ public class ActionStunAttack : MonoBehaviour
     private void Start()
     {
         m_playerEvents = PlayerManager.Instance.Players[0].GetComponent<PlayerEvents>();
-        m_playerEvents.OnDamage.AddListener(StartStunCoroutine);
     }
     
-    private void StartStunCoroutine()
+    public void StartStunCoroutine()
     {
         StartCoroutine(StunPlayer());
     }

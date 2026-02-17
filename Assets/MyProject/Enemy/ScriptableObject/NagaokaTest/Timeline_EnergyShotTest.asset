@@ -16,3 +16,6 @@ MonoBehaviour:
   - m_stepDatas:
     - m_attackData: {fileID: 11400000, guid: b2ea0f54b4bab7048ae6f2950d85a302, type: 2}
     m_interval: 1.5
+  - m_stepDatas:
+    - m_attackData: {fileID: 11400000, guid: 0a1af2234798e6b4abdce6b423a0e1fb, type: 2}
+    m_interval: 3

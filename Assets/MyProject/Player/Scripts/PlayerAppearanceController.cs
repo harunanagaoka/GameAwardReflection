@@ -18,6 +18,7 @@ public class PlayerAppearanceController : MonoBehaviour
 
     private bool m_isDefending = false;
     private bool m_isBlownAway = false;
+    private bool m_isStun = false;
 
     // Åö çUåÇécÇËéûä‘
     private float m_attackTimer = 0f;
@@ -33,10 +34,13 @@ public class PlayerAppearanceController : MonoBehaviour
 
         m_playerEvents.OnDefence.AddListener(() => m_isDefending = true);
         m_playerEvents.OnDefenceEnd.AddListener(() => m_isDefending = false);
+        m_playerEvents.OnStun.AddListener(() => m_isStun = true);
+        m_playerEvents.OnStunEnd.AddListener( () => m_isStun = false);
 
         m_playerEvents.OnBlownAway.AddListener(() => m_isBlownAway = true);
         m_playerEvents.OnBlownAwayCanceled.AddListener(() => m_isBlownAway = false);
         m_playerEvents.OnBlownAwayEnd.AddListener(() => m_isBlownAway = false);
+
 
         //m_playerEvents.OnBlownAwayCanceled.AddListener(OnAttack);
 
@@ -72,12 +76,21 @@ public class PlayerAppearanceController : MonoBehaviour
     {
         bool isAttacking = m_attackTimer > 0f;
 
-        // óDêÊèáà :
-        // ãÖëÃ > çUåÇ > í èÌ
-        bool showBall = m_isBlownAway || m_isDefending;
-        //bool showAttack = !showBall && isAttacking;
-        bool showHuman = !showBall;
+        bool showBall;
+        bool showHuman;
 
+        if (m_isStun)
+        {
+            showBall = false;
+            showHuman = true;
+        }
+        else
+        {
+            // óDêÊèáà :
+            // ãÖëÃ > çUåÇ > í èÌ
+            showBall = m_isBlownAway || m_isDefending;
+            showHuman = !showBall;
+        }
         SetActiveSafe(m_ballModel, showBall);
         //SetActiveSafe(m_attackModel, showAttack);
         SetActiveSafe(m_humanModel, showHuman);
