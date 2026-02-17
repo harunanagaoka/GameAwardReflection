@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class KeyboardInput : MonoBehaviour
 {
     private List<PlayerEvents> m_playerEvents = new List<PlayerEvents>();
+    private SEManager m_seManager;
 
     private bool m_wasInit = false;
 
@@ -54,6 +55,7 @@ public class KeyboardInput : MonoBehaviour
         {
             PlayerManager.Instance.OnResisterPlayer += Initialize;
         }// Initialize();
+        m_seManager = Object.FindFirstObjectByType<SEManager>();
     }
 
     private void OnDisable()
@@ -90,6 +92,11 @@ public class KeyboardInput : MonoBehaviour
             foreach (var plevent in m_playerEvents)
             {
                 plevent.OnDefence?.Invoke();
+            }
+            //SEçƒê∂
+            if (m_seManager != null)
+            {
+                m_seManager.OnPlayOneShot(SEManager.SoundEffectName.PlayerGard);
             }
         }
 
