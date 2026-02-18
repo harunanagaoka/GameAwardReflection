@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2bf7b53af7bd5e4996fcdb07f08f742, type: 3}
+  m_Name: ShootDebris R
+  m_EditorClassIdentifier: 
+  m_initPos: {x: 5, y: 0, z: 4}
+  m_attackPrefab: {fileID: 3793399201196985688, guid: 87f93c3bc93a661498e777de84f2fa99, type: 3}
+  m_attackRange: {fileID: 3793399201196985688, guid: d3d735062de72ad44a90f99b26395a86, type: 3}
+  m_warningDuration: 2
+  m_blownAwayPower: 400
+  m_blownAwayTime: 10
+  m_timePenalty: 0
+  m_lifeTime: 2
