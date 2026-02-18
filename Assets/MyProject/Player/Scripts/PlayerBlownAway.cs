@@ -216,4 +216,12 @@ public class PlayerBlownAway : MonoBehaviour
         float decayRate = Mathf.Pow(m_targetForceRatio, 1f / steps);
         return Mathf.Clamp(decayRate, 0f, 1f);
     }
+
+    //private void SetStunFlag()
+    //{
+    //    if (m_state != BlownAwayState.BlownAway)
+    //    {
+    //        m_isStun = true;
+    //    }
+    //}
 }//‚«”ò‚Î‚µ‚Í“G‚ÌUŒ‚‘¤‚©‚çŒÄ‚Ño‚·B‚Ê‚é‚Û‚ª•|‚¢‚Ì‚ÅB
