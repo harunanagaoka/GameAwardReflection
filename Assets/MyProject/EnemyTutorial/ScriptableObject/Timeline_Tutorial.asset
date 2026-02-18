@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_timelines:
   - m_stepDatas:
+    - m_attackData: {fileID: 11400000, guid: b0f5d297cda66ad409db0bd7260525de, type: 2}
     - m_attackData: {fileID: 11400000, guid: a631bf4fdfde31249b6227736dd35818, type: 2}
-    m_interval: 4
+    m_interval: 5
