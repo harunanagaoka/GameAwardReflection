@@ -6,10 +6,8 @@ TagManager:
   tags:
   - Attack
   - FxTemporaire
-  - RocketPunch
-  - ElectricFieldAttack
   - Undefined
-  - ElectricGun
+  - Enemy
   layers:
   - Default
   - TransparentFX
