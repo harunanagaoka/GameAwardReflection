@@ -1,3 +1,4 @@
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -16,7 +17,8 @@ public class TutorialManager : MonoBehaviour
     [SerializeField]
     private EnemyData m_tutorialEnemyData;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private EnemyEvents m_bossEvents;
+
     void Start()
     {
         if (m_isDebug)
@@ -24,6 +26,17 @@ public class TutorialManager : MonoBehaviour
             m_playerGenerator.GeneratePlayer();
             m_enemyManager.Initialize();
             m_enemyManager.SpawnBossEnemy(m_tutorialEnemyData, 0);
+
+            // ボスのEnemyEvents取得＆OnDeath登録
+            var boss = m_enemyManager.BossEnemy;
+            if (boss != null)
+            {
+                m_bossEvents = boss.GetComponent<EnemyEvents>();
+                if (m_bossEvents != null)
+                {
+                    m_bossEvents.OnDeath.AddListener(OnBossDeath);
+                }
+            }
         }
     }
 
@@ -31,14 +44,22 @@ public class TutorialManager : MonoBehaviour
     {
         var gamepad = Gamepad.current;
 
-        if (Input.GetKeyDown((KeyCode.Space)))
-        {
-            SceneManager.LoadScene("Main");
-        }
+        //デバッグ用：スペースキーまたはゲームパッドの〇ボタンでシーン遷移
+        //if (Input.GetKeyDown((KeyCode.Space)))
+        //{
+        //    SceneManager.LoadScene("Main");
+        //}
 
-        if (gamepad != null && gamepad.buttonEast.wasPressedThisFrame)
-        {
-            SceneManager.LoadScene("Main");
-        }
+        //if (gamepad != null && gamepad.buttonEast.wasPressedThisFrame)
+        //{
+        //    SceneManager.LoadScene("Main");
+        //}
+    }
+
+    private void OnBossDeath()
+    {
+        // 敵が死んだら次のシーンへ
+        SceneManager.LoadScene("Main");
     }
 }
+
