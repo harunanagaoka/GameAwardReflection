@@ -22,7 +22,7 @@ public class HurtSoundSwitcher : MonoBehaviour
         // 共通のダメージSEを鳴らす（例: PlayerNumb）
         if (m_seManager != null)
         {
-            m_seManager.OnPlayOneShot(SEManager.SoundEffectName.BossPunchHit);
+            //m_seManager.OnPlayOneShot(SEManager.SoundEffectName.BossPunchHit);
         }
     }
 }

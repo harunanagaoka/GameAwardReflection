@@ -1367,6 +1367,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7934137703311535926, guid: 431bc26b8953e0a40bf4ccdd3edd814d, type: 3}
+      propertyPath: m_enemyManager
+      value: 
+      objectReference: {fileID: 49177877}
+    - target: {fileID: 7934137703311535926, guid: 431bc26b8953e0a40bf4ccdd3edd814d, type: 3}
+      propertyPath: m_phaseController
+      value: 
+      objectReference: {fileID: 1535699874}
     - target: {fileID: 8263762068902918830, guid: 431bc26b8953e0a40bf4ccdd3edd814d, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -1708,6 +1716,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e18b2a3cd39df6b44baabcb50f639379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1535699874 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7032904274946223647, guid: 2e2e59e7b8a48214ea038be4d3947d64, type: 3}
+  m_PrefabInstance: {fileID: 1535699871}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36198da1a92d4b24abfc84a5414e0f6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1545241633
