@@ -2091,6 +2091,7 @@ GameObject:
   - component: {fileID: 6708979751570653486}
   - component: {fileID: 5365932692700092416}
   - component: {fileID: 7107605182486372258}
+  - component: {fileID: -4685726678156842664}
   m_Layer: 0
   m_Name: Player_WithAnimation
   m_TagString: Player
@@ -2364,6 +2365,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 000457bb946ad1a4e920fc1dca142205, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_damage: 100
+--- !u!114 &-4685726678156842664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7007556205150508085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4718ee71f328e674e8f35eeac3fabd0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7231919279034011422

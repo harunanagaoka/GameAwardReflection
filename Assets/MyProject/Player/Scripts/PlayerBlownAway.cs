@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 [RequireComponent(typeof(PlayerEvents), typeof(Rigidbody))]
 public class PlayerBlownAway : MonoBehaviour
@@ -11,9 +12,9 @@ public class PlayerBlownAway : MonoBehaviour
     }
 
     private BlownAwayState m_state = BlownAwayState.None;
+    private SEManager m_seManager;
 
     private bool m_isCanBlownAway = false;
-    private bool m_isStun = false;
 
     private Rigidbody m_rigidbody;
     private PlayerEvents m_playerEvents;
@@ -59,11 +60,10 @@ public class PlayerBlownAway : MonoBehaviour
     {
         m_rigidbody = GetComponent<Rigidbody>();
         m_playerEvents = GetComponent<PlayerEvents>();
+        m_seManager = Object.FindFirstObjectByType<SEManager>();
 
         m_playerEvents.OnDefence.AddListener(() => m_isCanBlownAway = true);
         m_playerEvents.OnDefenceEnd.AddListener(() => m_isCanBlownAway = false);
-        m_playerEvents.OnStun.AddListener(() => m_isStun = true);
-        m_playerEvents.OnStunEnd.AddListener(()=>  m_isStun = false);
 
         var sphere = m_playerDefenceCollider as SphereCollider;
         if (sphere != null)
@@ -101,7 +101,7 @@ public class PlayerBlownAway : MonoBehaviour
 
     public void BlowAway(Vector3 basePos, float force, float time)
     {
-        if (m_state != BlownAwayState.None || !m_isCanBlownAway || m_isStun)
+        if (m_state != BlownAwayState.None || !m_isCanBlownAway)
             return;
 
         m_state = BlownAwayState.BlownAway;
@@ -123,7 +123,15 @@ public class PlayerBlownAway : MonoBehaviour
         normal = normal.normalized;
         m_blowAwayDirection = Vector3.Reflect(m_blowAwayDirection, normal);
         m_blowAwayForce *= m_bounceMultiplier;
+
+        //SEçƒê∂
+        if (m_seManager != null)
+        {
+            m_seManager.OnPlayOneShot(SEManager.SoundEffectName.Reflection);
+        }
+
     }
+
 
     private void BlowAwayMove()
     {

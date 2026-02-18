@@ -16,7 +16,14 @@ public class SEManager : MonoBehaviour
     {
         PlayerAttackClow,
         Reflection,
-        PlayerAttack
+        PlayerAttack,
+        PlayerGard,
+        PlayerNumb,
+        BossElectricGun,
+        BossPunch,
+        BossPunchHit,
+        BossPunchWallHit,
+        EnemyAttackAlart
     }
 
     private void Awake()
