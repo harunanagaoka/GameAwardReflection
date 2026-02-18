@@ -19,4 +19,4 @@ MonoBehaviour:
   m_blownAwayPower: 800
   m_blownAwayTime: 10
   m_timePenalty: 10
-  m_lifeTime: 0.15
+  m_lifeTime: 5

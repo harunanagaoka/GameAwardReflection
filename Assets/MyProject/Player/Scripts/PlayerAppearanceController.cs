@@ -102,4 +102,12 @@ public class PlayerAppearanceController : MonoBehaviour
         if (obj.activeSelf == active) return;
         obj.SetActive(active);
     }
+
+    //private void SetStunFlag()
+    //{
+    //    if (!m_isBlownAway)
+    //    {
+    //        m_isStun = true;
+    //    }
+    //}
 }
