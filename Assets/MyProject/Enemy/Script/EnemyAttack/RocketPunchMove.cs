@@ -53,10 +53,14 @@ public class RocketPunchMove : MonoBehaviour
 
     public void Move()
     {
-       transform.position += transform.forward * m_speed * Time.fixedDeltaTime;
+        transform.position += transform.forward * m_speed * Time.fixedDeltaTime;
 
         //SEçƒê∂
+<<<<<<< HEAD
         if (m_seManager != null && seCount ==0)
+=======
+        if (m_seManager != null && seCount == 0)
+>>>>>>> Alpha/035
         {
             m_seManager.OnPlayOneShot(SEManager.SoundEffectName.BossPunch);
             seCount++;

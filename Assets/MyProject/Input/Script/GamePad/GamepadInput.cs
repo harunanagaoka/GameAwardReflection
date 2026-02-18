@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 
 public class GamepadInput : MonoBehaviour
 {
+    private SEManager m_seManager;
+
     private List<PlayerEvents> m_playerEvents = new List<PlayerEvents>();
 
     private List<bool> m_wasMoving = new List<bool>();//OnStopåƒÇ—èoÇµóp
@@ -18,6 +20,7 @@ public class GamepadInput : MonoBehaviour
         if (PlayerManager.Instance != null)
         {
             PlayerManager.Instance.OnResisterPlayer += Initialize;
+            m_seManager = Object.FindFirstObjectByType<SEManager>();
         }
         m_seManager = GetComponent<SEManager>();
     }
@@ -125,11 +128,16 @@ public class GamepadInput : MonoBehaviour
         if (gamepad.rightTrigger.wasPressedThisFrame)
         {
             playerEvent.OnDefence?.Invoke();
+<<<<<<< HEAD
             //SEçƒê∂
             if (m_seManager != null)
             {
                 m_seManager.OnPlayOneShot(SEManager.SoundEffectName.PlayerGard);
             }
+=======
+
+            m_seManager.OnPlayOneShot(SEManager.SoundEffectName.PlayerGard);
+>>>>>>> Alpha/035
         }
         if (gamepad.rightTrigger.wasReleasedThisFrame)
         {

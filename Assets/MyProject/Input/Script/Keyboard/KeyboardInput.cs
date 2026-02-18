@@ -6,6 +6,8 @@ using UnityEngine.Events;
 
 public class KeyboardInput : MonoBehaviour
 {
+    private SEManager m_seManager;
+
     private List<PlayerEvents> m_playerEvents = new List<PlayerEvents>();
     private SEManager m_seManager;
 
@@ -93,11 +95,17 @@ public class KeyboardInput : MonoBehaviour
             {
                 plevent.OnDefence?.Invoke();
             }
+<<<<<<< HEAD
             //SEÄ¶
             if (m_seManager != null)
             {
                 m_seManager.OnPlayOneShot(SEManager.SoundEffectName.PlayerGard);
             }
+=======
+
+            m_seManager.OnPlayOneShot(SEManager.SoundEffectName.PlayerGard);
+
+>>>>>>> Alpha/035
         }
 
         if (Input.GetMouseButtonUp((int)MouseButton.Right))
