@@ -12,8 +12,6 @@ public class GamepadInput : MonoBehaviour
 
     private float m_stickDeadzone = 0.1f;
 
-    private SEManager m_seManager;
-
     private bool m_wasInit = false;
     private void Start()
     {
@@ -22,7 +20,6 @@ public class GamepadInput : MonoBehaviour
             PlayerManager.Instance.OnResisterPlayer += Initialize;
             m_seManager = Object.FindFirstObjectByType<SEManager>();
         }
-        m_seManager = GetComponent<SEManager>();
     }
 
     private void OnDisable()
@@ -128,16 +125,8 @@ public class GamepadInput : MonoBehaviour
         if (gamepad.rightTrigger.wasPressedThisFrame)
         {
             playerEvent.OnDefence?.Invoke();
-<<<<<<< HEAD
-            //SEÄ¶
-            if (m_seManager != null)
-            {
-                m_seManager.OnPlayOneShot(SEManager.SoundEffectName.PlayerGard);
-            }
-=======
 
             m_seManager.OnPlayOneShot(SEManager.SoundEffectName.PlayerGard);
->>>>>>> Alpha/035
         }
         if (gamepad.rightTrigger.wasReleasedThisFrame)
         {
