@@ -122,6 +122,9 @@ MonoBehaviour:
   OnDefence:
     m_PersistentCalls:
       m_Calls: []
+  OnDefenceBleaked:
+    m_PersistentCalls:
+      m_Calls: []
   OnDefenceEnd:
     m_PersistentCalls:
       m_Calls: []
@@ -216,7 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7b0d78e6113c9247a0610ba5e32d644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_maxHitInterval: 1
+  m_playerData: {fileID: 0}
 --- !u!114 &3142242169851939517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,9 +233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_humanModel: {fileID: 8923132373542127776}
-  m_attackModel: {fileID: 0}
   m_ballModel: {fileID: 8391965537249737200}
-  m_attackDisplayTime: 0.15
 --- !u!114 &463365025143328539
 MonoBehaviour:
   m_ObjectHideFlags: 0

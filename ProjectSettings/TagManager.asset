@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Attack
   - FxTemporaire
+<<<<<<< HEAD
+=======
+  - Undefined
+>>>>>>> Alpha/023
   - Enemy
   layers:
   - Default

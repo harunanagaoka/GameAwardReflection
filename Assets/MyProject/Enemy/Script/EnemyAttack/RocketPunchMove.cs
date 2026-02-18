@@ -16,12 +16,17 @@ public class RocketPunchMove : MonoBehaviour
 
     private Rigidbody rigid;
 
+    private SEManager m_seManager;
 
-    
+    private int seCount = 0;
+
+
     private void Start()
     {
+        seCount = 0;
         Player = PlayerManager.Instance.Players[0];
         rigid = GetComponent<Rigidbody>();
+        m_seManager = Object.FindFirstObjectByType<SEManager>();
         UpdateDirection();
     }
     private void FixedUpdate()
@@ -50,5 +55,11 @@ public class RocketPunchMove : MonoBehaviour
     {
        transform.position += transform.forward * m_speed * Time.fixedDeltaTime;
 
+        //SEçƒê∂
+        if (m_seManager != null && seCount ==0)
+        {
+            m_seManager.OnPlayOneShot(SEManager.SoundEffectName.BossPunch);
+            seCount++;
+        }
     }
 }

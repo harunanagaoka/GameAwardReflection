@@ -11,6 +11,7 @@ public class PlayerBlownAway : MonoBehaviour
     }
 
     private BlownAwayState m_state = BlownAwayState.None;
+    private SEManager m_seManager;
 
     private bool m_isCanBlownAway = false;
     private bool m_isStun = false;
@@ -59,6 +60,7 @@ public class PlayerBlownAway : MonoBehaviour
     {
         m_rigidbody = GetComponent<Rigidbody>();
         m_playerEvents = GetComponent<PlayerEvents>();
+        m_seManager = Object.FindFirstObjectByType<SEManager>();
 
         m_playerEvents.OnDefence.AddListener(() => m_isCanBlownAway = true);
         m_playerEvents.OnDefenceEnd.AddListener(() => m_isCanBlownAway = false);
@@ -123,7 +125,15 @@ public class PlayerBlownAway : MonoBehaviour
         normal = normal.normalized;
         m_blowAwayDirection = Vector3.Reflect(m_blowAwayDirection, normal);
         m_blowAwayForce *= m_bounceMultiplier;
+
+        //SEçƒê∂
+        if (m_seManager != null)
+        {
+            m_seManager.OnPlayOneShot(SEManager.SoundEffectName.Reflection);
+        }
+
     }
+
 
     private void BlowAwayMove()
     {
