@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class PlayerEffectPlayer : MonoBehaviour
 {
@@ -14,11 +15,19 @@ public class PlayerEffectPlayer : MonoBehaviour
     [SerializeField]
     private GameObject m_damageEffect;
 
+    [SerializeField]
+    private GameObject m_stunEffect;
+
+    private readonly List<GameObject> m_stunSpawned = new();
+
+
     void Start()
     {
         //ƒCƒxƒ“ƒg‚Ì“o˜^—á
         m_playerEvents.OnBlownAwayCanceled.AddListener(PlayAttackEffect);
         m_playerEvents.OnDamage.AddListener(PlayDamageEffect);
+        m_playerEvents.OnStun.AddListener(PlayStunEffect);
+        m_playerEvents.OnStunEnd.AddListener(DestroyAllStunEffects);
 
     }
 
@@ -33,5 +42,26 @@ public class PlayerEffectPlayer : MonoBehaviour
         Instantiate(m_damageEffect, transform.position, Quaternion.identity, transform);
     }
 
+    private void PlayStunEffect()
+    {
+        var ef = Instantiate(m_stunEffect,transform.position, Quaternion.identity, transform);
+        m_stunSpawned.Add(ef);
+    }
 
+    private void DestroyAllStunEffects()
+    {
+        for (int i = m_stunSpawned.Count - 1; i >= 0; i--)
+        {
+            var ps = m_stunSpawned[i];
+            if (ps == null)
+            {
+                m_stunSpawned.RemoveAt(i);
+                continue;
+            }
+
+            Destroy(ps.gameObject);
+            m_stunSpawned.RemoveAt(i);
+        }
+    }
 }
+    

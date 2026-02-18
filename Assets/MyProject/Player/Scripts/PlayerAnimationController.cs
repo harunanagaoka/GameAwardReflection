@@ -12,6 +12,7 @@ public class PlayerAnimationController : MonoBehaviour
         m_playerEvents.OnStop.AddListener(SetIdle);
         m_playerEvents.OnBlownAwayCanceled.AddListener(SetAttack);
         m_playerEvents.OnDamage.AddListener(SetDamage);
+        m_playerEvents.OnStun.AddListener(SetDamage);
     }
 
     private void SetIdle()
