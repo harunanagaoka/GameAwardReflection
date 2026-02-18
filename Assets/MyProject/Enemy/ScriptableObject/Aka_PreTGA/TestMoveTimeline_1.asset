@@ -13,11 +13,5 @@ MonoBehaviour:
   m_Name: TestMoveTimeline_1
   m_EditorClassIdentifier: 
   m_timelines:
-  - m_stepDatas:
-    - m_targetPos: {x: 5, y: 0, z: 5}
-      m_moveDuration: 5
-      m_velocity: 3
-    - m_targetPos: {x: -5, y: 0, z: 5}
-      m_moveDuration: 5
-      m_velocity: 3
+  - m_stepDatas: []
     m_interval: 0.1
