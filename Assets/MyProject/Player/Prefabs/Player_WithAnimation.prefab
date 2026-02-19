@@ -2244,7 +2244,7 @@ MonoBehaviour:
   m_damage: 10
   m_reflectionLayerMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   m_maxStepCount: 20
   m_skinWidth: 0.05
   m_playerDefenceCollider: {fileID: 5436697890327010728}
