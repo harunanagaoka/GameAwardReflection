@@ -16,10 +16,12 @@ public class PlayerDamageable : Damageable
 
     public float HitPoint => m_currentHitPoint;
 
+    public float HitPointRate => m_currentHitPoint / m_playerData.MaxHitPoint;
+
     private MainGameTimer m_mainGameTimer;
 
     protected override bool CanTakeDamageCore =>
-    base.CanTakeDamageCore && !m_isDefending && !m_isStun;
+    base.CanTakeDamageCore && !m_isDefending;
 
     protected override void Start()
     {

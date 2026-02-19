@@ -50,15 +50,15 @@ public class AttackHitBox : MonoBehaviour
             m_breakDefence.BreakDefence();
         }
 
+        if (other.TryGetComponent<PlayerDamageable>(out PlayerDamageable playerDamageable))
+        {
+            playerDamageable.TakeDamage(m_damage);
+        }
+
         if (m_stunAttack)
         {
             //ƒXƒ^ƒ“
             m_stunAttack.StartStunCoroutine();
-        }
-
-        if (other.TryGetComponent<PlayerDamageable>(out PlayerDamageable playerDamageable))
-        {
-            playerDamageable.TakeDamage(m_damage);
         }
 
         if (other.TryGetComponent<PlayerBlownAway>(out PlayerBlownAway playerBlowAway))
