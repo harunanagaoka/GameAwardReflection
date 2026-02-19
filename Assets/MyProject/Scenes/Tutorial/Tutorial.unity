@@ -894,6 +894,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1742479823}
     m_Modifications:
+    - target: {fileID: 1672909238462826350, guid: 0b5795649418f9242a9a87abd0a08b3a, type: 3}
+      propertyPath: m_FillOrigin
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3055204835006738451, guid: 0b5795649418f9242a9a87abd0a08b3a, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -905,6 +909,14 @@ PrefabInstance:
     - target: {fileID: 4721830777972730527, guid: 0b5795649418f9242a9a87abd0a08b3a, type: 3}
       propertyPath: m_FillMethod
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4721830777972730527, guid: 0b5795649418f9242a9a87abd0a08b3a, type: 3}
+      propertyPath: m_FillOrigin
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5395109319273185084, guid: 0b5795649418f9242a9a87abd0a08b3a, type: 3}
+      propertyPath: m_FillOrigin
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6206708618099729624, guid: 0b5795649418f9242a9a87abd0a08b3a, type: 3}
       propertyPath: m_Pivot.x
@@ -6587,7 +6599,6 @@ MonoBehaviour:
   m_isDebug: 1
   m_playerGenerator: {fileID: 856639260}
   m_enemyManager: {fileID: 1661921325}
-  m_tutorialEnemyData: {fileID: 11400000, guid: 46e6e3bf0d03ad944a37dbf445e6bfcd, type: 2}
 --- !u!114 &9176301176771403006 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5233184336372071676, guid: ba895bcaaf7af6a42a8a4bd83556ec3c, type: 3}
