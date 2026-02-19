@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class RocketPunchMove : MonoBehaviour
 {
@@ -10,6 +10,9 @@ public class RocketPunchMove : MonoBehaviour
 
     [SerializeField]
     Quaternion rotation;
+
+    [SerializeField]
+    float m_MoveTime = 0.5f;
 
     public float m_speed;
     private Vector3 m_direction;
@@ -33,15 +36,15 @@ public class RocketPunchMove : MonoBehaviour
         //    return;
         //}
 
-        Move();
+        Invoke("Move", m_MoveTime);
     }
 
     private void UpdateDirection()
     {
-        //1.ƒXƒNƒŠƒvƒg‚ªƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚éƒIƒuƒWƒFƒNƒg‚ÌŒü‚«‚ğƒvƒŒƒCƒ„[‚Ì•ûŒü‚ÉŒü‚¯‚é
-        //2.m_direction‚ğƒvƒŒƒCƒ„[‚Ì•ûŒü‚ÉXV‚·‚é
+        //1.ã‚¹ã‚¯ãƒªãƒ—ãƒˆãŒã‚¢ã‚¿ãƒƒãƒã•ã‚Œã¦ã„ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å‘ãã‚’ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®æ–¹å‘ã«å‘ã‘ã‚‹
+        //2.m_directionã‚’ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®æ–¹å‘ã«æ›´æ–°ã™ã‚‹
 
-        rotation = Quaternion.LookRotation(Player.transform.position - this.transform.position);    // Œü‚«‚ğ‰ñ“]‚·‚éQuaternion
+        rotation = Quaternion.LookRotation(Player.transform.position - this.transform.position);    // å‘ãã‚’å›è»¢ã™ã‚‹Quaternion
         transform.rotation = rotation;
 
     }

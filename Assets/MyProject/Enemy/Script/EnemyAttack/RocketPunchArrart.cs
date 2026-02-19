@@ -1,35 +1,68 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class RocketPunchArrart : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject Player;
+    [SerializeField] private GameObject Player;
 
-    [SerializeField]
-    Quaternion rotation;
+    [Header("Tracking")]
+    [SerializeField] private float trackingTime = 2f;   // è¿½è·¡æ™‚é–“
+    [SerializeField] private float rotateSpeed = 10f;
 
-    public float m_speed;
-    private Vector3 m_direction;
+
+    private float timer;
+    private bool isTracking = true;
+
     private Rigidbody rigid;
+    private Animator animator;
 
     private void Start()
     {
         Player = PlayerManager.Instance.Players[0];
         rigid = GetComponent<Rigidbody>();
-        UpdateDirection();
+        animator = GetComponent<Animator>();
     }
-    private void FixedUpdate()
+
+    private void Update()
     {
-       UpdateDirection();
+        if (isTracking)
+        {
+            timer += Time.deltaTime;
+
+            UpdateDirection();
+
+            if (timer >= trackingTime)
+            {
+                //StopTracking();
+            }
+        }
     }
 
     private void UpdateDirection()
     {
-        //1.ƒXƒNƒŠƒvƒg‚ªƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚éƒIƒuƒWƒFƒNƒg‚ÌŒü‚«‚ğƒvƒŒƒCƒ„[‚Ì•ûŒü‚ÉŒü‚¯‚é
-        //2.m_direction‚ğƒvƒŒƒCƒ„[‚Ì•ûŒü‚ÉXV‚·‚é
+        if (Player == null) return;
 
-        rotation = Quaternion.LookRotation(Player.transform.position - this.transform.position);    // Œü‚«‚ğ‰ñ“]‚·‚éQuaternion
-        transform.rotation = rotation;
+        Vector3 dir = Player.transform.position - transform.position;
+        dir.y = 0f; // ä¸Šä¸‹ç„¡è¦–ï¼ˆå‘ãã ã‘ï¼‰
 
+        if (dir != Vector3.zero)
+        {
+            Quaternion targetRot = Quaternion.LookRotation(dir);
+            transform.rotation = Quaternion.Slerp(
+                transform.rotation,
+                targetRot,
+                rotateSpeed * Time.deltaTime
+            );
+        }
     }
+
+    //private void StopTracking()
+    //{
+    //    isTracking = false;
+
+    //    // æºœã‚ã‚¢ãƒ‹ãƒ¡é–‹å§‹
+    //    animator.SetTrigger("Charge");
+
+    //    // æ•°ç§’å¾Œã«æ¶ˆã™
+    //    Destroy(gameObject);
+    //}
 }
