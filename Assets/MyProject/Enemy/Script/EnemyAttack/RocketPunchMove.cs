@@ -11,6 +11,9 @@ public class RocketPunchMove : MonoBehaviour
     [SerializeField]
     Quaternion rotation;
 
+    [SerializeField]
+    float m_moveTime = 0.5f;
+
     public float m_speed;
     private Vector3 m_direction;
 
@@ -38,7 +41,7 @@ public class RocketPunchMove : MonoBehaviour
         //    return;
         //}
 
-        Move();
+        Invoke(nameof(Move), m_moveTime);
     }
 
     private void UpdateDirection()
