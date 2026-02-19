@@ -57,6 +57,14 @@ public class PhaseController : MonoBehaviour
         OnPhaseStarted?.Invoke(m_currentPhase);
     }
 
+    public void EnterTutorial()
+    {
+        m_currentPhase = 0;
+        m_bossEnemy = m_enemyManager.SpawnBossEnemy(m_gamePhaseData.BossData, m_currentPhase);
+        m_isGameStarted = true;
+        OnPhaseStarted?.Invoke(m_currentPhase);
+    }
+
     public bool NextPhase()
     {
         int prevPhase = m_currentPhase;

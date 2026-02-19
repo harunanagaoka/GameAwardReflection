@@ -1,4 +1,3 @@
-using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -14,30 +13,16 @@ public class TutorialManager : MonoBehaviour
     [SerializeField]
     private EnemyManager m_enemyManager;
 
-    [SerializeField]
-    private EnemyData m_tutorialEnemyData;
+    private PhaseController m_phaseController;
 
     private EnemyEvents m_bossEvents;
 
+    private bool m_isInited = false;
+
     void Start()
     {
-        if (m_isDebug)
-        {
-            m_playerGenerator.GeneratePlayer();
-            m_enemyManager.Initialize();
-            m_enemyManager.SpawnBossEnemy(m_tutorialEnemyData, 0);
-
-            // É{ÉXÇÃEnemyEventséÊìæÅïOnDeathìoò^
-            var boss = m_enemyManager.BossEnemy;
-            if (boss != null)
-            {
-                m_bossEvents = boss.GetComponent<EnemyEvents>();
-                if (m_bossEvents != null)
-                {
-                    m_bossEvents.OnDeath.AddListener(OnBossDeath);
-                }
-            }
-        }
+        m_phaseController = GetComponent<PhaseController>();
+        m_enemyManager.Initialize();
     }
 
     void Update()
@@ -54,6 +39,29 @@ public class TutorialManager : MonoBehaviour
         //{
         //    SceneManager.LoadScene("Main");
         //}
+
+
+        if (!m_isInited)
+        {
+            InitTutorial();
+            m_isInited = true;
+        }
+    }
+
+    private void InitTutorial()
+    {
+        m_playerGenerator.GeneratePlayer();
+        m_phaseController.EnterTutorial();
+
+        var boss = m_enemyManager.BossEnemy;
+        if (boss != null)
+        {
+            m_bossEvents = boss.GetComponent<EnemyEvents>();
+            if (m_bossEvents != null)
+            {
+                m_bossEvents.OnDeath.AddListener(OnBossDeath);
+            }
+        }
     }
 
     private void OnBossDeath()

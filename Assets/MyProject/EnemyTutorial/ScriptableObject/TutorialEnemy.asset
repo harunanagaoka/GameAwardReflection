@@ -19,6 +19,7 @@ MonoBehaviour:
   m_damageInterval: 0.5
   m_damageEffectTime: 0.5
   m_enemyAttackPatternData: {fileID: 11400000, guid: 2bbfc989c25db344995dad7b924b954d, type: 2}
+  m_enemyMovePetternData: {fileID: 11400000, guid: 762daebf69967de4f97f2bd0f9346700, type: 2}
   m_phaseChangeRates:
   - 0
   - 0
