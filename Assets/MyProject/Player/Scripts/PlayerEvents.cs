@@ -20,6 +20,7 @@ public class PlayerEvents : MonoBehaviour
     public UnityEvent OnDefence;
     public UnityEvent OnDefenceBleaked;
     public UnityEvent OnDefenceEnd;
+ 
 
     //èÛë‘ïœâª
     public UnityEvent OnDeath;
@@ -30,5 +31,7 @@ public class PlayerEvents : MonoBehaviour
     public UnityEvent OnStunEnd;
     public UnityEvent OnDamage;
     public UnityEvent<float> OnDamagePenalty;
-    
+    public UnityEvent OnKnockback;
+    public UnityEvent OnKnockbackEnd;
+
 }

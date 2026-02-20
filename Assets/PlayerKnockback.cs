@@ -39,7 +39,7 @@ public class PlayerKnockback : MonoBehaviour
     IEnumerator KnockbackCoroutine(Vector3 dir, float distance)
     {
         isKnockbacking = true;
-        m_playerEvents.OnBlownAway?.Invoke();
+        m_playerEvents.OnKnockback?.Invoke();
 
         dir.y = 0f;
         dir.Normalize();
@@ -61,6 +61,6 @@ public class PlayerKnockback : MonoBehaviour
         }
 
         isKnockbacking = false;
-        m_playerEvents.OnBlownAwayEnd?.Invoke();
+        m_playerEvents.OnKnockbackEnd?.Invoke();
     }
 }
