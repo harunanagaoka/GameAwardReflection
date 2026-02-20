@@ -2316,6 +2316,17 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 2733801424744511882, guid: f564b5a70b5415341aec4137eeb60b37, type: 3}
   m_PrefabInstance: {fileID: 8998015645256849166}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6898979358844448357 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8691301168340764858, guid: f564b5a70b5415341aec4137eeb60b37, type: 3}
+  m_PrefabInstance: {fileID: 8998015645256849166}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d21af7cbc25921e41af00043908ae6c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8051211208548552832
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2497,6 +2508,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8025175637489951358, guid: f564b5a70b5415341aec4137eeb60b37, type: 3}
+      propertyPath: cameraFollow
+      value: 
+      objectReference: {fileID: 6898979358844448357}
     - target: {fileID: 8025175637489951358, guid: f564b5a70b5415341aec4137eeb60b37, type: 3}
       propertyPath: m_enemyManager
       value: 
