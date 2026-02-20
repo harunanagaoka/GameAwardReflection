@@ -45,7 +45,7 @@ public class PlayerMove : MonoBehaviour
         m_playerEvents.OnDefence.AddListener(SetDefendingVelocity);
         m_playerEvents.OnDefenceEnd.AddListener(SetBaseVelocity);
         m_playerEvents.OnKnockback.AddListener(() => m_isCanMove = false);
-        m_playerEvents.OnKnockback.AddListener(() => m_isCanMove = true);
+        m_playerEvents.OnKnockbackEnd.AddListener(() => m_isCanMove = true);
 
         m_rigidbody = GetComponent<Rigidbody>();
 
