@@ -2120,8 +2120,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_enemyManager: {fileID: 49177877}
-  timeScale: 0.1
-  slowTime: 0.3
+  AttckHitTimeScale: 0.1
+  DefenceHitTimeScale: 0.1
+  AttckSlowTime: 1
+  DefenceSlowTime: 1
 --- !u!4 &1596042142
 Transform:
   m_ObjectHideFlags: 0

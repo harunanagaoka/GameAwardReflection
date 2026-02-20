@@ -8,15 +8,26 @@ public class TimeManager : MonoBehaviour
 
     //　Time.timeScaleに設定する値
     [SerializeField]
-    private float timeScale = 0.1f;
+    private float AttckHitTimeScale = 0.1f;
+
+    [SerializeField]
+    private float DefenceHitTimeScale = 0.1f;
+
+
     //　時間を遅くしている時間
     [SerializeField]
-    private float slowTime = 1f;
+    private float AttckSlowTime = 1f;
+
+    [SerializeField]
+    private float DefenceSlowTime = 1f;
+
     //　経過時間
     private float elapsedTime = 0f;
+
     //　時間を遅くしているかどうか
     private bool isSlowDown = false;
 
+    private bool isPlayerSlowDown = false;
 
     //　敵のイベントスクリプト
     private EnemyEvents m_enemyEvent;
@@ -42,7 +53,15 @@ public class TimeManager : MonoBehaviour
         if (isSlowDown)
         {
             elapsedTime += Time.unscaledDeltaTime;
-            if (elapsedTime >= slowTime)
+            if (elapsedTime >= AttckSlowTime)
+            {
+                SetNormalTime();
+            }
+        }
+        else if (isPlayerSlowDown)
+        {
+            elapsedTime += Time.unscaledDeltaTime;
+            if (elapsedTime >= DefenceSlowTime)
             {
                 SetNormalTime();
             }
@@ -52,8 +71,15 @@ public class TimeManager : MonoBehaviour
     public void SlowDown()
     {
         elapsedTime = 0f;
-        Time.timeScale = timeScale;
+        Time.timeScale = AttckHitTimeScale;
         isSlowDown = true;
+    }
+
+    public void PlayerSlowDown()
+    {
+        elapsedTime = 0f;
+        Time.timeScale = DefenceHitTimeScale;
+        isPlayerSlowDown = true;
     }
     //　時間を元に戻す処理
     public void SetNormalTime()
@@ -72,8 +98,8 @@ public class TimeManager : MonoBehaviour
     private void ResisterPlayerEvent()
     {
         m_playerEvent = PlayerManager.Instance.Players[0].GetComponent<PlayerEvents>();
-        m_playerEvent.OnBlownAway.AddListener(SlowDown);
-        m_playerEvent.OnDamage.AddListener(SlowDown);
+        m_playerEvent.OnBlownAway.AddListener(PlayerSlowDown);
+        //m_playerEvent.OnDamage.AddListener(SlowDown);
     }
 }
 
