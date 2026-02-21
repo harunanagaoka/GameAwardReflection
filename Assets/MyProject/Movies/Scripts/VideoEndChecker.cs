@@ -4,7 +4,11 @@ using UnityEngine.Video;
 
 public class VideoEndChecker : MonoBehaviour
 {
-    public VideoPlayer videoPlayer;
+    [SerializeField]
+    private VideoPlayer videoPlayer;
+
+    [SerializeField]
+    private string m_nextScene;
 
     void Start()
     {
@@ -15,7 +19,7 @@ public class VideoEndChecker : MonoBehaviour
     void OnVideoEnd(VideoPlayer vp)
     {
         Debug.Log("“®‰æ‚ªI—¹‚µ‚Ü‚µ‚½I");
-        SceneManager.LoadScene("Tutorial");
+        SceneManager.LoadScene(m_nextScene);
     }
 }
 

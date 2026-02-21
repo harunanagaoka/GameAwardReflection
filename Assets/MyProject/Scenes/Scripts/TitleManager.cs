@@ -14,17 +14,17 @@ public class TitleManager : MonoBehaviour
 
         if (Input.GetKeyDown((KeyCode.Space)))
         {
-            SceneManager.LoadScene("Tutorial");
+            SceneManager.LoadScene("Movie");
         }
 
         if(gamepad != null && gamepad.buttonEast.wasPressedThisFrame)
         {
-            SceneManager.LoadScene("Tutorial");
+            SceneManager.LoadScene("Movie");
         }
 
         if (Input.GetKeyDown((KeyCode.N)))
         {
-            SceneManager.LoadScene("Main");
+            SceneManager.LoadScene("Movie");
         }
     }
 }

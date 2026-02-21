@@ -57,15 +57,17 @@ public class GameController : MonoBehaviour
 
         if (m_isGameOver || m_isGameCleared)
         {
+
+            //Ž©“®‚Å‘JˆÚ‚·‚é‚æ‚¤‚É
             var gamepad = Gamepad.current;
             if (gamepad != null && gamepad.buttonEast.wasPressedThisFrame)
             {
-                SceneManager.LoadScene("Title");
+                GoNextScene();
             }
 
             if (Input.GetKeyDown((KeyCode.Space)))
             {
-                SceneManager.LoadScene("Title");
+                GoNextScene();
             }
 
         }
@@ -129,6 +131,21 @@ public class GameController : MonoBehaviour
             string currentSceneName = SceneManager.GetActiveScene().name;
 
             SceneManager.LoadScene(currentSceneName);
+        }
+    }
+
+    private void GoNextScene()
+    {
+        if (m_isGameOver)
+        {
+            SceneManager.LoadScene("Defeat");
+            return;
+        }
+
+        if (m_isGameCleared)
+        {
+            SceneManager.LoadScene("Victory");
+            return;
         }
     }
 }
