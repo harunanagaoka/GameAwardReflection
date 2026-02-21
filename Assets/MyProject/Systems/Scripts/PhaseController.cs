@@ -34,6 +34,9 @@ public class PhaseController : MonoBehaviour
         m_mainGameEvents.OnGameStart.AddListener(EnterFirstPhase);
         m_mainGameEvents.OnGameOver.AddListener(()=> m_isGameEnded = true);
         m_enemyManager.OnBossEnemyDied += (HandleBossEnemyDied);
+
+        m_currentPhase = 0;
+        m_bossEnemy = m_enemyManager.SpawnBossEnemy(m_gamePhaseData.BossData, m_currentPhase);
     }
 
     private void OnDisable()
@@ -51,16 +54,13 @@ public class PhaseController : MonoBehaviour
 
     private void EnterFirstPhase()
     {
-        m_currentPhase = 0;
-        m_bossEnemy = m_enemyManager.SpawnBossEnemy(m_gamePhaseData.BossData,m_currentPhase);
         m_isGameStarted = true;
+        m_enemyManager.SetEnemyPhase(m_currentPhase);
         OnPhaseStarted?.Invoke(m_currentPhase);
     }
 
     public void EnterTutorial()
     {
-        m_currentPhase = 0;
-        m_bossEnemy = m_enemyManager.SpawnBossEnemy(m_gamePhaseData.BossData, m_currentPhase);
         m_isGameStarted = true;
         OnPhaseStarted?.Invoke(m_currentPhase);
     }

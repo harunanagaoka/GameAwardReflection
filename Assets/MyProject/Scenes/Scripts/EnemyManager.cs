@@ -56,7 +56,7 @@ public class EnemyManager : MonoBehaviour
         m_bossHP.Initialize(enemyData, m_bossEvents);
         m_bossAttackController.Initialize(enemyData, m_bossEvents,attackFactory);
         m_bossMoveController.Initialize(enemyData, enemyMover);
-        SetEnemyPhase(currentphase);
+      //  SetEnemyPhase(currentphase);
         destroyer.Initialize(m_bossEvents);
         effectPlayer.Initialize(m_bossEvents);
         SEPlayer.Initialize(m_bossEvents);
@@ -64,6 +64,16 @@ public class EnemyManager : MonoBehaviour
         OnBossJoined?.Invoke();
 
         return m_bossHP;
+    }
+
+    public void PauseEnemyActions()
+    {
+        
+    }
+
+    public void RestertEnemyActions()
+    {
+
     }
 
     public void SetEnemyPhase(int phase)

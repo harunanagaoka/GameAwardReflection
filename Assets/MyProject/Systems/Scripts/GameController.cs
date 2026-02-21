@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
@@ -13,12 +12,14 @@ public class GameController : MonoBehaviour
     private PhaseController m_phaseController;
     private MainGameEvents m_mainGameEvents;
     private MainGameTimer m_timer;
+    private VisualCuePlayerInMainScene m_visualCuePlayer;
 
     private bool m_isGameStarted = false;
     private bool m_isGameOver = false;
     private bool m_isGameCleared = false;
 
     private bool m_isInited = false;
+    private bool m_isInPresentation = false;
 
     private bool IsInGame => m_isGameStarted && !m_isGameOver && !m_isGameCleared;
 
@@ -28,16 +29,22 @@ public class GameController : MonoBehaviour
         m_phaseController = GetComponent<PhaseController>();
         m_mainGameEvents = GetComponent<MainGameEvents>();
         m_timer = GetComponent<MainGameTimer>();
+        m_visualCuePlayer = GetComponent<VisualCuePlayerInMainScene>();
+
+        m_visualCuePlayer.OnSceneEnterVisualCompleted += MainGameStart;
+        m_visualCuePlayer.OnSceneExitVisualCompleted += GoNextScene;
     }
 
     private void Start()
     {
+        m_playerGenerator.GeneratePlayer();
         m_phaseController.OnAllPhasesCompleted += OnAllPhasesCompleted;
     }
 
     private void OnDisable()
     {
         m_phaseController.OnAllPhasesCompleted -= OnAllPhasesCompleted;
+        m_visualCuePlayer.OnSceneEnterVisualCompleted -= MainGameStart;
     }
 
 
@@ -48,28 +55,18 @@ public class GameController : MonoBehaviour
             HandleDebugInput();
         }
 
-
-        if (!m_isInited)
+        if (!m_isGameStarted)
         {
-            MainGameStart();
-            m_isInited = true;
+            return;
         }
 
         if (m_isGameOver || m_isGameCleared)
         {
-
-            //Ž©“®‚Å‘JˆÚ‚·‚é‚æ‚¤‚É
-            var gamepad = Gamepad.current;
-            if (gamepad != null && gamepad.buttonEast.wasPressedThisFrame)
+            if (!m_isInPresentation)
             {
-                GoNextScene();
+                PlayGameEndPresentation();
+                m_isInPresentation = true;
             }
-
-            if (Input.GetKeyDown((KeyCode.Space)))
-            {
-                GoNextScene();
-            }
-
         }
 
         if (!IsInGame)
@@ -86,7 +83,6 @@ public class GameController : MonoBehaviour
     private void MainGameStart()
     {
         m_timer.StartTimer();
-        m_playerGenerator.GeneratePlayer();
         m_mainGameEvents.OnGameStart?.Invoke();
         m_isGameStarted = true;
     }
@@ -112,6 +108,7 @@ public class GameController : MonoBehaviour
         if (m_isGameOver) return;
 
         m_isGameCleared = true;
+        m_timer.StopTimer();
         m_mainGameEvents.OnGameClear?.Invoke();
 
         Debug.Log("GameClear");
@@ -132,6 +129,11 @@ public class GameController : MonoBehaviour
 
             SceneManager.LoadScene(currentSceneName);
         }
+    }
+
+    private void PlayGameEndPresentation()
+    {
+        m_visualCuePlayer.PlaySceneExitEffects();
     }
 
     private void GoNextScene()

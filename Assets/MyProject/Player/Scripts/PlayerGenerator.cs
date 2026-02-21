@@ -8,11 +8,6 @@ public class PlayerGenerator : MonoBehaviour
     [SerializeField]
     private GameObject m_playerPrefab;
    
-    void Awake()
-    {
-
-    }
-
     public void GeneratePlayer()
     {
         PlayerManager.Instance.ResetManager();

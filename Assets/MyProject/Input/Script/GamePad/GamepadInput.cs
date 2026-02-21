@@ -13,7 +13,7 @@ public class GamepadInput : MonoBehaviour
     private float m_stickDeadzone = 0.1f;
 
     private bool m_wasInit = false;
-    private void Start()
+    private void Awake()
     {
         if (PlayerManager.Instance != null)
         {
