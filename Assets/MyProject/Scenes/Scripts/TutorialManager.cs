@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -15,42 +16,43 @@ public class TutorialManager : MonoBehaviour
 
     private PhaseController m_phaseController;
 
+    private VisualCuePlayerInTutorialScene m_visualCuePlayer;
+
     private EnemyEvents m_bossEvents;
 
     private bool m_isInited = false;
 
-    void Start()
+    void Awake()
     {
         m_phaseController = GetComponent<PhaseController>();
-        m_enemyManager.Initialize();
+        m_visualCuePlayer = GetComponent<VisualCuePlayerInTutorialScene>();
+        m_playerGenerator.GeneratePlayer();
+
+        m_visualCuePlayer.OnSceneEnterVisualCompleted += InitTutorial;
+        m_visualCuePlayer.OnSceneExitVisualCompleted += GoNextScene;
+    }
+
+    private void OnDisable()
+    {
+        m_visualCuePlayer.OnSceneEnterVisualCompleted -= InitTutorial;
+        m_visualCuePlayer.OnSceneExitVisualCompleted -= GoNextScene;
+    }
+
+    private void Start()
+    {
+        InitTutorial();
     }
 
     void Update()
     {
         var gamepad = Gamepad.current;
 
-        //デバッグ用：スペースキーまたはゲームパッドの〇ボタンでシーン遷移
-        //if (Input.GetKeyDown((KeyCode.Space)))
-        //{
-        //    SceneManager.LoadScene("Main");
-        //}
 
-        //if (gamepad != null && gamepad.buttonEast.wasPressedThisFrame)
-        //{
-        //    SceneManager.LoadScene("Main");
-        //}
-
-
-        if (!m_isInited)
-        {
-            InitTutorial();
-            m_isInited = true;
-        }
     }
 
     private void InitTutorial()
     {
-        m_playerGenerator.GeneratePlayer();
+        
         m_phaseController.EnterTutorial();
 
         var boss = m_enemyManager.BossEnemy;
@@ -67,6 +69,11 @@ public class TutorialManager : MonoBehaviour
     private void OnBossDeath()
     {
         // 敵が死んだら次のシーンへ
+        m_visualCuePlayer.PlaySceneExitEffects();
+    }
+
+    private void GoNextScene()
+    {
         SceneManager.LoadScene("Main");
     }
 }

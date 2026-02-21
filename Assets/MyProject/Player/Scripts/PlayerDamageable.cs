@@ -63,6 +63,11 @@ public class PlayerDamageable : Damageable
 
     private void TimePenalty(float penalty)
     {
+        if (!m_mainGameTimer)
+        {
+            return;
+        }
+
         m_mainGameTimer.DecreseTime(penalty);
     }
 }
