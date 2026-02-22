@@ -33,11 +33,12 @@ public class GameController : MonoBehaviour
 
         m_visualCuePlayer.OnSceneEnterVisualCompleted += MainGameStart;
         m_visualCuePlayer.OnSceneExitVisualCompleted += GoNextScene;
+
+        m_playerGenerator.GeneratePlayer();
     }
 
     private void Start()
     {
-        m_playerGenerator.GeneratePlayer();
         m_phaseController.OnAllPhasesCompleted += OnAllPhasesCompleted;
     }
 

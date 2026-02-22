@@ -18,7 +18,15 @@ public class GamepadInput : MonoBehaviour
         if (PlayerManager.Instance != null)
         {
             PlayerManager.Instance.OnResisterPlayer += Initialize;
-            m_seManager = Object.FindFirstObjectByType<SEManager>();
+        }
+        m_seManager = Object.FindFirstObjectByType<SEManager>();
+    }
+
+    private void Start()
+    {
+        if (!m_wasInit)
+        {
+            Initialize();
         }
     }
 

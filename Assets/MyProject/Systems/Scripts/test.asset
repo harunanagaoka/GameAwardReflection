@@ -22,4 +22,4 @@ MonoBehaviour:
       changeThreshold: 0.5
   - m_phaseData: {fileID: 11400000, guid: c8eea8308e8a4134eb72b351d6ee13f1, type: 2}
     changeCondition:
-      changeThreshold: 0.3
+      changeThreshold: 0

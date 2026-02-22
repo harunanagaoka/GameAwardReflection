@@ -59,6 +59,14 @@ public class KeyboardInput : MonoBehaviour
         m_seManager = Object.FindFirstObjectByType<SEManager>();
     }
 
+    private void Start()
+    {
+        if (!m_wasInit)
+        {
+            Initialize();
+        }
+    }
+
     private void OnDisable()
     {
         if (PlayerManager.Instance != null)
@@ -74,7 +82,7 @@ public class KeyboardInput : MonoBehaviour
             return;
         }
 
-            if (PlayerManager.Instance.Players.Count == 0)
+         if (PlayerManager.Instance.Players.Count == 0)
         {
             return;
         }
