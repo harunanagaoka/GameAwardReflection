@@ -2039,6 +2039,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FadeCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 634331525190951324, guid: 6987b860e22d97f43821c0ef66b34c25, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5136321742792396150, guid: 6987b860e22d97f43821c0ef66b34c25, type: 3}
       propertyPath: m_waitBeforeFadeIn
       value: 1

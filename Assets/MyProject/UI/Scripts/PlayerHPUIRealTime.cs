@@ -24,7 +24,7 @@ public class PlayerHPUIRealTime : MonoBehaviour
         Image hpBarImage = m_HPBar;
         hpBarImage.fillAmount = 1f;
 
-        PlayerManager.Instance.OnResisterPlayer += Initialize;
+        Initialize();
     }
 
     private void OnDisable()

@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
     private MainGameEvents m_mainGameEvents;
     private MainGameTimer m_timer;
     private VisualCuePlayerInMainScene m_visualCuePlayer;
+    private PlayerDamageable m_player;
 
     private bool m_isGameStarted = false;
     private bool m_isGameOver = false;
@@ -35,6 +36,7 @@ public class GameController : MonoBehaviour
         m_visualCuePlayer.OnSceneExitVisualCompleted += GoNextScene;
 
         m_playerGenerator.GeneratePlayer();
+        m_player = PlayerManager.Instance.Players[0].GetComponent<PlayerDamageable>();
     }
 
     private void Start()
@@ -90,10 +92,15 @@ public class GameController : MonoBehaviour
 
     private void CheckGameEnd()
     {
-        if (m_timer.CurrentTime <= 0)
+        if (m_player.HitPointRate <= 0)
         {
             TriggerGameOver();
         }
+
+        //if (m_timer.CurrentTime <= 0)
+        //{
+        //    TriggerGameOver();
+        //}
     }
 
     private void TriggerGameOver()

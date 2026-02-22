@@ -14,6 +14,10 @@ public class AttackHitBox : MonoBehaviour
 
     private ActionStunAttack m_stunAttack = null;
 
+    private SingleHitAttack m_singleHitAttack = null;
+
+    
+
     public void Initialize(Vector3 basePosition,float blownAwayPower, float blownAwayTime,float damage)
     {
         m_basePosition = basePosition;
@@ -29,6 +33,11 @@ public class AttackHitBox : MonoBehaviour
         if (TryGetComponent<BreakDefenceAttack>(out BreakDefenceAttack breakDefence))
         {
             m_breakDefence = breakDefence;
+        }
+
+        if (TryGetComponent<SingleHitAttack>(out SingleHitAttack singleHit))
+        {
+            m_singleHitAttack = singleHit;
         }
     }
 
@@ -64,8 +73,45 @@ public class AttackHitBox : MonoBehaviour
         if (other.TryGetComponent<PlayerBlownAway>(out PlayerBlownAway playerBlowAway))
         {
             playerBlowAway.BlowAway(transform.position, m_blownAwayPower, m_blownAwayTime);
+            if (playerBlowAway.IsBlownAway)
+            {
+                return;
+            }
         }
 
-
+        if (m_singleHitAttack)
+        {
+            m_singleHitAttack.OnHit();
+        }
     }
+
+    //private void OnTriggerStay(Collider other)
+    //{
+    //    if (!other.CompareTag("Player"))
+    //    {
+    //        return;
+    //    }
+
+    //    if (m_breakDefence)
+    //    {
+    //        //防御キャンセル
+    //        m_breakDefence.BreakDefence();
+    //    }
+
+    //    if (other.TryGetComponent<PlayerDamageable>(out PlayerDamageable playerDamageable))
+    //    {
+    //        playerDamageable.TakeDamage(m_damage);
+    //    }
+
+    //    if (m_stunAttack)
+    //    {
+    //        //スタン
+    //        m_stunAttack.StartStunCoroutine();
+    //    }
+
+    //    if (m_singleHitAttack)
+    //    {
+    //        m_singleHitAttack.OnHit();
+    //    }
+    //}
 }

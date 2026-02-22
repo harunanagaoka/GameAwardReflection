@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: ElectricField
   m_EditorClassIdentifier: 
   m_initPos: {x: 0, y: 0, z: 0}
-  m_attackPrefab: {fileID: 5300589677856941614, guid: ad789dfa7bc09c046aa87a976a5920d0, type: 3}
-  m_attackRange: {fileID: 3277831950082551637, guid: d5a2177b9cd36f6458367a44848538bd, type: 3}
+  m_attackPrefab: {fileID: 5300589677856941614, guid: 8cd7c9160e754d24e9a3e80b8a6ca894, type: 3}
+  m_attackRange: {fileID: 3277831950082551637, guid: 86b4643b51df22f419d81dc4a7a293c8, type: 3}
   m_warningDuration: 3
   m_blownAwayPower: 0
   m_blownAwayTime: 0
