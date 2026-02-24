@@ -26,6 +26,11 @@ public class SEManager : MonoBehaviour
         EnemyAttackAlart
     }
 
+    // 各SEごとの音量を管理
+    [Range(0f, 1f)]
+    [SerializeField]
+    private float[] m_seVolumes = new float[10] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
+
     private void Awake()
     {
         m_audioSources = new AudioSource[m_audioSourceCount];
@@ -41,7 +46,9 @@ public class SEManager : MonoBehaviour
     {
         var source = GetFreeAudioSource();
 
-        source.PlayOneShot(m_audioClips[(int)seNum]);
+        // 個別音量で再生
+        float volume = m_seVolumes[(int)seNum];
+        source.PlayOneShot(m_audioClips[(int)seNum], volume);
 
         m_currentIndex++;
         if (m_currentIndex >= m_audioSources.Length)
@@ -50,7 +57,7 @@ public class SEManager : MonoBehaviour
         }
     }
 
-    //使っていないAudioSourceを選んでいます。
+    // 使っていないAudioSourceを選んでいます。
     private AudioSource GetFreeAudioSource()
     {
         int startIndex = m_currentIndex;
@@ -67,8 +74,19 @@ public class SEManager : MonoBehaviour
         return source;
     }
 
+    // Inspectorで配列サイズを自動調整
     private void OnValidate()
     {
+        if (m_seVolumes == null || m_seVolumes.Length != System.Enum.GetValues(typeof(SoundEffectName)).Length)
+        {
+            int len = System.Enum.GetValues(typeof(SoundEffectName)).Length;
+            float[] newVolumes = new float[len];
+            for (int i = 0; i < len; i++)
+            {
+                newVolumes[i] = (m_seVolumes != null && i < m_seVolumes.Length) ? m_seVolumes[i] : 1f;
+            }
+            m_seVolumes = newVolumes;
+        }
     }
 }
 

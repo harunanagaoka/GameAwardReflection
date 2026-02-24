@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3984727128417661810}
   - component: {fileID: 5609564020203307224}
   - component: {fileID: 2262730292157805929}
+  - component: {fileID: 3879009903769485632}
   m_Layer: 6
   m_Name: Enemy_WithModel
   m_TagString: Enemy
@@ -130,6 +131,23 @@ MonoBehaviour:
   MovingLeft: -0.02
   MovingRight: 0.02
   MoveRange: 8.5
+--- !u!114 &3879009903769485632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3677717078595683746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1638e6ba37e72e3449e4841eaf49423b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  phaseController: {fileID: 0}
+  phaseMaterials:
+  - {fileID: 2100000, guid: 0e2f88ea1abbe004ba83705d79e815fd, type: 2}
+  - {fileID: 2100000, guid: 9161ea01c0f0468489b85b74ef04a962, type: 2}
+  - {fileID: 2100000, guid: e5db7831cdc3b024ea8273395103659f, type: 2}
 --- !u!1001 &9177270521773101291
 PrefabInstance:
   m_ObjectHideFlags: 0
