@@ -33,5 +33,6 @@ public class PlayerEvents : MonoBehaviour
     public UnityEvent<float> OnDamagePenalty;
     public UnityEvent OnKnockback;
     public UnityEvent OnKnockbackEnd;
+    public UnityEvent<bool> OnComboStateChanged;
 
 }
