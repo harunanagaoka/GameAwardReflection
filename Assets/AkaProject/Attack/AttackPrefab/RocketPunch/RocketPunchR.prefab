@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3161758099461082156}
   - component: {fileID: 428761423191699138}
   - component: {fileID: 5315615775788989841}
+  - component: {fileID: 556627590110951164}
   m_Layer: 0
   m_Name: RocketPunchR
   m_TagString: Untagged
@@ -175,6 +176,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: {r: 0.3, g: 0.8, b: 0.3, a: 0}
+--- !u!114 &556627590110951164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3793399201196985688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5074653f452cbe34da70ade6b68f0ef5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockbackDistance: 1.5
+  hitOncePerAttack: 1
 --- !u!1001 &2415749247325048402
 PrefabInstance:
   m_ObjectHideFlags: 0
