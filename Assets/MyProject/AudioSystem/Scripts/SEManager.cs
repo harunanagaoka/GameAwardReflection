@@ -23,7 +23,8 @@ public class SEManager : MonoBehaviour
         BossPunch,
         BossPunchHit,
         BossPunchWallHit,
-        EnemyAttackAlart
+        EnemyAttackAlart,
+        TitleButton
     }
 
     // äeSEÇ≤Ç∆ÇÃâπó Çä«óù
