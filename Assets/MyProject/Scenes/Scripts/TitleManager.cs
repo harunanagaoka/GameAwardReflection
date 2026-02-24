@@ -8,7 +8,19 @@ public class TitleManager : MonoBehaviour
     [SerializeField]
     FadeEffect m_fadeEffect;
 
+    [SerializeField]
+    SEManager m_seManager; // Å© í«â¡
+
     bool m_goNextScene = false;
+
+    private void Awake()
+    {
+        if (m_seManager == null)
+        {
+            m_seManager = Object.FindFirstObjectByType<SEManager>();
+        }
+    }
+
     private void Start()
     {
         StartCoroutine(m_fadeEffect.Fade(false));
@@ -22,22 +34,25 @@ public class TitleManager : MonoBehaviour
 
         var gamepad = Gamepad.current;
 
-        if (Input.GetKeyDown((KeyCode.Space)))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             m_goNextScene = true;
+            // å¯â âπÇçƒê∂
+            m_seManager.OnPlayOneShot(SEManager.SoundEffectName.PlayerAttackClow);
             StartCoroutine(GoNextScene());
         }
 
-        if(gamepad != null && gamepad.buttonEast.wasPressedThisFrame)
+        if (gamepad != null && gamepad.buttonEast.wasPressedThisFrame)
         {
             m_goNextScene = true;
+            // å¯â âπÇçƒê∂
+            m_seManager.OnPlayOneShot(SEManager.SoundEffectName.PlayerAttackClow);
             StartCoroutine(GoNextScene());
         }
     }
 
     private IEnumerator GoNextScene()
     {
-       
         yield return StartCoroutine(m_fadeEffect.Fade(true));
         SceneManager.LoadScene("Movie");
     }
