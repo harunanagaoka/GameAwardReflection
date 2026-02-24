@@ -12,4 +12,9 @@ public class PlayerAttackCollider : MonoBehaviour
             enemy.TakeDamage(m_damage);
         }
     }
+
+    public void SetDamage(float damage)
+    {
+        m_damage = damage;
+    }
 }
