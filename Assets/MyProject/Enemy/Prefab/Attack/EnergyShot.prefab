@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2550205439537852598}
   - component: {fileID: 9059410829743201988}
   - component: {fileID: 2269626994865516387}
-  - component: {fileID: 2875173673004354750}
+  - component: {fileID: 1558219456813801844}
   - component: {fileID: 237995194584843235}
   - component: {fileID: 3161758099461082156}
   - component: {fileID: 2376719546572973219}
@@ -33,8 +33,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 1, y: 0.1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5031839065656343223}
   m_Father: {fileID: 0}
@@ -92,8 +92,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2875173673004354750
-BoxCollider:
+--- !u!135 &1558219456813801844
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -111,7 +111,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.4, y: 0.4, z: 0.8}
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &237995194584843235
 MonoBehaviour:
@@ -127,7 +127,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 2704472200850051280, guid: 6f3a346b54d192b4eaeec19c979aec6e, type: 3}
   rotation: {x: 0, y: 0, z: 0, w: 0}
-  m_speed: 6
+  m_moveTime: 0
+  m_speed: 5
 --- !u!114 &3161758099461082156
 MonoBehaviour:
   m_ObjectHideFlags: 0

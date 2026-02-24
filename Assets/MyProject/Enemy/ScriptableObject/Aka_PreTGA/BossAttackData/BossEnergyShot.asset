@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2bf7b53af7bd5e4996fcdb07f08f742, type: 3}
-  m_Name: EnergyShot
+  m_Name: BossEnergyShot
   m_EditorClassIdentifier: 
-  m_initPos: {x: 0, y: 0, z: 4.5}
-  m_attackPrefab: {fileID: 3793399201196985688, guid: dd231a4cdc8fb3c41a9beb8967fbcd71, type: 3}
+  m_initPos: {x: 0, y: 0, z: 5}
+  m_attackPrefab: {fileID: 3793399201196985688, guid: 32708907d57298142b0ed08d2b32e840, type: 3}
   m_attackRange: {fileID: 3793399201196985688, guid: fece02a2826dc8b40ba9227c89e02b6c, type: 3}
   m_warningDuration: 0
   m_blownAwayPower: 0

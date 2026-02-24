@@ -16,12 +16,12 @@ MonoBehaviour:
   m_initPosition: {x: 0, y: 0, z: 5}
   m_hitPoint: 1199
   m_onDamageColor: {r: 1, g: 0, b: 0, a: 1}
-  m_damageInterval: 0.5
+  m_damageInterval: 0.1
   m_damageEffectTime: 0.5
   m_enemyAttackPatternData: {fileID: 11400000, guid: 7ec396192571bd0489d80c394d25cd88, type: 2}
-  m_enemyMovePetternData: {fileID: 11400000, guid: 1f513a76638a327488d35a29a2a832ab, type: 2}
+  m_enemyMovePetternData: {fileID: 11400000, guid: 27eb6bf6cbb8ad049957d350e30907f8, type: 2}
   m_phaseChangeRates:
-  - 0.75
+  - 0
   - 0.5
   - 0
   m_phaseChangeAmounts: []

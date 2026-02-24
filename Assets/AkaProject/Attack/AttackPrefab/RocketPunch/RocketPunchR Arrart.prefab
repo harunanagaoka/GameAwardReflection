@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -4997616414275006589}
   - component: {fileID: 1612176085853575921}
   m_Layer: 0
-  m_Name: RocketPunchR Arrart 1
+  m_Name: RocketPunchR Arrart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,8 +84,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
-  trackingTime: 2
-  rotateSpeed: 10
+  trackingTime: 1
+  rotateSpeed: 100
 --- !u!120 &-4997616414275006589
 LineRenderer:
   serializedVersion: 2
