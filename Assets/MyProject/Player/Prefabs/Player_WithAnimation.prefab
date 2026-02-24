@@ -2085,13 +2085,14 @@ GameObject:
   - component: {fileID: 4041090228187762769}
   - component: {fileID: 3310594970198192046}
   - component: {fileID: 6296302025744423536}
-  - component: {fileID: 3327450221984131063}
   - component: {fileID: 3449375008491323492}
   - component: {fileID: 6708979751570653486}
   - component: {fileID: 5365932692700092416}
   - component: {fileID: 7107605182486372258}
   - component: {fileID: 1161061647263462963}
   - component: {fileID: 4563143977969089002}
+  - component: {fileID: 3327450221984131063}
+  - component: {fileID: 1614859499012165790}
   m_Layer: 0
   m_Name: Player_WithAnimation
   m_TagString: Player
@@ -2177,6 +2178,9 @@ MonoBehaviour:
   OnDefenceEnd:
     m_PersistentCalls:
       m_Calls: []
+  OnBlowAwayAttack:
+    m_PersistentCalls:
+      m_Calls: []
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -2199,6 +2203,15 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnDamagePenalty:
+    m_PersistentCalls:
+      m_Calls: []
+  OnKnockback:
+    m_PersistentCalls:
+      m_Calls: []
+  OnKnockbackEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  OnComboStateChanged:
     m_PersistentCalls:
       m_Calls: []
 --- !u!54 &1570511118356264057
@@ -2277,19 +2290,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_humanModel: {fileID: 4803760986227573169}
   m_ballModel: {fileID: 4316064561890035953}
---- !u!114 &3327450221984131063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7007556205150508085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2be06a79abe7e946ba611d7a98d48de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_atkPrefab: {fileID: 283969890668651523, guid: 89fdaaa489ca19a4dbcd0d9c26d2c3a3, type: 3}
 --- !u!114 &3449375008491323492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2347,7 +2347,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 000457bb946ad1a4e920fc1dca142205, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_damage: 100
+  m_hitDamage: 100
+  m_maxIntervalTime: 0.1
 --- !u!136 &1161061647263462963
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2385,6 +2386,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   knockbackDistance: 1.2
   knockbackTime: 0.99
+--- !u!114 &3327450221984131063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7007556205150508085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2be06a79abe7e946ba611d7a98d48de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_atkPrefab: {fileID: 283969890668651523, guid: 89fdaaa489ca19a4dbcd0d9c26d2c3a3, type: 3}
+--- !u!114 &1614859499012165790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7007556205150508085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb409494e0185c7489d5ce9364c0188c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_maxCombo: 5
+  m_comboDamage:
+  - 20
+  - 50
+  - 80
+  - 120
+  - 150
+  - 200
 --- !u!1 &7231919279034011422
 GameObject:
   m_ObjectHideFlags: 0

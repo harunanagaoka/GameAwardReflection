@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class OnClickAttack : MonoBehaviour
 {
@@ -10,17 +9,15 @@ public class OnClickAttack : MonoBehaviour
 
     private PlayerBlownAway m_blownAway;
 
-    private Gamepad m_gamepad;
-
-    private bool isInited = false;
+    private ComboManager m_comboManager;
 
     void Start()
     {
         m_event = GetComponent<PlayerEvents>();
         m_blownAway = GetComponent<PlayerBlownAway>();
+        m_comboManager = GetComponent<ComboManager>();
         m_event.OnDefenceEnd.AddListener(BlowCancelAttack);
-        //m_event.OnBlownAwayCanceled.AddListener(BlowCancelAttack);
-        
+
     }
     private void Update()
     {
@@ -57,19 +54,21 @@ public class OnClickAttack : MonoBehaviour
         ////isBlownAwayかつクリックしたら攻撃isBlownAway解除
         ////攻撃演出
     }
-
-    private void DefenceEndAttack()
-    {
-
-    }
-
     private void BlowCancelAttack()
     {
         if (m_blownAway.IsBlownAway)
         {
+            InitAttack();
             m_blownAway.StopBlownAway();
-            Instantiate(m_atkPrefab, transform.position, Quaternion.identity, this.transform);
         }
+    }
+
+    private void InitAttack()
+    {
+        GameObject atk = Instantiate(m_atkPrefab, transform.position, Quaternion.identity, this.transform);
+        PlayerAttackCollider atkCollider = atk.GetComponent<PlayerAttackCollider>();
+        float damage = m_comboManager.GetComboDamage();
+        atkCollider.SetDamage(damage);
     }
 }
 //吹き飛び状態の時にDefenceEndが入力されたらOnBlownAwayCanceled?.Invoke()

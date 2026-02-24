@@ -20,6 +20,7 @@ public class PlayerEvents : MonoBehaviour
     public UnityEvent OnDefence;
     public UnityEvent OnDefenceBleaked;
     public UnityEvent OnDefenceEnd;
+    public UnityEvent OnBlowAwayAttack;
  
 
     //èÛë‘ïœâª
@@ -33,5 +34,6 @@ public class PlayerEvents : MonoBehaviour
     public UnityEvent<float> OnDamagePenalty;
     public UnityEvent OnKnockback;
     public UnityEvent OnKnockbackEnd;
+    public UnityEvent<bool> OnComboStateChanged;
 
 }
