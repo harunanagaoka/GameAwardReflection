@@ -31,7 +31,7 @@ public class CameraSwitcher : MonoBehaviour
         }
     }
 
-    IEnumerator PhaseChanger()
+   public IEnumerator PhaseChanger()
     {
         if (cameraIndex == 1)
         {

@@ -3171,6 +3171,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ALL_EF_aura_5th 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5234170436847386804, guid: f1e0540b777258d48aa32eb466f9febc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8839273633630150692, guid: f1e0540b777258d48aa32eb466f9febc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
