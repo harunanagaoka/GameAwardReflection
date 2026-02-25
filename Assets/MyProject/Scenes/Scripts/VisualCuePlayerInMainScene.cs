@@ -9,6 +9,7 @@ public class VisualCuePlayerInMainScene : MonoBehaviour
 
     public event Action OnSceneEnterVisualCompleted = delegate { };
     public event Action OnSceneExitVisualCompleted = delegate { };
+    public event Action OnPhaseTransitionVisualCompleted = delegate { };
 
     void Awake()
     {

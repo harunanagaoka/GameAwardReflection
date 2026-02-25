@@ -22,6 +22,8 @@ public class PhaseController : MonoBehaviour
 
     public event Action<int> OnPhaseStarted;
 
+    public event Action<int,int> OnPhaseEnd;
+
     public event Action<int,int> OnPhaseChanged;
 
     public event Action OnAllPhasesCompleted;
@@ -33,6 +35,7 @@ public class PhaseController : MonoBehaviour
         m_mainGameEvents = GetComponent<MainGameEvents>();
         m_mainGameEvents.OnGameStart.AddListener(EnterFirstPhase);
         m_mainGameEvents.OnGameOver.AddListener(()=> m_isGameEnded = true);
+        m_mainGameEvents.OnPhaseTransitionEnd.AddListener(NextPhase);
         m_enemyManager.OnBossEnemyDied += (HandleBossEnemyDied);
         m_enemyManager.Initialize();
 
@@ -53,6 +56,8 @@ public class PhaseController : MonoBehaviour
     {
         if (IsInPhase && m_gamePhaseData.PhaseDescriptors[m_currentPhase].CanChangePhase(m_bossEnemy))
         {
+            OnPhaseEnd?.Invoke(m_currentPhase, m_currentPhase + 1);
+
             NextPhase();
         }
     }
@@ -76,7 +81,7 @@ public class PhaseController : MonoBehaviour
         OnPhaseStarted?.Invoke(m_currentPhase);
     }
 
-    public bool NextPhase()
+    public void NextPhase()
     {
         int prevPhase = m_currentPhase;
         int nextPhase = m_currentPhase + 1;
@@ -84,7 +89,7 @@ public class PhaseController : MonoBehaviour
         if (nextPhase >= m_gamePhaseData.PhaseCount)
         {
             //OnAllPhasesCompleted?.Invoke();
-            return true;
+            return;
         }
 
         m_currentPhase = nextPhase;
@@ -92,8 +97,6 @@ public class PhaseController : MonoBehaviour
         m_enemyManager.SetEnemyPhase(m_currentPhase);
 
         OnPhaseChanged?.Invoke(prevPhase, nextPhase);
-
-        return m_currentPhase == m_gamePhaseData.PhaseCount - 1;
     }
 
     private void HandleBossEnemyDied()
