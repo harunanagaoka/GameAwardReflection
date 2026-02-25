@@ -84,8 +84,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
-  trackingTime: 2
-  rotateSpeed: 10
+  trackingTime: 1
+  rotateSpeed: 100
 --- !u!120 &-4997616414275006589
 LineRenderer:
   serializedVersion: 2

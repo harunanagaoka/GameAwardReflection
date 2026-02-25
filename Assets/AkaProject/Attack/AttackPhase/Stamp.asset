@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2bf7b53af7bd5e4996fcdb07f08f742, type: 3}
   m_Name: Stamp
   m_EditorClassIdentifier: 
-  m_initPos: {x: 0, y: 0, z: 4.5}
+  m_initPos: {x: 0, y: 0, z: 5}
   m_attackPrefab: {fileID: 8876830103931732692, guid: 5894a8a454da6a84798aea492a2f917e, type: 3}
   m_attackRange: {fileID: 6819951490074240406, guid: 3b08f92e3ed610b49a7a46986adcfa79, type: 3}
-  m_warningDuration: 2
-  m_blownAwayPower: 1000
+  m_warningDuration: 6
+  m_blownAwayPower: 2000
   m_blownAwayTime: 10
   m_timePenalty: 10
   m_lifeTime: 0.2

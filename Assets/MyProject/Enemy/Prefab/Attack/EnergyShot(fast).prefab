@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 2376719546572973219}
   - component: {fileID: 2198158273090286767}
   m_Layer: 0
-  m_Name: EnergyShot
+  m_Name: EnergyShot(fast)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -128,7 +128,7 @@ MonoBehaviour:
   Player: {fileID: 2704472200850051280, guid: 6f3a346b54d192b4eaeec19c979aec6e, type: 3}
   rotation: {x: 0, y: 0, z: 0, w: 0}
   m_moveTime: 0
-  m_speed: 5
+  m_speed: 4
 --- !u!114 &3161758099461082156
 MonoBehaviour:
   m_ObjectHideFlags: 0
