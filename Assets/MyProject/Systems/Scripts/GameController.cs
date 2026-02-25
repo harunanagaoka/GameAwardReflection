@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class GameController : MonoBehaviour
 {
@@ -162,9 +163,17 @@ public class GameController : MonoBehaviour
         }
     }
 
-    private void OnPhaseTransition(int currentPhase,int nextPhase)
+    private void OnPhaseTransition(int currentPhase, int nextPhase)
+    {
+        StartCoroutine(OnPhaseTransitionCoroutine(currentPhase, nextPhase));
+        m_mainGameEvents.OnPhaseTransitionStart?.Invoke();
+    }
+    
+    private IEnumerator OnPhaseTransitionCoroutine(int currentPhase,int nextPhase)
     {
         //フェーズおわりに呼ばれる
+        m_visualCuePlayer.PlayTransitionEffect();
+        yield return null;//デバッグ用
     }
 
     private void OnPhaseTransitionEnd()

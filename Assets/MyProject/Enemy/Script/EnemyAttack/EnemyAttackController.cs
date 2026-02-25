@@ -37,7 +37,7 @@ public class EnemyAttackController : MonoBehaviour
     }
 
 
-    private void StopAllTasks()
+    public void StopAllTasks()
     {
         foreach (var c in m_runningTasks)
         {

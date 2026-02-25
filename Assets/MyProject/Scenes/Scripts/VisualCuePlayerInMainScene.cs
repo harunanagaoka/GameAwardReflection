@@ -7,6 +7,9 @@ public class VisualCuePlayerInMainScene : MonoBehaviour
     [SerializeField]
     FadeEffect m_fadeEffectPlayer;
 
+    [SerializeField]
+    private float m_debugDuration = 5.0f;
+
     public event Action OnSceneEnterVisualCompleted = delegate { };
     public event Action OnSceneExitVisualCompleted = delegate { };
     public event Action OnPhaseTransitionVisualCompleted = delegate { };
@@ -43,5 +46,16 @@ public class VisualCuePlayerInMainScene : MonoBehaviour
     {
         yield return StartCoroutine(m_fadeEffectPlayer.Fade(true));
         OnSceneExitVisualCompleted?.Invoke();
+    }
+
+    public void PlayTransitionEffect()
+    {
+        StartCoroutine(Test());
+    }
+
+    private IEnumerator Test()
+    {
+        yield return new WaitForSeconds(m_debugDuration);
+        OnPhaseTransitionVisualCompleted?.Invoke();
     }
 }

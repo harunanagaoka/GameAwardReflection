@@ -28,6 +28,8 @@ public class PhaseController : MonoBehaviour
 
     public event Action OnAllPhasesCompleted;
 
+    private bool m_isPhaseTransition = false;
+
     private bool IsInPhase => !m_isGameEnded && m_isGameStarted;
 
     private void Start()
@@ -37,7 +39,7 @@ public class PhaseController : MonoBehaviour
         m_mainGameEvents.OnGameOver.AddListener(()=> m_isGameEnded = true);
         m_mainGameEvents.OnPhaseTransitionEnd.AddListener(NextPhase);
         m_enemyManager.OnBossEnemyDied += (HandleBossEnemyDied);
-        m_enemyManager.Initialize();
+        m_enemyManager.Initialize(m_mainGameEvents);
 
         m_currentPhase = 0;
         if (!m_bossEnemy)
@@ -54,11 +56,12 @@ public class PhaseController : MonoBehaviour
 
     private void Update()
     {
-        if (IsInPhase && m_gamePhaseData.PhaseDescriptors[m_currentPhase].CanChangePhase(m_bossEnemy))
+        if (!m_isPhaseTransition && IsInPhase && m_gamePhaseData.PhaseDescriptors[m_currentPhase].CanChangePhase(m_bossEnemy))
         {
+            m_isPhaseTransition = true;
             OnPhaseEnd?.Invoke(m_currentPhase, m_currentPhase + 1);
 
-            NextPhase();
+            //NextPhase();//ÉfÉäÉQÅ[ÉgÇ≈åƒÇ‘ÇÊÇ§Ç…ÇµÇ‹ÇµÇΩ
         }
     }
 
@@ -73,7 +76,7 @@ public class PhaseController : MonoBehaviour
     {
         if (!m_bossEnemy)
         {
-            m_enemyManager.Initialize();
+            m_enemyManager.Initialize(m_mainGameEvents);
             m_bossEnemy = m_enemyManager.SpawnBossEnemy(m_gamePhaseData.BossData, m_currentPhase);
         }
         m_isGameStarted = true;
@@ -95,6 +98,8 @@ public class PhaseController : MonoBehaviour
         m_currentPhase = nextPhase;
 
         m_enemyManager.SetEnemyPhase(m_currentPhase);
+
+        m_isPhaseTransition = false;
 
         OnPhaseChanged?.Invoke(prevPhase, nextPhase);
     }

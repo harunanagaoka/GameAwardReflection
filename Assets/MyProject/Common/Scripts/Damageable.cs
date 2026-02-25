@@ -2,9 +2,13 @@ using UnityEngine;
 
 public abstract class Damageable : MonoBehaviour
 {
+
+    [SerializeField]
     protected float m_maxHitInterval = 0;
 
     private float m_hitInterval = 0;
+
+
     private bool m_isDamageInterval = false;
 
     protected abstract void OnDamagePenaltyEvent(float damage);
