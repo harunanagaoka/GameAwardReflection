@@ -22,7 +22,12 @@ public class MusicManager : MonoBehaviour
     {
         m_audioSource = new AudioSource();
         m_audioSource = gameObject.AddComponent<AudioSource>();
-        OnPlay(MusicName.Main);
+            OnPlay(MusicName.Main);
+    }
+
+    void Update()
+    {
+     OnChangeVolume(MusicName.Main, m_musicVolumes[(int)MusicName.Main]);
     }
 
     public void OnPlay(MusicName musicNum)
@@ -39,5 +44,14 @@ public class MusicManager : MonoBehaviour
     public void OnStop()
     {
         m_audioSource.Stop();
+    }
+
+    public void OnChangeVolume(MusicName musicNum, float volume)
+    {
+        m_musicVolumes[(int)musicNum] = volume;
+        if (m_audioSource.clip == m_audioClips[(int)musicNum])
+        {
+            m_audioSource.volume = volume;
+        }
     }
 }
