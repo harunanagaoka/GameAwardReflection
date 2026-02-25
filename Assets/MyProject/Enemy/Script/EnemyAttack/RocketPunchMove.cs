@@ -14,7 +14,12 @@ public class RocketPunchMove : MonoBehaviour
     [SerializeField]
     float m_moveTime = 0.5f;
 
+    [SerializeField]
+    float a = 0.5f;
     public float m_speed;
+
+    [SerializeField]
+    private float m_upspeed;
     private Vector3 m_direction;
 
     private Rigidbody rigid;
@@ -23,6 +28,9 @@ public class RocketPunchMove : MonoBehaviour
 
     private int seCount = 0;
 
+    private bool isMoving = true;
+
+    private bool isUpMoving = false;
 
     private void Start()
     {
@@ -44,6 +52,15 @@ public class RocketPunchMove : MonoBehaviour
         Invoke(nameof(Move), m_moveTime);
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            isMoving = false;
+            Invoke(nameof(UpMove), a);
+        }
+    }
+
     private void UpdateDirection()
     {
         //1.スクリプトがアタッチされているオブジェクトの向きをプレイヤーの方向に向ける
@@ -53,16 +70,29 @@ public class RocketPunchMove : MonoBehaviour
         transform.rotation = rotation;
 
     }
+    private void UpMove()
+    {
+        isUpMoving = true;
+    }
 
     public void Move()
     {
-        transform.position += transform.forward * m_speed * Time.fixedDeltaTime;
 
-        //SE再生
-        if (m_seManager != null && seCount == 0)
+        if (isMoving)
         {
-            m_seManager.OnPlayOneShot(SEManager.SoundEffectName.BossPunch);
-            seCount++;
+            transform.position += transform.forward * m_speed * Time.fixedDeltaTime;
+
+            //SE再生
+            if (m_seManager != null && seCount == 0)
+            {
+                m_seManager.OnPlayOneShot(SEManager.SoundEffectName.BossPunch);
+                seCount++;
+            }
+        }
+       
+        if (isUpMoving)
+        {
+            transform.position += transform.up * m_upspeed * Time.fixedDeltaTime;
         }
     }
 }

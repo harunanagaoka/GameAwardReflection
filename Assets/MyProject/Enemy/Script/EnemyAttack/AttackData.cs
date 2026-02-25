@@ -8,7 +8,7 @@ public class AttackData : ScriptableObject
     //private Vector3 m_blownAwayDirection;
 
     [SerializeField]
-    private Vector3 m_initPos = Vector3.zero;
+    private Vector3 m_initPos = Vector3.zero;//攻撃の初期位置
 
     [SerializeField, Tooltip("攻撃のプレハブ")]
     private GameObject m_attackPrefab;
