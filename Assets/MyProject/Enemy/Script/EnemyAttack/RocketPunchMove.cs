@@ -15,11 +15,16 @@ public class RocketPunchMove : MonoBehaviour
     float m_moveTime = 0.5f;
 
     [SerializeField]
-    float a = 0.5f;
-    public float m_speed;
+    float m_stopTime = 0.5f;
 
     [SerializeField]
-    private float m_upspeed;
+    float m_forwardspeed = 1.0f;
+
+    [SerializeField]
+    float m_Xrotation = -15f;
+
+    public float m_speed;
+
     private Vector3 m_direction;
 
     private Rigidbody rigid;
@@ -31,6 +36,8 @@ public class RocketPunchMove : MonoBehaviour
     private bool isMoving = true;
 
     private bool isUpMoving = false;
+
+    private bool isOneShot = false;
 
     private void Start()
     {
@@ -57,7 +64,7 @@ public class RocketPunchMove : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             isMoving = false;
-            Invoke(nameof(UpMove), a);
+            Invoke(nameof(UpMove),m_stopTime);
         }
     }
 
@@ -92,7 +99,13 @@ public class RocketPunchMove : MonoBehaviour
        
         if (isUpMoving)
         {
-            transform.position += transform.up * m_upspeed * Time.fixedDeltaTime;
+            if (!isOneShot)
+            {
+                transform.rotation *= Quaternion.Euler(m_Xrotation, 0, 0);
+                isOneShot = true;
+            }
+           //transform.position += transform.up * m_upspeed * Time.fixedDeltaTime;
+            transform.position += transform.forward * m_forwardspeed * Time.fixedDeltaTime;
         }
     }
 }
