@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: BossWait
   m_EditorClassIdentifier: 
   m_initPos: {x: 0, y: 0, z: 0}
-  m_attackPrefab: {fileID: 0}
-  m_attackRange: {fileID: 0}
+  m_attackPrefab: {fileID: 6471413671696091982, guid: 787ef7758c94061428e8c3d5eb13fc76, type: 3}
+  m_attackRange: {fileID: 6471413671696091982, guid: 787ef7758c94061428e8c3d5eb13fc76, type: 3}
   m_warningDuration: 0
   m_blownAwayPower: 0
   m_blownAwayTime: 0
