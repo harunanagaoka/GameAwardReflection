@@ -129,7 +129,11 @@ MonoBehaviour:
   Player: {fileID: 2704472200850051280, guid: 6f3a346b54d192b4eaeec19c979aec6e, type: 3}
   rotation: {x: 0, y: 0, z: 0, w: 0}
   m_moveTime: 0.5
+  m_stopTime: 0
+  m_forwardspeed: 50
+  m_Xrotation: -50
   m_speed: 20
+  m_upspeed: 150
 --- !u!114 &3161758099461082156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,7 +165,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4, y: 3, z: 5}
+  m_Size: {x: 3, y: 3, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5315615775788989841
 MonoBehaviour:
