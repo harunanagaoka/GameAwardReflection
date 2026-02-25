@@ -14,14 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_prefab: {fileID: 3677717078595683746, guid: be94aaccc77008b4485553fc40a385e7, type: 3}
   m_initPosition: {x: 0, y: 0, z: 4}
-  m_hitPoint: 299
+  m_hitPoint: 199
   m_onDamageColor: {r: 1, g: 0, b: 0, a: 1}
-  m_damageInterval: 0.5
+  m_damageInterval: 0.1
   m_damageEffectTime: 0.5
   m_enemyAttackPatternData: {fileID: 11400000, guid: 2bbfc989c25db344995dad7b924b954d, type: 2}
   m_enemyMovePetternData: {fileID: 11400000, guid: 762daebf69967de4f97f2bd0f9346700, type: 2}
-  m_phaseChangeRates:
-  - 0
-  - 0
-  - 0
+  m_phaseChangeRates: []
   m_phaseChangeAmounts: []
