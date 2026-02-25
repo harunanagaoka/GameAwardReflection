@@ -61,7 +61,13 @@ public class AttackHitBox : MonoBehaviour
 
         if (other.TryGetComponent<PlayerDamageable>(out PlayerDamageable playerDamageable))
         {
+            if (!playerDamageable.CanDamage)
+            {
+                return;
+            }
+
             playerDamageable.TakeDamage(m_damage);
+            
         }
 
         if (m_stunAttack)
