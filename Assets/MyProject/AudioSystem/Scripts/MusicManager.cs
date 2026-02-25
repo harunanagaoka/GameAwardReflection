@@ -13,6 +13,11 @@ public class MusicManager : MonoBehaviour
         Main
     }
 
+    // äeSEÇ≤Ç∆ÇÃâπó Çä«óù
+    [Range(0f, 1f)]
+    [SerializeField]
+    private float[] m_musicVolumes = new float[3] { 1, 1, 1};
+
     private void Start()
     {
         m_audioSource = new AudioSource();
@@ -23,7 +28,9 @@ public class MusicManager : MonoBehaviour
     public void OnPlay(MusicName musicNum)
     {
         OnStop();
+        float volume = m_musicVolumes[(int)musicNum];
         m_audioSource.clip = m_audioClips[(int)musicNum];
+        m_audioSource.volume = volume;
         m_audioSource.loop = true;
         m_audioSource.Play();
 
