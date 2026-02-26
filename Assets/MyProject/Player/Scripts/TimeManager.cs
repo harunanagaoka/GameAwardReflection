@@ -41,17 +41,19 @@ public class TimeManager : MonoBehaviour
     private void Start()
     {
         m_enemyManager.OnBossJoined += ResisterEnemyEvent;
-        PlayerManager.Instance.OnResisterPlayer += ResisterPlayerEvent;
+        ResisterPlayerEvent();
+        // PlayerManager.Instance.OnResisterPlayer += ResisterPlayerEvent;
     }
 
     private void OnDisable()
     {
         m_enemyManager.OnBossJoined -= ResisterEnemyEvent;
-        PlayerManager.Instance.OnResisterPlayer -= ResisterPlayerEvent;
+        //PlayerManager.Instance.OnResisterPlayer -= ResisterPlayerEvent;
     }
 
     void Update()
-    {
+    { 
+       
         //　スローダウンフラグがtrueの時は時間計測
         if (isSlowDown)
         {
@@ -73,7 +75,7 @@ public class TimeManager : MonoBehaviour
     //　時間を遅らせる処理
     public void SlowDown()
     {
-        if (onClickAttack)
+        if (onClickAttack.IsCancelAttack)
         {
             elapsedTime = 0f;
             Time.timeScale = AttckHitTimeScale;
@@ -97,15 +99,16 @@ public class TimeManager : MonoBehaviour
     private void ResisterEnemyEvent()
     {
         m_enemyEvent = m_enemyManager.BossEnemy.GetComponent<EnemyEvents>();
-        onClickAttack = GetComponent<OnClickAttack>();
+        //onClickAttack = PlayerManager.Instance.Players[0].GetComponent<OnClickAttack>();
         m_enemyEvent.OnDamage.AddListener(SlowDown);
     }
 
     private void ResisterPlayerEvent()
     {
-        //m_playerEvent = PlayerManager.Instance.Players[0].GetComponent<PlayerEvents>();
+        onClickAttack = PlayerManager.Instance.Players[0].GetComponent<OnClickAttack>();
+        m_playerEvent = PlayerManager.Instance.Players[0].GetComponent<PlayerEvents>();
         //m_playerEvent.OnDefenceEnd.AddListener(PlayerSlowDown);
-        //m_playerEvent.OnDamage.AddListener(SlowDown);
+        m_playerEvent.OnDamage.AddListener(SlowDown);
     }
 }
 

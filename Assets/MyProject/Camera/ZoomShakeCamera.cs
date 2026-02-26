@@ -18,6 +18,9 @@ public class ZoomShakeCamera : MonoBehaviour
     [Header("Enemy")]
     [SerializeField] private EnemyManager m_enemyManager;
 
+    [SerializeField]
+    OnClickAttack onClickAttack;
+
     private EnemyEvents m_enemyEvent;
     private Transform bossTransform;
 
@@ -30,6 +33,7 @@ public class ZoomShakeCamera : MonoBehaviour
 
     private void Awake()
     {
+        onClickAttack = GetComponent<OnClickAttack>();
         if (targetCamera == null)
         {
             targetCamera = Camera.main;
@@ -44,6 +48,11 @@ public class ZoomShakeCamera : MonoBehaviour
         }
 
         m_enemyManager.OnBossJoined += GetEnemyEvent;
+    }
+
+    private void Start()
+    {
+        onClickAttack = PlayerManager.Instance.Players[0].GetComponent<OnClickAttack>();
     }
 
     private void OnDisable()
@@ -79,12 +88,15 @@ public class ZoomShakeCamera : MonoBehaviour
 
     public void PlayEffect()
     {
-        if (effectCoroutine != null)
+        if (onClickAttack.IsCancelAttack)
         {
-            StopCoroutine(effectCoroutine);
-        }
+            if (effectCoroutine != null)
+            {
+                StopCoroutine(effectCoroutine);
+            }
 
-        effectCoroutine = StartCoroutine(ZoomShakeRoutine());
+            effectCoroutine = StartCoroutine(ZoomShakeRoutine());
+        }
     }
 
     private IEnumerator ZoomShakeRoutine()
