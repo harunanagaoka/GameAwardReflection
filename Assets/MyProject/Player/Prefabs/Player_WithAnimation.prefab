@@ -2095,6 +2095,7 @@ GameObject:
   - component: {fileID: 3327450221984131063}
   - component: {fileID: 1614859499012165790}
   - component: {fileID: 8493064403478753135}
+  - component: {fileID: 7998790113055931258}
   m_Layer: 0
   m_Name: Player_WithAnimation
   m_TagString: Player
@@ -2445,6 +2446,24 @@ MonoBehaviour:
   - {fileID: 2843950786611953858}
   - {fileID: 6937447622118610788}
   - {fileID: 1633758747657037650}
+--- !u!114 &7998790113055931258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7007556205150508085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5de19838b9fb3e040baed3341e0cafb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UIPrefabs:
+  - {fileID: 8855091880627982706, guid: 2a204426b6a9d754ca15d9ad1b93b050, type: 3}
+  - {fileID: 8998854120545112453, guid: 456772e0d037f1b439d04681f0976fba, type: 3}
+  - {fileID: 2006792503680117876, guid: 8d8a9bc3e1b5bfd48b2da12dec055013, type: 3}
+  - {fileID: 1442526352836056946, guid: 1ad467233afdaec43b0be8980115d26c, type: 3}
+  - {fileID: 3210781918362253936, guid: c69005066078bc446bfbc04cdad30bef, type: 3}
 --- !u!1 &7231919279034011422
 GameObject:
   m_ObjectHideFlags: 0
