@@ -809,6 +809,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8979668767054875266, guid: c950ebfb3001af043a7f4c86c5e8d8c6, type: 3}
+      propertyPath: 'm_seVolumes.Array.data[0]'
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8979668767054875266, guid: c950ebfb3001af043a7f4c86c5e8d8c6, type: 3}
       propertyPath: 'm_audioClips.Array.data[0]'
       value: 
       objectReference: {fileID: 8300000, guid: 4dbe7b0e846c84845b95750c1df9a1f1, type: 3}

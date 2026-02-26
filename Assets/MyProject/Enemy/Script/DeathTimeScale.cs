@@ -21,17 +21,15 @@ public class DeathTimeScale : MonoBehaviour
 
     private void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    DeathDelay();
-        //}
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            DeathDelay();
+        }
     }
 
 
     public void DeathDelay()
     {
-        enemy = GameObject.Find("boos_anime_taiki_v02");
-        animator = enemy.GetComponent<Animator>();
         animator.SetBool("timeScale", true); 
         effectObject.SetActive(true);
     }
