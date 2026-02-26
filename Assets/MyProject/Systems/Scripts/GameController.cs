@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class GameController : MonoBehaviour
 {
@@ -31,7 +32,6 @@ public class GameController : MonoBehaviour
         m_mainGameEvents = GetComponent<MainGameEvents>();
         m_timer = GetComponent<MainGameTimer>();
         m_visualCuePlayer = GetComponent<VisualCuePlayerInMainScene>();
-
         m_visualCuePlayer.OnSceneEnterVisualCompleted += MainGameStart;
         m_visualCuePlayer.OnSceneExitVisualCompleted += GoNextScene;
 
@@ -42,12 +42,16 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         m_phaseController.OnAllPhasesCompleted += OnAllPhasesCompleted;
+        m_phaseController.OnPhaseEnd += OnPhaseTransition;
+        m_visualCuePlayer.OnPhaseTransitionVisualCompleted += OnPhaseTransitionEnd;
     }
 
     private void OnDisable()
     {
         m_phaseController.OnAllPhasesCompleted -= OnAllPhasesCompleted;
         m_visualCuePlayer.OnSceneEnterVisualCompleted -= MainGameStart;
+        m_phaseController.OnPhaseEnd -= OnPhaseTransition;
+        m_visualCuePlayer.OnPhaseTransitionVisualCompleted -= OnPhaseTransitionEnd;
     }
 
 
@@ -157,5 +161,23 @@ public class GameController : MonoBehaviour
             SceneManager.LoadScene("Victory");
             return;
         }
+    }
+
+    private void OnPhaseTransition(int currentPhase, int nextPhase)
+    {
+        StartCoroutine(OnPhaseTransitionCoroutine(currentPhase, nextPhase));
+        m_mainGameEvents.OnPhaseTransitionStart?.Invoke();
+    }
+    
+    private IEnumerator OnPhaseTransitionCoroutine(int currentPhase,int nextPhase)
+    {
+        //フェーズおわりに呼ばれる
+        m_visualCuePlayer.PlayTransitionEffect();
+        yield return null;//デバッグ用
+    }
+
+    private void OnPhaseTransitionEnd()
+    {
+        m_mainGameEvents.OnPhaseTransitionEnd?.Invoke();//演出終わりに呼ばれる
     }
 }

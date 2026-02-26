@@ -7,6 +7,8 @@ public class EnemyManager : MonoBehaviour
 
     private EnemyEvents m_bossEvents;
 
+    private MainGameEvents m_mainGameEvents;
+
     private EnemyAttackController m_bossAttackController;//ÇªÇÃÇ§Çøï°êîëŒâûÇ…Ç∑ÇÈ
 
     private EnemyMoveController m_bossMoveController;
@@ -28,9 +30,14 @@ public class EnemyManager : MonoBehaviour
         m_enemySpawner = GetComponent<EnemySpawner>();
     }
 
-    public void Initialize()
+    public void Initialize(MainGameEvents events)
     {
         m_enemySpawner = GetComponent<EnemySpawner>();
+        m_mainGameEvents = events;
+        m_mainGameEvents.OnPhaseTransitionStart.AddListener(OnPhaseTransitionStart);
+        //m_mainGameEvents.OnPhaseTransitionEnd.AddListener(OnPhaseTransitionEnd);
+
+
     }
 
     private void OnBossDefeated()
@@ -66,14 +73,10 @@ public class EnemyManager : MonoBehaviour
         return m_bossHP;
     }
 
-    public void PauseEnemyActions()
+    public void OnPhaseTransitionStart()
     {
-        
-    }
-
-    public void RestertEnemyActions()
-    {
-
+        m_bossAttackController.StopAllTasks();
+        m_bossMoveController.StopAllTasks();
     }
 
     public void SetEnemyPhase(int phase)

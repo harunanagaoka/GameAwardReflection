@@ -23,6 +23,8 @@ public class PlayerDamageable : Damageable
     protected override bool CanTakeDamageCore =>
     base.CanTakeDamageCore && !m_isDefending;
 
+    public bool CanDamage => CanTakeDamageCore;
+
     protected override void Start()
     {
         base.Start();
