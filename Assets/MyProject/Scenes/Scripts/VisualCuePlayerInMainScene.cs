@@ -8,7 +8,13 @@ public class VisualCuePlayerInMainScene : MonoBehaviour
     FadeEffect m_fadeEffectPlayer;
 
     [SerializeField]
+    private float m_afterEffectDuration = 1f;
+
+    [SerializeField]
     private float m_debugDuration = 5.0f;
+
+
+    private PhaseCameraChanger m_phaseCameraEffect;
 
     public event Action OnSceneEnterVisualCompleted = delegate { };
     public event Action OnSceneExitVisualCompleted = delegate { };
@@ -23,6 +29,7 @@ public class VisualCuePlayerInMainScene : MonoBehaviour
     private void Start()
     {
         StartCoroutine(PlaySceneEnterEffects());
+        m_phaseCameraEffect = GetComponent<PhaseCameraChanger>();
     }
 
 
@@ -51,12 +58,26 @@ public class VisualCuePlayerInMainScene : MonoBehaviour
 
     public void PlayTransitionEffect()
     {
-        StartCoroutine(Test());
+        StartCoroutine(PhaseTransitionEffect());
+        
     }
 
     public void PlayBossDefeat()
     {
         StartCoroutine(BossDestroyTest());
+    }
+
+    private IEnumerator PhaseTransitionEffect()
+    {
+        yield return StartCoroutine (PhaseTransitionCamera());
+        yield return new WaitForSeconds(m_afterEffectDuration);
+        OnPhaseTransitionVisualCompleted?.Invoke();
+    }
+
+    private IEnumerator PhaseTransitionCamera()
+    {
+        StartCoroutine(m_phaseCameraEffect.PhaseChanger());
+        yield return null;
     }
 
     private IEnumerator Test()
