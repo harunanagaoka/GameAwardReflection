@@ -16,7 +16,7 @@ public class AttackHitBox : MonoBehaviour
 
     private SingleHitAttack m_singleHitAttack = null;
 
-    
+
 
     public void Initialize(Vector3 basePosition,float blownAwayPower, float blownAwayTime,float damage)
     {
@@ -89,6 +89,7 @@ public class AttackHitBox : MonoBehaviour
         {
             m_singleHitAttack.OnHit();
         }
+        
     }
 
     //private void OnTriggerStay(Collider other)
