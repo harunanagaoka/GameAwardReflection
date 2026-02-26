@@ -8,8 +8,6 @@ public class PhaseCameraChanger : MonoBehaviour
     [SerializeField]
     public Camera cameraB;
     [SerializeField]
-    public GameObject canvas;
-    [SerializeField]
     float opentime = 5f;
     [SerializeField]
     private Animator animator;
@@ -24,10 +22,14 @@ public class PhaseCameraChanger : MonoBehaviour
 
     void Start()
     {
-     MainCamera = Camera.main;
-    canvas.SetActive(false);
+        MainCamera = Camera.main;
+        GameObject pahaseCamera = GameObject.Find("phaseCamera");
+        GameObject Enemy = GameObject.Find("boos_anime_taiki_v02");
+        animator = Enemy.GetComponent<Animator>();
+        cameraB = pahaseCamera.GetComponent<Camera>();
         MainCamera.enabled = true;
         cameraB.enabled = false;
+        
     }
 
     void Update()
@@ -41,12 +43,16 @@ public class PhaseCameraChanger : MonoBehaviour
 
    public IEnumerator PhaseChanger()
     {
+        //スタートで読み込まなかった時用の保険
+        //GameObject pahaseCamera = GameObject.Find("phaseCamera");
+        //cameraB = pahaseCamera.GetComponent<Camera>();
+        //GameObject Enemy = GameObject.Find("boos_anime_taiki_v02");
+        //animator = Enemy.GetComponent<Animator>();
         if (cameraIndex == 1)
         {
             // カメラBを有効にし、Canvasを表示
             MainCamera.enabled = false;
             cameraB.enabled = true;
-            canvas.SetActive(true);
             animator.SetFloat("PhaseAnimation", animationSpeed);    
             cameraIndex = 2;
 
@@ -55,7 +61,6 @@ public class PhaseCameraChanger : MonoBehaviour
             // メインカメラに戻し、Canvasを非表示
             MainCamera.enabled = true;
             cameraB.enabled = false;
-            canvas.SetActive(false);
             animator.SetFloat("PhaseAnimation", NormalSpeed);
             cameraIndex = 1;
         }

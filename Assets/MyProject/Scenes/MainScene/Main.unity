@@ -1383,6 +1383,10 @@ PrefabInstance:
       propertyPath: m_playerGenerator
       value: 
       objectReference: {fileID: 339696846}
+    - target: {fileID: 1820038522138235145, guid: 2e2e59e7b8a48214ea038be4d3947d64, type: 3}
+      propertyPath: m_delayForNextPhase
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2119699796301282802, guid: 2e2e59e7b8a48214ea038be4d3947d64, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -1670,10 +1674,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraB: {fileID: 0}
-  canvas: {fileID: 0}
-  opentime: 5
+  opentime: 3
   animator: {fileID: 0}
-  animationSpeed: 1
+  animationSpeed: 2.5
 --- !u!1 &1760477701
 GameObject:
   m_ObjectHideFlags: 0
