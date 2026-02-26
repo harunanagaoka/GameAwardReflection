@@ -59,22 +59,6 @@ public class AttackHitBox : MonoBehaviour
             m_breakDefence.BreakDefence();
         }
 
-        if (other.TryGetComponent<PlayerDamageable>(out PlayerDamageable playerDamageable))
-        {
-            if (!playerDamageable.CanDamage)
-            {
-                return;
-            }
-
-            playerDamageable.TakeDamage(m_damage);
-            
-        }
-
-        if (m_stunAttack)
-        {
-            //スタン
-            m_stunAttack.StartStunCoroutine();
-        }
 
         if (other.TryGetComponent<PlayerBlownAway>(out PlayerBlownAway playerBlowAway))
         {
@@ -83,6 +67,24 @@ public class AttackHitBox : MonoBehaviour
             {
                 return;
             }
+        }
+
+
+        if (other.TryGetComponent<PlayerDamageable>(out PlayerDamageable playerDamageable))
+        {
+            if (!playerDamageable.CanDamage)
+            {
+                return;
+            }
+
+            playerDamageable.TakeDamage(m_damage);
+
+        }
+
+        if (m_stunAttack)
+        {
+            //スタン
+            m_stunAttack.StartStunCoroutine();
         }
 
         if (m_singleHitAttack)
