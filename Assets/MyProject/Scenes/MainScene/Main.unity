@@ -1383,6 +1383,10 @@ PrefabInstance:
       propertyPath: m_playerGenerator
       value: 
       objectReference: {fileID: 339696846}
+    - target: {fileID: 1820038522138235145, guid: 2e2e59e7b8a48214ea038be4d3947d64, type: 3}
+      propertyPath: m_delayForNextPhase
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2119699796301282802, guid: 2e2e59e7b8a48214ea038be4d3947d64, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -1447,6 +1451,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2119699796301282802, guid: 2e2e59e7b8a48214ea038be4d3947d64, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1722335423}
+    - targetCorrespondingSourceObject: {fileID: 2119699796301282802, guid: 2e2e59e7b8a48214ea038be4d3947d64, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1722335424}
   m_SourcePrefab: {fileID: 100100000, guid: 2e2e59e7b8a48214ea038be4d3947d64, type: 3}
 --- !u!114 &1535699872 stripped
 MonoBehaviour:
@@ -1614,7 +1621,6 @@ MonoBehaviour:
   DefenceHitTimeScale: 0.1
   AttckSlowTime: 0.5
   DefenceSlowTime: 0.5
-  onClickAttack: {fileID: 0}
 --- !u!4 &1596042142
 Transform:
   m_ObjectHideFlags: 0
@@ -1655,6 +1661,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_fadeEffectPlayer: {fileID: 1272869022}
   m_debugDuration: 5
+--- !u!114 &1722335424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1211383370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45bd64de3b511bf4e9b236e81bdd0537, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraB: {fileID: 0}
+  opentime: 3
+  animator: {fileID: 0}
+  animationSpeed: 2.5
 --- !u!1 &1760477701
 GameObject:
   m_ObjectHideFlags: 0
