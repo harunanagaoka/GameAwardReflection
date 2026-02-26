@@ -34,6 +34,9 @@ public class TimeManager : MonoBehaviour
 
     private PlayerEvents m_playerEvent;
 
+    [SerializeField]
+    OnClickAttack onClickAttack;
+
 
     private void Start()
     {
@@ -70,9 +73,12 @@ public class TimeManager : MonoBehaviour
     //Å@éûä‘ÇíxÇÁÇπÇÈèàóù
     public void SlowDown()
     {
-        elapsedTime = 0f;
-        Time.timeScale = AttckHitTimeScale;
-        isSlowDown = true;
+        if (onClickAttack)
+        {
+            elapsedTime = 0f;
+            Time.timeScale = AttckHitTimeScale;
+            isSlowDown = true;
+        }
     }
 
     public void PlayerSlowDown()
@@ -91,14 +97,14 @@ public class TimeManager : MonoBehaviour
     private void ResisterEnemyEvent()
     {
         m_enemyEvent = m_enemyManager.BossEnemy.GetComponent<EnemyEvents>();
+        onClickAttack = GetComponent<OnClickAttack>();
         m_enemyEvent.OnDamage.AddListener(SlowDown);
-        
     }
 
     private void ResisterPlayerEvent()
     {
-        m_playerEvent = PlayerManager.Instance.Players[0].GetComponent<PlayerEvents>();
-        m_playerEvent.OnBlownAway.AddListener(PlayerSlowDown);
+        //m_playerEvent = PlayerManager.Instance.Players[0].GetComponent<PlayerEvents>();
+        //m_playerEvent.OnDefenceEnd.AddListener(PlayerSlowDown);
         //m_playerEvent.OnDamage.AddListener(SlowDown);
     }
 }
