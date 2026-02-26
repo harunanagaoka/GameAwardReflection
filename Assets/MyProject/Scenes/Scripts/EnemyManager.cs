@@ -15,6 +15,8 @@ public class EnemyManager : MonoBehaviour
 
     private EnemyDamageable m_bossHP;
 
+    private EnemyDestroy m_destroyer;
+
     private GameObject m_bossEnemy;//bossHP,bossEventsÇ÷ÇÃéQè∆Ç‡Ç±ÇøÇÁÇ…ìùçáó\íË
 
     public event Action OnBossJoined = delegate { };
@@ -35,6 +37,7 @@ public class EnemyManager : MonoBehaviour
         m_enemySpawner = GetComponent<EnemySpawner>();
         m_mainGameEvents = events;
         m_mainGameEvents.OnPhaseTransitionStart.AddListener(OnPhaseTransitionStart);
+        
         //m_mainGameEvents.OnPhaseTransitionEnd.AddListener(OnPhaseTransitionEnd);
 
 
@@ -42,6 +45,7 @@ public class EnemyManager : MonoBehaviour
 
     private void OnBossDefeated()
     {
+        OnPhaseTransitionStart();
         OnBossEnemyDied?.Invoke();
     }
 
@@ -55,7 +59,7 @@ public class EnemyManager : MonoBehaviour
         var enemyMover = bossObject.AddComponent<EnemyMover>();
         m_bossAttackController = bossObject.AddComponent<EnemyAttackController>();
         m_bossMoveController = bossObject.AddComponent<EnemyMoveController>();
-        var destroyer = bossObject.AddComponent<EnemyDestroy>();
+        m_destroyer = bossObject.AddComponent<EnemyDestroy>();
         var effectPlayer = bossObject.GetComponent<EnemyEffectPlayer>();
         var SEPlayer = bossObject.GetComponent<EnemySE>();
 
@@ -64,7 +68,7 @@ public class EnemyManager : MonoBehaviour
         m_bossAttackController.Initialize(enemyData, m_bossEvents,attackFactory);
         m_bossMoveController.Initialize(enemyData, enemyMover);
       //  SetEnemyPhase(currentphase);
-        destroyer.Initialize(m_bossEvents);
+        m_destroyer.Initialize(m_bossEvents);
         effectPlayer.Initialize(m_bossEvents);
         SEPlayer.Initialize(m_bossEvents);
 
@@ -83,5 +87,10 @@ public class EnemyManager : MonoBehaviour
     {
         m_bossAttackController.OnPhaseChanged(phase);
         m_bossMoveController.OnPhaseChanged(phase);
+    }
+
+    public void EnemyDestroy()
+    {
+        m_destroyer.DestroyEnemy();
     }
 }

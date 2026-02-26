@@ -13,6 +13,7 @@ public class VisualCuePlayerInMainScene : MonoBehaviour
     public event Action OnSceneEnterVisualCompleted = delegate { };
     public event Action OnSceneExitVisualCompleted = delegate { };
     public event Action OnPhaseTransitionVisualCompleted = delegate { };
+    public event Action OnAllPhaseFinishedVisualCompleted = delegate { };
 
     void Awake()
     {
@@ -53,9 +54,20 @@ public class VisualCuePlayerInMainScene : MonoBehaviour
         StartCoroutine(Test());
     }
 
+    public void PlayBossDefeat()
+    {
+        StartCoroutine(BossDestroyTest());
+    }
+
     private IEnumerator Test()
     {
         yield return new WaitForSeconds(m_debugDuration);
         OnPhaseTransitionVisualCompleted?.Invoke();
+    }
+
+    private IEnumerator BossDestroyTest()
+    {
+        yield return new WaitForSeconds(m_debugDuration);
+        OnAllPhaseFinishedVisualCompleted?.Invoke();
     }
 }
