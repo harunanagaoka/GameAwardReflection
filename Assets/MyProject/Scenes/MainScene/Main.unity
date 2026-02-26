@@ -1617,6 +1617,7 @@ MonoBehaviour:
   DefenceHitTimeScale: 0.1
   AttckSlowTime: 0.5
   DefenceSlowTime: 0.5
+  onClickAttack: {fileID: 0}
 --- !u!4 &1596042142
 Transform:
   m_ObjectHideFlags: 0
@@ -1657,6 +1658,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_fadeEffectPlayer: {fileID: 1272869022}
   m_debugDuration: 5
+<<<<<<< HEAD
 --- !u!114 &1722335424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1676,6 +1678,8 @@ MonoBehaviour:
   CheckInterval: 8
   ReturnPosition: {x: 0, y: 0, z: 0}
   player: {fileID: 0}
+=======
+>>>>>>> Beta/014
 --- !u!1 &1760477701
 GameObject:
   m_ObjectHideFlags: 0
