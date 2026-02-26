@@ -9,4 +9,6 @@ public class MainGameEvents : MonoBehaviour
 
     public UnityEvent OnPhaseTransitionStart;
     public UnityEvent OnPhaseTransitionEnd;
+
+    public UnityEvent OnGameFinishPresentationEnd;
 }

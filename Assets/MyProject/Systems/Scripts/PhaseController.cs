@@ -28,6 +28,8 @@ public class PhaseController : MonoBehaviour
 
     public event Action OnAllPhasesCompleted;
 
+    public event Action OnBossDestroyed;
+
     private bool m_isPhaseTransition = false;
 
     private bool IsInPhase => !m_isGameEnded && m_isGameStarted;
@@ -112,5 +114,11 @@ public class PhaseController : MonoBehaviour
     public float GetCurrentPhaseProgress()
     {
         return m_gamePhaseData.GetCurrentPhaseProgress(m_currentPhase, m_bossEnemy);
+    }
+
+    public void OnAllGamePresentationEnd()
+    {
+        m_enemyManager.EnemyDestroy();
+        OnBossDestroyed?.Invoke();
     }
 }

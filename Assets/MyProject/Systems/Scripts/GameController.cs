@@ -10,6 +10,9 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private bool m_isDebug = false;
 
+    [SerializeField]
+    private float m_delayForNextPhase = 2;
+
     private PhaseController m_phaseController;
     private MainGameEvents m_mainGameEvents;
     private MainGameTimer m_timer;
@@ -33,7 +36,9 @@ public class GameController : MonoBehaviour
         m_timer = GetComponent<MainGameTimer>();
         m_visualCuePlayer = GetComponent<VisualCuePlayerInMainScene>();
         m_visualCuePlayer.OnSceneEnterVisualCompleted += MainGameStart;
-        m_visualCuePlayer.OnSceneExitVisualCompleted += GoNextScene;
+        m_visualCuePlayer.OnAllPhaseFinishedVisualCompleted += OnGameEndPresentationEnd;
+        //m_visualCuePlayer.OnSceneExitVisualCompleted += GoNextScene;
+        
 
         m_playerGenerator.GeneratePlayer();
         m_player = PlayerManager.Instance.Players[0].GetComponent<PlayerDamageable>();
@@ -43,6 +48,7 @@ public class GameController : MonoBehaviour
     {
         m_phaseController.OnAllPhasesCompleted += OnAllPhasesCompleted;
         m_phaseController.OnPhaseEnd += OnPhaseTransition;
+        m_phaseController.OnBossDestroyed += GoNextScene;
         m_visualCuePlayer.OnPhaseTransitionVisualCompleted += OnPhaseTransitionEnd;
     }
 
@@ -51,7 +57,9 @@ public class GameController : MonoBehaviour
         m_phaseController.OnAllPhasesCompleted -= OnAllPhasesCompleted;
         m_visualCuePlayer.OnSceneEnterVisualCompleted -= MainGameStart;
         m_phaseController.OnPhaseEnd -= OnPhaseTransition;
+        m_phaseController.OnBossDestroyed -= GoNextScene;
         m_visualCuePlayer.OnPhaseTransitionVisualCompleted -= OnPhaseTransitionEnd;
+        m_visualCuePlayer.OnAllPhaseFinishedVisualCompleted -= OnGameEndPresentationEnd;
     }
 
 
@@ -69,11 +77,11 @@ public class GameController : MonoBehaviour
 
         if (m_isGameOver || m_isGameCleared)
         {
-            if (!m_isInPresentation)
-            {
-                PlayGameEndPresentation();
-                m_isInPresentation = true;
-            }
+            //if (!m_isInPresentation)
+            //{
+            //    PlayGameEndPresentation();
+            //    m_isInPresentation = true;
+            //}
         }
 
         if (!IsInGame)
@@ -121,6 +129,7 @@ public class GameController : MonoBehaviour
 
         m_isGameCleared = true;
         m_timer.StopTimer();
+        PlayGameEndPresentation();
         m_mainGameEvents.OnGameClear?.Invoke();
 
         Debug.Log("GameClear");
@@ -145,21 +154,32 @@ public class GameController : MonoBehaviour
 
     private void PlayGameEndPresentation()
     {
-        m_visualCuePlayer.PlaySceneExitEffects();
+        m_visualCuePlayer.PlayBossDefeat();
+    }
+
+    private void OnGameEndPresentationEnd()
+    {
+        m_mainGameEvents.OnGameFinishPresentationEnd?.Invoke();
+        m_phaseController.OnAllGamePresentationEnd();
     }
 
     private void GoNextScene()
     {
+        StartCoroutine(LoadSceneAfterDelay()); 
+    }
+
+    private IEnumerator LoadSceneAfterDelay()
+    {
+        yield return new WaitForSeconds(m_delayForNextPhase);
+
         if (m_isGameOver)
         {
             SceneManager.LoadScene("Defeat");
-            return;
         }
 
         if (m_isGameCleared)
         {
             SceneManager.LoadScene("Victory");
-            return;
         }
     }
 
