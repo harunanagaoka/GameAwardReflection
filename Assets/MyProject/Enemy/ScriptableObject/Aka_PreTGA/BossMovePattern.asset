@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: BossMovePattern
   m_EditorClassIdentifier: 
   m_moveTaskDatas:
-  - {fileID: 11400000, guid: 355a257e91d52944db10d762c957f6b9, type: 2}
+  - {fileID: 11400000, guid: e553a6a42241c4744abc59670802b0d7, type: 2}
   - {fileID: 11400000, guid: 161fc1e11dd2ef54481d4380e06d2505, type: 2}
   - {fileID: 11400000, guid: 3f90e88b87fbaad4ca74eee2f7be2400, type: 2}

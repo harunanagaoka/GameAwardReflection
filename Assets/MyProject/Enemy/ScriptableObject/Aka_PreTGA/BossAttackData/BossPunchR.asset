@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2bf7b53af7bd5e4996fcdb07f08f742, type: 3}
   m_Name: BossPunchR
   m_EditorClassIdentifier: 
-  m_initPos: {x: 5, y: 0, z: 8}
+  m_initPos: {x: 6, y: 0, z: 8}
   m_attackPrefab: {fileID: 3793399201196985688, guid: e00fb5d29be79114e9497883c2c5be8d, type: 3}
   m_attackRange: {fileID: 3793399201196985688, guid: a0a03cc091aae2a4397e4b01e438ea9f, type: 3}
-  m_warningDuration: 3
+  m_warningDuration: 4
   m_blownAwayPower: 2000
   m_blownAwayTime: 100
-  m_timePenalty: 10
-  m_lifeTime: 2
+  m_timePenalty: 20
+  m_lifeTime: 5

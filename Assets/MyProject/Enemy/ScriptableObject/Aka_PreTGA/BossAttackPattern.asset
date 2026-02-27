@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: BossAttackPattern
   m_EditorClassIdentifier: 
   m_attackTaskDatas:
-  - {fileID: 11400000, guid: fd01dffe874c8204899142f5edd5ade8, type: 2}
+  - {fileID: 11400000, guid: fb120490fc443d746801260a7a554bb3, type: 2}
   - {fileID: 11400000, guid: 7a37240dd21b9db4691b2492e9566b44, type: 2}
   - {fileID: 11400000, guid: 2a27ad27d9a9c7445abd8f3192a9a199, type: 2}
