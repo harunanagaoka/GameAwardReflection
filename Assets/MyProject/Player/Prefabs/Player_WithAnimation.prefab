@@ -2260,7 +2260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4190e186f432e9348913cf38ba4dbe54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_bounceMultiplier: 0.95
+  m_bounceMultiplier: 0.92
   m_targetForceRatio: 0.5
   m_damage: 10
   m_reflectionLayerMask:
@@ -2393,7 +2393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knockbackDistance: 1.2
-  knockbackTime: 0.99
+  knockbackTime: 0.5
 --- !u!114 &3327450221984131063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2407,7 +2407,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_atkPrefab: {fileID: 283969890668651523, guid: 89fdaaa489ca19a4dbcd0d9c26d2c3a3, type: 3}
-  AttckSlowTime: 1
 --- !u!114 &1614859499012165790
 MonoBehaviour:
   m_ObjectHideFlags: 0

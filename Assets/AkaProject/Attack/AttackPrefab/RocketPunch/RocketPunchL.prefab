@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5074653f452cbe34da70ade6b68f0ef5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockbackDistance: 1.5
+  knockbackDistance: 10
   hitOncePerAttack: 1
 --- !u!54 &-8671217841444521628
 Rigidbody:

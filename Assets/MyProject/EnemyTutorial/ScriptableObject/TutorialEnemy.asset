@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_prefab: {fileID: 3677717078595683746, guid: be94aaccc77008b4485553fc40a385e7, type: 3}
   m_initPosition: {x: 0, y: 0, z: 4}
-  m_hitPoint: 199
+  m_hitPoint: 299
   m_onDamageColor: {r: 1, g: 0, b: 0, a: 1}
   m_damageInterval: 0.1
   m_damageEffectTime: 0.5
