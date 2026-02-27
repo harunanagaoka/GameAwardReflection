@@ -880,6 +880,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3a9417eb49f59f4da99f46116677f65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!20 &395516267 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 891489134119222868, guid: 5961d5d8be03e90499761bcf8ee50d55, type: 3}
+  m_PrefabInstance: {fileID: 288826290}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &758977720
 GameObject:
   m_ObjectHideFlags: 0
@@ -1621,6 +1626,7 @@ MonoBehaviour:
   DefenceHitTimeScale: 0.1
   AttckSlowTime: 0.5
   DefenceSlowTime: 0.5
+  onClickAttack: {fileID: 0}
 --- !u!4 &1596042142
 Transform:
   m_ObjectHideFlags: 0
@@ -1660,6 +1666,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_fadeEffectPlayer: {fileID: 1272869022}
+  m_afterEffectDuration: 1
   m_debugDuration: 5
 --- !u!114 &1722335424
 MonoBehaviour:
@@ -1673,7 +1680,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45bd64de3b511bf4e9b236e81bdd0537, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraB: {fileID: 0}
+  cameraB: {fileID: 395516267}
   opentime: 3
   animator: {fileID: 0}
   animationSpeed: 2.5

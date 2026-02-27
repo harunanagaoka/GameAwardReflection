@@ -1551,6 +1551,7 @@ MonoBehaviour:
   DefenceHitTimeScale: 0.1
   AttckSlowTime: 0.5
   DefenceSlowTime: 0.5
+  onClickAttack: {fileID: 0}
 --- !u!4 &1324075782
 Transform:
   m_ObjectHideFlags: 0
@@ -1625,7 +1626,7 @@ PrefabInstance:
     - target: {fileID: 8025175637489951358, guid: f564b5a70b5415341aec4137eeb60b37, type: 3}
       propertyPath: m_enemyManager
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1661921325}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
