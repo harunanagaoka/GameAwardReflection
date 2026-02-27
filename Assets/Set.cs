@@ -1,5 +1,3 @@
-using TMPro.Examples;
-using UnityEditor.PackageManager.UI;
 using UnityEngine;
 
 public class Set : MonoBehaviour
