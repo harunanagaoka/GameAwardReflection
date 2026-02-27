@@ -11,17 +11,6 @@ public class OnClickAttack : MonoBehaviour
 
     private ComboManager m_comboManager;
 
-    bool isCancelAttack = false;
-
-    //@Œo‰ßŽžŠÔ
-    private float elapsedTime = 0f;
-
-    [SerializeField]
-    private float AttckSlowTime = 1f;
-
-    public bool IsCancelAttack => isCancelAttack;
-
-
     void Start()
     {
         m_event = GetComponent<PlayerEvents>();
@@ -32,15 +21,6 @@ public class OnClickAttack : MonoBehaviour
     }
     private void Update()
     {
-
-        if (isCancelAttack)
-        {
-            elapsedTime += Time.unscaledDeltaTime;
-            if (elapsedTime >= AttckSlowTime)
-            {
-                isCancelAttack = false;
-            }
-        }
         //if (!isInited)
         //{
         //    m_gamepad = GamepadManager.Instance.GetGamepad(0);
@@ -76,13 +56,10 @@ public class OnClickAttack : MonoBehaviour
     }
     private void BlowCancelAttack()
     {
-      
         if (m_blownAway.IsBlownAway)
         {
             InitAttack();
             m_blownAway.StopBlownAway();
-            elapsedTime = 0f;
-            isCancelAttack = true;
         }
     }
 
