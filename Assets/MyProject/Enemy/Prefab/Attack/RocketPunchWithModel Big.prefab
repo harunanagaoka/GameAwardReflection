@@ -125,6 +125,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 2704472200850051280, guid: 6f3a346b54d192b4eaeec19c979aec6e, type: 3}
   rotation: {x: 0, y: 0, z: 0, w: 0}
+  m_moveTime: 0.5
+  m_stopTime: 0.5
+  m_forwardspeed: 1
+  m_Xrotation: -15
   m_speed: 10
 --- !u!114 &3161758099461082156
 MonoBehaviour:
@@ -190,6 +194,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: boos_hand_R_v04
       objectReference: {fileID: 0}
+    - target: {fileID: 2078318139770998587, guid: e29334dce60e8ec489b4825ed4e335ba, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0e2f88ea1abbe004ba83705d79e815fd, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

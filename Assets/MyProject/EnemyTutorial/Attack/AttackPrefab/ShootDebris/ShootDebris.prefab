@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2875173673004354750}
   - component: {fileID: 237995194584843235}
   - component: {fileID: 3161758099461082156}
+  - component: {fileID: -815416632828117692}
   m_Layer: 0
   m_Name: ShootDebris
   m_TagString: Untagged
@@ -125,8 +126,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 2704472200850051280, guid: 6f3a346b54d192b4eaeec19c979aec6e, type: 3}
   rotation: {x: 0, y: 0, z: 0, w: 1}
-  m_moveTime: 0.5
-  m_speed: 10
+  m_moveTime: 0.2
+  m_stopTime: 0
+  m_forwardspeed: 1
+  m_Xrotation: -15
+  m_speed: 30
 --- !u!114 &3161758099461082156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,6 +143,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6066285afc9ce674496c69800f95dcd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-815416632828117692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3793399201196985688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5074653f452cbe34da70ade6b68f0ef5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockbackDistance: 5
+  hitOncePerAttack: 1
 --- !u!1001 &8842596841811543828
 PrefabInstance:
   m_ObjectHideFlags: 0

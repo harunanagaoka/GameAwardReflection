@@ -133,7 +133,6 @@ MonoBehaviour:
   m_forwardspeed: 50
   m_Xrotation: -50
   m_speed: 20
-  m_upspeed: 150
 --- !u!114 &3161758099461082156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,7 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5074653f452cbe34da70ade6b68f0ef5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockbackDistance: 1.5
+  knockbackDistance: 10
   hitOncePerAttack: 1
 --- !u!1001 &2415749247325048402
 PrefabInstance:
@@ -246,6 +245,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: boos_hand_R_v04
       objectReference: {fileID: 0}
+    - target: {fileID: 2078318139770998587, guid: e29334dce60e8ec489b4825ed4e335ba, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 0e2f88ea1abbe004ba83705d79e815fd, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
