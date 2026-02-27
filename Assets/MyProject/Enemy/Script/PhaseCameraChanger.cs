@@ -9,7 +9,7 @@ public class PhaseCameraChanger : MonoBehaviour
     public Camera cameraB;
     [SerializeField]
     float opentime = 5f;
-    [SerializeField]
+
     private Animator animator;
     [SerializeField]
     private float animationSpeed = 1f;
@@ -19,21 +19,30 @@ public class PhaseCameraChanger : MonoBehaviour
     bool iscorutineRunning = false;
     private float NormalSpeed = 1f;
 
+    private bool m_wasInit = false;
+
 
     void Start()
     {
-        MainCamera = Camera.main;
-        GameObject pahaseCamera = GameObject.Find("phaseCamera");
-        GameObject Enemy = GameObject.Find("boos_anime_taiki_v02");
-        animator = Enemy.GetComponent<Animator>();
-        cameraB = pahaseCamera.GetComponent<Camera>();
-        MainCamera.enabled = true;
-        cameraB.enabled = false;
+
         
     }
 
     void Update()
     {
+        if (!m_wasInit)
+        {
+            MainCamera = Camera.main;
+            GameObject pahaseCamera = GameObject.Find("phaseCamera");
+            GameObject Enemy = GameObject.Find("boos_anime_taiki_v02");
+            animator = Enemy.GetComponent<Animator>();
+            cameraB = pahaseCamera.GetComponent<Camera>();
+            MainCamera.enabled = true;
+            cameraB.enabled = false;
+
+            m_wasInit = true;
+        }
+
         //if (Input.GetKeyDown(KeyCode.Space) && !iscorutineRunning)
         //{
         //    StartCoroutine(PhaseChanger());
