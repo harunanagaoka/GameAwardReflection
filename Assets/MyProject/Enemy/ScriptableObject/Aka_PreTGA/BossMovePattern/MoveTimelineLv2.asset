@@ -14,27 +14,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_timelines:
   - m_stepDatas:
-    - m_targetPos: {x: 8, y: 0, z: 3}
+    - m_targetPos: {x: 6, y: 0, z: 2}
       m_moveDuration: 2
       m_velocity: 8
-    - m_targetPos: {x: 8, y: 0, z: 3}
+    - m_targetPos: {x: 6, y: 0, z: 2}
       m_moveDuration: 6
       m_velocity: 0
-    - m_targetPos: {x: -8, y: 0, z: 3}
+    - m_targetPos: {x: -6, y: 0, z: 2}
       m_moveDuration: 2
       m_velocity: 8
-    - m_targetPos: {x: -8, y: 0, z: 3}
+    - m_targetPos: {x: -6, y: 0, z: 2}
       m_moveDuration: 6
       m_velocity: 0
     - m_targetPos: {x: 0, y: 0, z: 5}
       m_moveDuration: 9
       m_velocity: 8
-    - m_targetPos: {x: 0, y: 5, z: 5}
-      m_moveDuration: 1
-      m_velocity: 10
+    - m_targetPos: {x: 0, y: 50, z: 5}
+      m_moveDuration: 0.75
+      m_velocity: 100
     - m_targetPos: {x: 0, y: 0, z: 5}
-      m_moveDuration: 1
-      m_velocity: 50
+      m_moveDuration: 1.25
+      m_velocity: 200
     - m_targetPos: {x: 0, y: 0, z: 5}
       m_moveDuration: 1
       m_velocity: 0

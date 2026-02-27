@@ -47,15 +47,19 @@ MonoBehaviour:
     - m_attackData: {fileID: 11400000, guid: de50aed7e5cd6c44aa7c8ad9dede54fa, type: 2}
     - m_attackData: {fileID: 11400000, guid: de50aed7e5cd6c44aa7c8ad9dede54fa, type: 2}
     - m_attackData: {fileID: 11400000, guid: de50aed7e5cd6c44aa7c8ad9dede54fa, type: 2}
-    - m_attackData: {fileID: 11400000, guid: de50aed7e5cd6c44aa7c8ad9dede54fa, type: 2}
-    - m_attackData: {fileID: 11400000, guid: 77e14f87be2f7ee41903d1b86f332d9f, type: 2}
-    - m_attackData: {fileID: 11400000, guid: 77e14f87be2f7ee41903d1b86f332d9f, type: 2}
-    - m_attackData: {fileID: 11400000, guid: 77e14f87be2f7ee41903d1b86f332d9f, type: 2}
-    - m_attackData: {fileID: 11400000, guid: 77e14f87be2f7ee41903d1b86f332d9f, type: 2}
-    - m_attackData: {fileID: 11400000, guid: 77e14f87be2f7ee41903d1b86f332d9f, type: 2}
-    - m_attackData: {fileID: 11400000, guid: 77e14f87be2f7ee41903d1b86f332d9f, type: 2}
-    - m_attackData: {fileID: 11400000, guid: 77e14f87be2f7ee41903d1b86f332d9f, type: 2}
+    - m_attackData: {fileID: 11400000, guid: d60c5fc1ac25cd44dace7cf6939726c8, type: 2}
+    - m_attackData: {fileID: 11400000, guid: d60c5fc1ac25cd44dace7cf6939726c8, type: 2}
+    - m_attackData: {fileID: 11400000, guid: d60c5fc1ac25cd44dace7cf6939726c8, type: 2}
+    - m_attackData: {fileID: 11400000, guid: d60c5fc1ac25cd44dace7cf6939726c8, type: 2}
+    - m_attackData: {fileID: 11400000, guid: d60c5fc1ac25cd44dace7cf6939726c8, type: 2}
+    - m_attackData: {fileID: 11400000, guid: d60c5fc1ac25cd44dace7cf6939726c8, type: 2}
+    - m_attackData: {fileID: 11400000, guid: d60c5fc1ac25cd44dace7cf6939726c8, type: 2}
+    - m_attackData: {fileID: 11400000, guid: d60c5fc1ac25cd44dace7cf6939726c8, type: 2}
     - m_attackData: {fileID: 11400000, guid: de50aed7e5cd6c44aa7c8ad9dede54fa, type: 2}
     - m_attackData: {fileID: 11400000, guid: de50aed7e5cd6c44aa7c8ad9dede54fa, type: 2}
     - m_attackData: {fileID: 11400000, guid: de50aed7e5cd6c44aa7c8ad9dede54fa, type: 2}
     m_interval: 1
+  - m_stepDatas:
+    - m_attackData: {fileID: 11400000, guid: da2aa290f6d93ca4bba4211b47f3426d, type: 2}
+    - m_attackData: {fileID: 11400000, guid: a7de7433ef2a9a04eb6d6cba062cbaf3, type: 2}
+    m_interval: 2
