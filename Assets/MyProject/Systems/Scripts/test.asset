@@ -16,10 +16,10 @@ MonoBehaviour:
   m_phaseDescriptors:
   - m_phaseData: {fileID: 11400000, guid: c8eea8308e8a4134eb72b351d6ee13f1, type: 2}
     changeCondition:
-      changeThreshold: 0.66
+      changeThreshold: 0.7
   - m_phaseData: {fileID: 11400000, guid: c8eea8308e8a4134eb72b351d6ee13f1, type: 2}
     changeCondition:
-      changeThreshold: 0.33
+      changeThreshold: 0.4
   - m_phaseData: {fileID: 11400000, guid: c8eea8308e8a4134eb72b351d6ee13f1, type: 2}
     changeCondition:
       changeThreshold: 0

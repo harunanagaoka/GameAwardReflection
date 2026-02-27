@@ -33,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.1, z: 1}
+  m_LocalScale: {x: 1.5, y: 0.1, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5031839065656343223}
@@ -128,6 +128,9 @@ MonoBehaviour:
   Player: {fileID: 2704472200850051280, guid: 6f3a346b54d192b4eaeec19c979aec6e, type: 3}
   rotation: {x: 0, y: 0, z: 0, w: 0}
   m_moveTime: 0
+  m_stopTime: 0.5
+  m_forwardspeed: 1
+  m_Xrotation: -15
   m_speed: 4
 --- !u!114 &3161758099461082156
 MonoBehaviour:

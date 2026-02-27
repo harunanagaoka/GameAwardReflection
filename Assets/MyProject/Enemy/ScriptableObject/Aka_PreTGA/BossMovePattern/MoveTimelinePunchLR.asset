@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_timelines:
   - m_stepDatas:
-    - m_targetPos: {x: 8, y: 0, z: 0}
+    - m_targetPos: {x: 7, y: 0, z: 2}
       m_moveDuration: 2
       m_velocity: 8
-    - m_targetPos: {x: 8, y: 0, z: 0}
+    - m_targetPos: {x: 7, y: 0, z: 2}
       m_moveDuration: 6
       m_velocity: 0
-    - m_targetPos: {x: -8, y: 0, z: 0}
+    - m_targetPos: {x: -7, y: 0, z: 2}
       m_moveDuration: 2
       m_velocity: 8
-    - m_targetPos: {x: -8, y: 0, z: 0}
+    - m_targetPos: {x: -7, y: 0, z: 2}
       m_moveDuration: 6
       m_velocity: 0
     m_interval: 0
