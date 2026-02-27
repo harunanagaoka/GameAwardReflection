@@ -9,7 +9,7 @@ namespace Utility
         void Update()
         {
             LineRenderer lineRenderer = GetComponent<LineRenderer>();
-            var poses = PhysicsUtil.RefrectionLinePoses(transform.position, transform.forward, length, LayerMask.GetMask("Reflectable")).ToArray();
+            var poses = PhysicsUtil.RefrectionLinePoses(transform.position, transform.forward, length, LayerMask.GetMask("Reflector")).ToArray();
             lineRenderer.positionCount = poses.Length;
             lineRenderer.SetPositions(poses);
         }

@@ -17,6 +17,6 @@ MonoBehaviour:
   m_attackRange: {fileID: 3793399201196985688, guid: a0a03cc091aae2a4397e4b01e438ea9f, type: 3}
   m_warningDuration: 2
   m_blownAwayPower: 100
-  m_blownAwayTime: 10
+  m_blownAwayTime: 100
   m_timePenalty: 10
   m_lifeTime: 1
