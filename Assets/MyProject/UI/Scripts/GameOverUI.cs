@@ -12,8 +12,8 @@ public class GameOverUI : MonoBehaviour
     private void Awake()
     {
         m_mainGameEvents = GetComponent<MainGameEvents>();
-        m_mainGameEvents.OnGameOver.AddListener(GameOver);
-        m_mainGameEvents.OnGameClear.AddListener(GameClear);
+       // m_mainGameEvents.OnGameOver.AddListener(GameOver);
+       // m_mainGameEvents.OnGameClear.AddListener(GameClear);
     }
 
     private void GameClear()

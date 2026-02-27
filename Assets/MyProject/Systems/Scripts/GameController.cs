@@ -70,20 +70,6 @@ public class GameController : MonoBehaviour
             HandleDebugInput();
         }
 
-        if (!m_isGameStarted)
-        {
-            return;
-        }
-
-        if (m_isGameOver || m_isGameCleared)
-        {
-            //if (!m_isInPresentation)
-            //{
-            //    PlayGameEndPresentation();
-            //    m_isInPresentation = true;
-            //}
-        }
-
         if (!IsInGame)
         {
             return;
@@ -92,6 +78,15 @@ public class GameController : MonoBehaviour
         if (!m_isGameOver && !m_isGameCleared)
         {
             CheckGameEnd();
+        }
+
+        if (m_isGameOver)
+        {
+            if (!m_isInPresentation)
+            {
+                GoNextScene();
+                m_isInPresentation = true;
+            }
         }
     }
 
@@ -117,10 +112,10 @@ public class GameController : MonoBehaviour
 
     private void TriggerGameOver()
     {
-        m_mainGameEvents.OnGameOver?.Invoke();
         m_timer.StopTimer();
         m_isGameOver = true;
         Debug.Log("GameOver");
+        m_mainGameEvents.OnGameOver?.Invoke();
     }
 
     private void OnAllPhasesCompleted()

@@ -22,6 +22,7 @@ public class TutorialManager : MonoBehaviour
 
     private bool m_isInited = false;
 
+
     void Awake()
     {
         m_phaseController = GetComponent<PhaseController>();
@@ -40,11 +41,17 @@ public class TutorialManager : MonoBehaviour
 
     private void Start()
     {
-        InitTutorial();
+        
     }
 
     void Update()
     {
+        if (!m_isInited)
+        {
+            InitTutorial();
+            m_isInited = true;
+        }
+
         var gamepad = Gamepad.current;
 
 

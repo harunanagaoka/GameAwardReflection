@@ -7,6 +7,10 @@ public class PlayerComboUI : MonoBehaviour
     [SerializeField]
     GameObject[] m_UIPrefabs; // 要素数5固定
 
+    // 追加：生成位置オフセット
+    [SerializeField]
+    Vector3 m_spawnOffset = new Vector3(0f, 3.5f, 0f);
+
     int m_prevCombo = -1;
 
     void Start()
@@ -37,7 +41,8 @@ public class PlayerComboUI : MonoBehaviour
         GameObject prefab = m_UIPrefabs[index];
         if (prefab == null) return;
 
-        Vector3 spawnPos = transform.position;
+        // ここでOffsetを加算
+        Vector3 spawnPos = transform.position + m_spawnOffset;
         Quaternion spawnRot = prefab.transform.rotation;
 
         // 親なし
